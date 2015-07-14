@@ -6,7 +6,7 @@ class TodoList(models.Model):
     title = models.CharField(max_length=120, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     public = models.BooleanField(default=False)
-    # owner = models.ForeignKey('User')
+    owner = models.ForeignKey(User)
 
 
 class TodoItem(models.Model):
@@ -24,4 +24,5 @@ class TodoItem(models.Model):
     completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    todo_list = models.ForeignKey(TodoList)
     
