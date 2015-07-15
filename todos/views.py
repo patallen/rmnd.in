@@ -1,6 +1,6 @@
-from todos.serializers import UserSerializer, TodoListSerializer
+from todos.serializers import UserSerializer, TodoListSerializer, TodoItemSerializer
 from django.contrib.auth.models import User
-from todos.models import TodoList
+from todos.models import TodoList, TodoItem
 
 from rest_framework import generics
 
@@ -26,7 +26,20 @@ class TodoListListCreate(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+
 class TodoListDetail(generics.RetrieveAPIView):
     queryset = TodoList.objects.all()
     serializer_class = TodoListSerializer
     lookup_field = 'id'
+
+
+class TodoItemListCreate(generics.ListCreateAPIView):
+    serializer_class = TodoItemSerializer
+    lookup_field = 'id'
+    
+    def get_queryset(self):
+        return TodoItem.objects.all()
+    
+    def perform_create(self, serializer):
+        parent = TodoList.objects.get(pk=self.kwargs['id'])
+        serializer.save(todo_list=parent)

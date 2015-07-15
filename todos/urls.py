@@ -7,5 +7,6 @@ urlpatterns = [
         views.UserDetail.as_view()),
 
     url(r'^lists/$', views.TodoListListCreate.as_view()),
-    url(r'^lists/(?P<id>[0-9]+)$', views.TodoListDetail.as_view()),
+    url(r'^lists/(?P<id>[0-9]+)/$', views.TodoListDetail.as_view()),
+    url(r'^lists/(?P<id>[0-9]+)/items/$', views.TodoItemListCreate.as_view()),
 ]

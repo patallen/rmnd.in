@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-
 from todos.models import TodoList, TodoItem
 
 
@@ -31,3 +30,5 @@ class TodoItemSerializer(serializers.ModelSerializer):
         model = TodoItem
         fields = ('id', 'task', 'priority', 'due_date',
                   'completed', 'created_at', 'updated_at')
+        read_only_fields = ('created_at', 'updated_at')
+ 
