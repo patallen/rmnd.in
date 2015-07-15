@@ -20,7 +20,7 @@ class TodoItem(models.Model):
     )
     task = models.CharField(max_length=120, blank=False)
     priority = models.CharField(max_length=2, choices=PRIORITY_CHOICES)
-    due_date = models.DateField()
+    due_date = models.DateField(null=True, blank=True)
     completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
