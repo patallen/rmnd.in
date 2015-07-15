@@ -1,21 +1,39 @@
-from django.conf.urls import url, include
 from django.contrib.auth.models import User
-from rest_framework import routers, serializers, viewsets
+from rest_framework import serializers
 
 from todos.models import TodoList, TodoItem
 
+
 class UserSerializer(serializers.ModelSerializer):
+
+    # first_name and last_name not necessary to sign up
+    def get_validation_exclusions(self, *args, **kwargs):
+        exclusions = (super(UserSerializer, self)
+                      .get_validation_exclusions(*args, **kwargs))
+        return exclusions + ['first_name', 'last_name']
+
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email')
+        fields = ('username', 'first_name',
+                  'last_name', 'email', 'password')
+        write_only_fields = ('password',)
+
 
 class TodoListSerializer(serializers.ModelSerializer):
+    owner = UserSerializer(required=False)
+
+    # Owner will be set based on the request.
+    def get_validation_exclusions(self, *args, **kwargs):
+        exclusions = (super(TodoListSerializer, self)
+                      .get_validation_exclusions(*args, **kwargs))
+        return exclusions + ['owner']
+
     class Meta:
         model = TodoList
-        fields = ('title', 'public', 'owner')
+
 
 class TodoItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = TodoItem
-        fields = ('task', 'priority', 'due_date',
+        fields = ('id', 'task', 'priority', 'due_date',
                   'completed', 'created_at', 'updated_at')
