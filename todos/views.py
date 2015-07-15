@@ -1,5 +1,6 @@
 from todos.serializers import UserSerializer, TodoListSerializer
 from django.contrib.auth.models import User
+from todos.models import TodoList
 
 from rest_framework import generics
 
@@ -24,3 +25,8 @@ class TodoListListCreate(generics.ListCreateAPIView):
     # Add the user to the serializer and save
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+class TodoListDetail(generics.RetrieveAPIView):
+    queryset = TodoList.objects.all()
+    serializer_class = TodoListSerializer
+    lookup_field = 'id'
