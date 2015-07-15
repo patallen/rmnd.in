@@ -20,16 +20,10 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class TodoListSerializer(serializers.ModelSerializer):
-    owner = UserSerializer(required=False)
-
-    # Owner will be set based on the request.
-    def get_validation_exclusions(self, *args, **kwargs):
-        exclusions = (super(TodoListSerializer, self)
-                      .get_validation_exclusions(*args, **kwargs))
-        return exclusions + ['owner']
 
     class Meta:
         model = TodoList
+        read_only_fields = ['owner']
 
 
 class TodoItemSerializer(serializers.ModelSerializer):
