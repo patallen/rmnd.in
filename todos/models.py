@@ -27,7 +27,7 @@ class TodoItem(models.Model):
     completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    todo_list = models.ForeignKey(TodoList)
+    todo_list = models.ForeignKey(TodoList, related_name='todoitems')
 
     def __str__(self):
         return self.task
