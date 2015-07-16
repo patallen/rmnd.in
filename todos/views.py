@@ -8,20 +8,13 @@ from rest_framework import generics
 from rest_framework import viewsets
 
 
-class UserListCreate(generics.ListCreateAPIView):
-    queryset = User.objects.all()
+class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
-
-
-class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
-    lookup_field = 'username'
 
 
 class TodoListViewSet(viewsets.ModelViewSet):
     serializer_class = TodoListSerializer
-    queryset = TodoItem.objects.all()
 
     def get_queryset(self):
         return self.request.user.todolists.all()
