@@ -8,6 +8,8 @@ from todos.models import TodoList, TodoItem
 from rest_framework import viewsets
 from rest_framework_extensions.mixins import NestedViewSetMixin
 
+from todos.permissions import IsOwner, IsOwnerOfList
+
 
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
@@ -15,6 +17,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class TodoListViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsOwner,)
     serializer_class = TodoListSerializer
 
     def get_queryset(self):
@@ -25,14 +28,17 @@ class TodoListViewSet(viewsets.ModelViewSet):
 
 
 class TodoItemViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
-    queryset = TodoItem.objects.all()
+    permission_classes = (IsOwnerOfList,)
     serializer_class = TodoItemSerializer
+    
+    def dispatch(self, request, *args, **kwargs):
+        self.parent_list = get_object_or_404(
+            TodoList, pk=int(kwargs['parent_lookup_todo_list_id'])
+        )
+        return super(TodoItemViewSet, self).dispatch(request, *args, **kwargs)
+        
+    def get_queryset(self):
+        return self.parent_list.todoitems.all()
 
     def perform_create(self, serializer):
-        parent_list = get_object_or_404(
-                TodoList, pk=self.kwargs['parent_lookup_todo_list_id']
-        )
-        # TODO: Set permissions
-        # Only owners should be able to create items
-        # In their lists.
-        return serializer.save(todo_list=parent_list)
+        return serializer.save(todo_list=self.parent_list)
