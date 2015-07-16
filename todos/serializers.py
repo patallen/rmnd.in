@@ -26,7 +26,7 @@ class TodoListSerializer(serializers.ModelSerializer):
 
 
 class TodoItemSerializer(serializers.ModelSerializer):
-    
+
     class Meta:
         model = TodoItem
         read_only_fields = ('todo_list',)
