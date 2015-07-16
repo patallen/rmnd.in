@@ -4,8 +4,8 @@ from todos.serializers import (
 from django.contrib.auth.models import User
 from todos.models import TodoList, TodoItem
 
-from rest_framework import generics
 from rest_framework import viewsets
+from rest_framework_extensions.mixins import NestedViewSetMixin
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -23,17 +23,7 @@ class TodoListViewSet(viewsets.ModelViewSet):
         serializer.save(owner=self.request.user)
 
 
-class TodoItemListCreate(generics.ListCreateAPIView):
-    serializer_class = TodoItemSerializer
-    lookup_field = 'id'
-    queryset = TodoItem.objects.all()
-
-    def perform_create(self, serializer):
-        parent = TodoList.objects.get(pk=self.kwargs['tlid'])
-        serializer.save(todo_list=parent)
-
-
-class TodoItemDetail(generics.RetrieveAPIView):
+class TodoItemViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = TodoItem.objects.all()
     serializer_class = TodoItemSerializer
-    lookup_field = 'id'
+    # TODO: Set the parent of the TodoItem
