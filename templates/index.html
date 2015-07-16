@@ -1,10 +1,11 @@
 {% load staticfiles %}
 
 <!DOCTYPE html>
-<html>
-    <head ng-app="tominderApp">
+<html ng-app="tominderApp">
+    <head>
+        <base href="/">
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <title></title>
+        <title>ToMinder</title>
         <!-- Stylesheets -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     </head>
@@ -12,8 +13,14 @@
     This is where the header will go.
     <div ng-view>
     </div>
+    
+    
     <!-- Angular Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-route.js"></script>
+    
+    <!-- Application Scripts -->
     <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/controllers.js' %}"></script>
     </body>
 </html>
