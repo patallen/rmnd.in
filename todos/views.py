@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from todos.serializers import (
         UserSerializer, TodoListSerializer, TodoItemSerializer
 )
@@ -26,4 +27,12 @@ class TodoListViewSet(viewsets.ModelViewSet):
 class TodoItemViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = TodoItem.objects.all()
     serializer_class = TodoItemSerializer
-    # TODO: Set the parent of the TodoItem
+
+    def perform_create(self, serializer):
+        parent_list = get_object_or_404(
+                TodoList, pk=self.kwargs['parent_lookup_todo_list_id']
+        )
+        # TODO: Set permissions
+        # Only owners should be able to create items
+        # In their lists.
+        return serializer.save(todo_list=parent_list)
