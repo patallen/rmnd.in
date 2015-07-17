@@ -1,9 +1,16 @@
-app.controller('mainController', function($scope){
-    $scope.message = "This is the home message.";
+/* Main Controller */
+app.controller('mainController', function($scope, List){
+	List.query(function(data){
+		$scope.lists = data;
+	});
 });
-app.controller('loginController', function($scope){
-    $scope.message = "This is the login message.";
+
+/* Login Controller */
+app.controller('loginController', function($scope, $location){
+
 });
+
+/* List Controller */
 app.controller('listController', function($scope){
     $scope.message = "This is the list message.";
 });
