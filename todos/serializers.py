@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from todos.models import TodoList, TodoItem
+from todos.models import TodoList
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -23,10 +23,3 @@ class TodoListSerializer(serializers.ModelSerializer):
     class Meta:
         model = TodoList
         read_only_fields = ('owner',)
-
-
-class TodoItemSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = TodoItem
-        read_only_fields = ('todo_list',)
