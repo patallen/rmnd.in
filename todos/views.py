@@ -1,4 +1,4 @@
-from todos.serializers import UserSerializer, TodoListSerializer
+from todos.serializers import UserSerializer, ReminderSerializer
 from django.contrib.auth.models import User
 from rest_framework import viewsets
 from todos.permissions import IsOwner
@@ -11,10 +11,10 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class TodoListViewSet(viewsets.ModelViewSet):
     permission_classes = (IsOwner,)
-    serializer_class = TodoListSerializer
+    serializer_class = ReminderSerializer
 
     def get_queryset(self):
-        return self.request.user.todolists.all()
+        return self.request.user.reminders.all()
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)

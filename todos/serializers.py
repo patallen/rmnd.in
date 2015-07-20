@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from todos.models import TodoList
+from todos.models import Reminder
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -18,8 +18,8 @@ class UserSerializer(serializers.ModelSerializer):
         write_only_fields = ('password',)
 
 
-class TodoListSerializer(serializers.ModelSerializer):
+class ReminderSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = TodoList
+        model = Reminder 
         read_only_fields = ('owner',)
