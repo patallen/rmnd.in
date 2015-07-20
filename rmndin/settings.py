@@ -54,7 +54,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = 'tominder.urls'
+ROOT_URLCONF = 'rmndin.urls'
 TEMPLATE_DIRS = [
     os.path.join(BASE_DIR, 'templates')
 ]
@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'tominder.wsgi.application'
+WSGI_APPLICATION = 'rmndin.wsgi.application'
 
 DATABASES = {
     'default': {
