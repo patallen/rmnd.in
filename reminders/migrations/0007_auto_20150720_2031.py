@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('todos', '0006_auto_20150720_2008'),
+        ('reminders', '0006_auto_20150720_2008'),
     ]
 
     operations = [

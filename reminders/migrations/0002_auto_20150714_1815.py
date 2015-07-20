@@ -9,14 +9,14 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('todos', '0001_initial'),
+        ('reminders', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
             model_name='todoitem',
             name='todo_list',
-            field=models.ForeignKey(default=1, to='todos.TodoList'),
+            field=models.ForeignKey(default=1, to='reminders.TodoList'),
             preserve_default=False,
         ),
         migrations.AddField(

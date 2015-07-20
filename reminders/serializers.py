@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from todos.models import Reminder
+from reminders.models import Reminder
 
 
 class UserSerializer(serializers.ModelSerializer):

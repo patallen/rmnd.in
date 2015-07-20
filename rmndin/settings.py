@@ -40,7 +40,7 @@ INSTALLED_APPS = (
     # Third Party Apps
     'rest_framework',
     # My Apps
-    'todos',
+    'reminders',
 )
 
 MIDDLEWARE_CLASSES = (

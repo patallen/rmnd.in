@@ -1,7 +1,7 @@
-from todos.serializers import UserSerializer, ReminderSerializer
+from reminders.serializers import UserSerializer, ReminderSerializer
 from django.contrib.auth.models import User
 from rest_framework import viewsets
-from todos.permissions import IsOwner
+from reminders.permissions import IsOwner
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -9,7 +9,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
 
 
-class TodoListViewSet(viewsets.ModelViewSet):
+class ReminderViewSet(viewsets.ModelViewSet):
     permission_classes = (IsOwner,)
     serializer_class = ReminderSerializer
 
