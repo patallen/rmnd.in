@@ -30,3 +30,8 @@ app.controller('LoginCtrl', function LoginController($scope, $http, store, AuthS
 	}
 });
 
+app.controller('ReminderCtrl', function($scope, $location, reminderFactory) {
+	$scope.loadReminders = function() {
+		$scope.reminders = reminderFactory.query();
+	};
+});

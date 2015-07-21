@@ -15,6 +15,14 @@
 			[[ user ]]
 			[[ logged ]]
 		</div>
+		<div ng-controller='ReminderCtrl'>
+			<button ng-click="loadReminders()">Load Reminders</button>
+			<ul>
+				<li ng-repeat="reminder in reminders">
+				[[ reminder.title ]]
+				</li>
+			</ul>
+		</div>
 		<div class="col-sm-4 col-sm-offset-4">
 			<form ng-controller="LoginCtrl">
 			<div class="form-group">
