@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Third Party Apps
     'rest_framework',
+    'rest_framework.authtoken',
     'rest_auth',
     # My Apps
     'reminders',
