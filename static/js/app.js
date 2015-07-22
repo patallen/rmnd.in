@@ -16,6 +16,10 @@ app.config(function($interpolateProvider, $resourceProvider, $httpProvider, jwtI
 	$httpProvider.interceptors.push('jwtInterceptor');
 });
 
+app.run(['AuthService', function(AuthService){
+	AuthService.fillAuthData();
+}]);
+
 app.factory('reminderFactory', function($resource) {
 	return $resource('/api/reminders/:reminderId', { reminderId: '@_id' });
 });

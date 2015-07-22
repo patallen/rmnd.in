@@ -1,15 +1,7 @@
 app.controller('MainCtrl', function (AuthService, $scope){
-	$scope.user = AuthService.getUser();
-	$scope.logged = AuthService.isLoggedIn();
+	$scope.user = AuthService.user;
+	$scope.logged = AuthService.isAuthenticated;
 
-	$scope.$watch(
-			function(scope){
-				return scope.logged;
-			},
-			function(scope){
-				scope.user = AuthService.getUser(); 
-			}
-	); 
 });
 
 app.controller('LoginCtrl', function LoginController($scope, $http, AuthService) {
