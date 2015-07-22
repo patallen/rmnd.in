@@ -12,7 +12,7 @@ app.controller('MainCtrl', function (AuthService, $scope){
 	); 
 });
 
-app.controller('LoginCtrl', function LoginController($scope, $http, store, AuthService) {
+app.controller('LoginCtrl', function LoginController($scope, $http, AuthService) {
 	$scope.user = {};
 
 	$scope.login = function() {
@@ -22,8 +22,7 @@ app.controller('LoginCtrl', function LoginController($scope, $http, store, AuthS
 			data: $scope.user
 		})
 		.then(function(response){
-			AuthService.setUser(response.data.token);
-			store.set('jwt', response.data.token);	
+			AuthService.login(response.data.token);
 		}, function(error){
 			alert(error.data);	
 		});	

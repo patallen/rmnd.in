@@ -1,18 +1,27 @@
-app.factory('AuthService', function($http, jwtHelper) {
-	var self = this;
-	self.user = {};
+app.factory('AuthService', function($http, jwtHelper, store) {
+	var vm = this;
+
+	vm.isAuthenticated = false;
+	vm.user = {}	
 	
 	return {
-		setUser : function(token){
+		login: function(token){
 			var decodedToken = jwtHelper.decodeToken(token);	
-			self.user.username = decodedToken.username;
-			self.user.email = decodedToken.email;
+			vm.user.username = decodedToken.username;
+			vm.user.email = decodedToken.email;
+			vm.isAuthenticated = true;
+			store.set('jwt', token);
 		},
-		getUser : function(){
-			return self.user;
+		logout: function(){
+			vm.user = {}	
+			vm.isAuthenticated = false;
+			store.set('jwt', '');
 		},
-		isLoggedIn : function(){
-			return self.user == {};
+		getUser: function(){
+			return vm.user;
+		},
+		isLoggedIn: function(){
+			return vm.isAuthenticated;	
 		}
 	}
 });
