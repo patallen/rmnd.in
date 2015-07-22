@@ -1,7 +1,15 @@
-app.controller('MainCtrl', function (AuthService, $scope){
-	$scope.user = AuthService.user;
-	$scope.logged = AuthService.isAuthenticated;
+"use strict";
 
+app.controller('MainCtrl', function (AuthService, $scope){
+    $scope.logged = AuthService.authentication.isAuthenticated;
+	$scope.user = AuthService.authentication.username;
+	
+    $scope.$watch(function(){
+        return AuthService.authentication;
+    },function(authentication){
+        $scope.user = authentication.username;
+        $scope.logged = authentication.isAuthenticated;
+    });
 });
 
 app.controller('LoginCtrl', function LoginController($scope, $http, AuthService) {
@@ -18,7 +26,7 @@ app.controller('LoginCtrl', function LoginController($scope, $http, AuthService)
 		}, function(error){
 			alert(error.data);	
 		});	
-	}
+	};
 });
 
 app.controller('ReminderCtrl', function($scope, $location, reminderFactory) {
@@ -26,3 +34,4 @@ app.controller('ReminderCtrl', function($scope, $location, reminderFactory) {
 		$scope.reminders = reminderFactory.query();
 	};
 });
+

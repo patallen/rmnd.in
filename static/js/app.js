@@ -1,3 +1,5 @@
+"use strict";
+
 var app = angular.module('app', ['ngResource','angular-jwt', 'angular-storage']);
 
 app.config(function($interpolateProvider, $resourceProvider, $httpProvider, jwtInterceptorProvider){
@@ -10,7 +12,6 @@ app.config(function($interpolateProvider, $resourceProvider, $httpProvider, jwtI
 	$httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
 	jwtInterceptorProvider.tokenGetter = function(store){
-		console.log(store.get('jwt'));
 		return store.get('jwt');	
 	};
 	$httpProvider.interceptors.push('jwtInterceptor');
