@@ -13,9 +13,9 @@
     <div class="container">
 		<div ng-controller='MainCtrl'>
 			<p>User</p>
-			[[ user ]]
+			[[ auth.username ]]
 			<p>Logged In</p>
-			[[ logged ]]
+			[[ auth.isAuthenticated ]]
 		</div>
 		<div ng-controller='ReminderCtrl'>
 			<button ng-click="loadReminders()">Load Reminders</button>

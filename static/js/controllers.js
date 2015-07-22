@@ -1,14 +1,12 @@
 "use strict";
 
 app.controller('MainCtrl', function (AuthService, $scope){
-    $scope.logged = AuthService.authentication.isAuthenticated;
-	$scope.user = AuthService.authentication.username;
+    $scope.auth = AuthService.authentication();
 	
     $scope.$watch(function(){
-        return AuthService.authentication;
+        return AuthService.authentication();
     },function(authentication){
-        $scope.user = authentication.username;
-        $scope.logged = authentication.isAuthenticated;
+        $scope.auth = AuthService.authentication();
     });
 });
 

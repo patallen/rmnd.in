@@ -26,11 +26,14 @@ app.factory('AuthService', ['$http', 'jwtHelper', 'store', function($http, jwtHe
 			_authentication.username = decodedToken.username;
 		}
 	}
+	var _getAuthentication = function(){
+	    return _authentication;
+	};
 
 	authServiceFactory.login = _login;
 	authServiceFactory.logout = _logout;
 	authServiceFactory.fillAuthData = _fillAuthData;
-	authServiceFactory.authentication= _authentication;
+	authServiceFactory.authentication= _getAuthentication;
 
 	return authServiceFactory;
 }]);
