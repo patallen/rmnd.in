@@ -9,7 +9,7 @@ app.controller('LoginCtrl', function LoginController($scope, $http, AuthService)
 
 	$scope.login = function() {
 		$http({
-			url: 'http://localhost:5000/api-token-auth/',
+			url: '/api-token-auth/',
 			method: 'POST',
 			data: $scope.user
 		})
