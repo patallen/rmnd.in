@@ -1,5 +1,8 @@
-<ul>
-	<li ng-repeat='list in lists'>
-		[[ list.title ]]
-	</li>
-</ul>
+<div ng-controller='ReminderCtrl'>
+    <button ng-click="loadReminders()">Load Reminders</button>
+    <ul>
+    	<li ng-repeat="reminder in reminders">
+    	[[ reminder.title ]]
+    	</li>
+    </ul>
+</div>

@@ -11,40 +11,26 @@
     </head>
     <body>
     <div class="container">
+    <div class="navbar navbar-default">
+        
+    </div>
 		<div ng-controller='MainCtrl'>
 			<p>User</p>
 			[[ auth.username ]]
 			<p>Logged In</p>
 			[[ auth.isAuthenticated ]]
 		</div>
-		<div ng-controller='ReminderCtrl'>
-			<button ng-click="loadReminders()">Load Reminders</button>
-			<ul>
-				<li ng-repeat="reminder in reminders">
-				[[ reminder.title ]]
-				</li>
-			</ul>
-		</div>
-		<div class="col-sm-4 col-sm-offset-4">
-			<form ng-controller="LoginCtrl">
-			<div class="form-group">
-				<label for="username">Username</label>
-				<input type="input" id="username" ng-model="user.username" class="form-control">
-			</div>
-			<div class="form-group">
-				<label for="password">Password</label>
-				<input type="password" id="password" ng-model="user.password" class="form-control">
-			</div>
-			<input type="submit" ng-click="login()" class="btn btn-block btn-primary">
-			</form>
-		</div>
+		
+		
+		<ui-view></ui-view>
+		
 	</div>
     <!-- Angular Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-resource.js"></script>
 	<script src="https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
 	<script src="https://cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
     
     <!-- Application Scripts -->
     <script src="{% static 'js/app.js' %}"></script>

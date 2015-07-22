@@ -1,8 +1,8 @@
 "use strict";
 
-var app = angular.module('app', ['ngResource','angular-jwt', 'angular-storage']);
+var app = angular.module('app', ['ngResource','angular-jwt', 'angular-storage', 'ui.router']);
 
-app.config(function($interpolateProvider, $resourceProvider, $httpProvider, jwtInterceptorProvider){
+app.config(function($interpolateProvider, $locationProvider, $urlRouterProvider, $resourceProvider, $httpProvider, $stateProvider, jwtInterceptorProvider){
 	$resourceProvider.defaults.stripTrailingSlashes = false;
 
 	$interpolateProvider.startSymbol('[[');
@@ -15,6 +15,19 @@ app.config(function($interpolateProvider, $resourceProvider, $httpProvider, jwtI
 		return store.get('jwt');	
 	};
 	$httpProvider.interceptors.push('jwtInterceptor');
+	
+	$locationProvider.html5Mode(true);
+	$urlRouterProvider.otherwise('/');
+	$stateProvider
+        .state('home', {
+            url: "/",
+            templateUrl: "/static/partials/home.html"
+        })
+        .state('login', {
+            url: '/login',
+            controller: 'LoginCtrl',
+            templateUrl: "/static/partials/login.html"
+        });
 });
 
 app.run(['AuthService', function(AuthService){
