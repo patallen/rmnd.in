@@ -23,6 +23,11 @@ app.config(function($interpolateProvider, $locationProvider, $urlRouterProvider,
             url: "/",
             templateUrl: "/static/partials/home.html"
         })
+		.state('reminders', {
+			url: "/reminders",
+			controller: 'ReminderCtrl',
+			templateUrl: "/static/partials/reminders.html"
+		})
         .state('login', {
             url: '/login',
             controller: 'LoginCtrl',

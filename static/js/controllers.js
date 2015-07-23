@@ -33,8 +33,13 @@ app.controller('LoginCtrl', function LoginController($scope, $http, AuthService,
 });
 
 app.controller('ReminderCtrl', function($scope, $location, reminderFactory) {
-	$scope.loadReminders = function() {
-		$scope.reminders = reminderFactory.query();
+	$scope.isEditing = false;
+	$scope.isCreating = false;
+
+	$scope.reminders = reminderFactory.query();
+
+	$scope.addReminder = function(reminder){
+			
 	};
 });
 
