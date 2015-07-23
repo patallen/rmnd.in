@@ -8,22 +8,38 @@
         <title>RMND.in</title>
         <!-- Stylesheets -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+		<link href="{% static 'css/styles.css' %}" rel="stylesheet">
     </head>
-    <body>
+    <body ng-controller="MainCtrl">
     <div class="container">
     <div class="navbar navbar-default">
-        
-    </div>
-		<div ng-controller='MainCtrl'>
-			<p>User</p>
-			[[ auth.username ]]
-			<p>Logged In</p>
-			[[ auth.isAuthenticated ]]
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">rmnd.in</a>
+			</div>
+			<ul ng-show="auth.isAuthenticated" class="nav navbar-nav navbar-right">
+				<li>
+					<p class="navbar-text">
+						Welcome, [[ auth.username ]]!
+					</p>
+				</li>
+				<li>
+					<a href="/">Home</a>
+				</li>
+				<li>
+					<a ng-click="logout()" href="">Logout</a>
+				</li>
+			</ul>
+			<ul ng-hide="auth.isAuthenticated" class="nav navbar-nav navbar-right">
+				<li>
+					<a href="/login">Login</a>
+				</li>
+			</ul>
 		</div>
-		
-		
+    </div>
+
 		<ui-view></ui-view>
-		
+
 	</div>
     <!-- Angular Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>

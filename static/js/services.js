@@ -16,7 +16,7 @@ app.factory('AuthService', ['$http', 'jwtHelper', 'store', function($http, jwtHe
 	var _logout = function(){
 		_authentication.username = '',
 		_authentication.isAuthenticated = false;
-		store.set('jwt', '');
+		store.remove('jwt');
 	}
 	var _fillAuthData = function(){
 		var token = localStorage.getItem('jwt');

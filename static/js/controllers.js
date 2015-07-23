@@ -2,6 +2,9 @@
 
 app.controller('MainCtrl', function (AuthService, $scope){
     $scope.auth = AuthService.authentication();
+    $scope.logout = function(){
+		AuthService.logout(); 
+    };
 	
     $scope.$watch(function(){
         return AuthService.authentication();
@@ -10,7 +13,7 @@ app.controller('MainCtrl', function (AuthService, $scope){
     });
 });
 
-app.controller('LoginCtrl', function LoginController($scope, $http, AuthService) {
+app.controller('LoginCtrl', function LoginController($scope, $http, AuthService, $state) {
 	$scope.user = {};
 
 	$scope.login = function() {
@@ -21,6 +24,7 @@ app.controller('LoginCtrl', function LoginController($scope, $http, AuthService)
 		})
 		.then(function(response){
 			AuthService.login(response.data.token);
+			$state.go('home');
 		}, function(error){
 			alert(error.data);	
 		});	
