@@ -30,8 +30,18 @@ app.config(function($interpolateProvider, $locationProvider, $urlRouterProvider,
         });
 });
 
-app.run(['AuthService', function(AuthService){
+app.run(['AuthService', '$rootScope', '$state', '$location', 
+		function(AuthService, $rootScope, $state, $location){
+
+	// Fill AuthService's authentication with user info if authed
 	AuthService.fillAuthData();
+
+	// If user is not authenticated, redirect to login
+	$rootScope.$on("$stateChangeStart", function(event, next, current) {
+		if(!AuthService.authentication().isAuthenticated){
+			$location.path('/login');
+		}
+	});	
 }]);
 
 app.factory('reminderFactory', function($resource) {

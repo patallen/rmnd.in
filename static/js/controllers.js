@@ -1,9 +1,10 @@
 "use strict";
 
-app.controller('MainCtrl', function (AuthService, $scope){
+app.controller('MainCtrl', function (AuthService, $scope, $state){
     $scope.auth = AuthService.authentication();
     $scope.logout = function(){
 		AuthService.logout(); 
+		$state.go('login');
     };
 	
     $scope.$watch(function(){
