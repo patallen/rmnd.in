@@ -1,4 +1,21 @@
 <div class="col-sm-6 col-sm-offset-3">
+	<button ng-click="startCreating()" ng-hide="isCreating" class="btn btn-primary">Create</button>
+	<button ng-click="cancelAction()" ng-hide="!isCreating && !isEditing" class="btn btn-default">Cancel</button>
+	<form ng-show="isCreating" ng-submit="createReminder(currentReminder)">
+		<div class="form-group">
+			<label for="title">Title</label>
+			<input type="text" id="title" ng-model="currentReminder.title" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="notes">Notes</label>
+			<textarea id="notes" ng-model="currentReminder.notes" class="form-control"></textarea>
+		</div>
+		<div class="form-group">
+			<label for="notes">Date</label>
+			<input type="text" id="date" ng-model="currentReminder.remind_date" class="form-control">
+		</div>
+		<input type="submit" class="btn btn-primary" value="Create">
+	</form>
 	<ul class="list-group">
 		<li class="list-group-item" ng-repeat="reminder in reminders">
 			[[ reminder.title ]]	

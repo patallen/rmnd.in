@@ -7,7 +7,7 @@ class Reminder(models.Model):
     notes = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    remind_date = models.DateTimeField()
+    remind_date = models.DateTimeField(null=True)
     owner = models.ForeignKey(User, related_name='reminders')
 
     def __str__(self):

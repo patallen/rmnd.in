@@ -36,10 +36,24 @@ app.controller('ReminderCtrl', function($scope, $location, reminderFactory) {
 	$scope.isEditing = false;
 	$scope.isCreating = false;
 
-	$scope.reminders = reminderFactory.query();
-
-	$scope.addReminder = function(reminder){
-			
+	$scope.startEditing = function(){
+		$scope.isEditing = true;
+		$scope.isCreating = false;
 	};
+	$scope.startCreating = function(){
+		$scope.isEditing = false;
+		$scope.isCreating = true;
+	};
+	$scope.cancelAction = function(){
+		$scope.isEditing = false;
+		$scope.isCreating = false;
+	};
+	$scope.createReminder = function (newReminder){
+		reminderFactory.save(newReminder, function(){
+			$scope.reminders.push(newReminder);
+			$scope.cancelAction();
+		});
+	};
+	$scope.reminders = reminderFactory.query();
 });
 
