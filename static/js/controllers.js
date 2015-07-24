@@ -33,6 +33,11 @@ app.controller('LoginCtrl', function LoginController($scope, $http, AuthService,
 });
 
 app.controller('ReminderCtrl', function($scope, $location, reminderFactory) {
+    $scope.currentReminder = {
+        title: '',
+        notes: '',
+        date: ''
+    }
 	$scope.isEditing = false;
 	$scope.isCreating = false;
 
@@ -48,9 +53,17 @@ app.controller('ReminderCtrl', function($scope, $location, reminderFactory) {
 		$scope.isEditing = false;
 		$scope.isCreating = false;
 	};
+    var resetReminder = function() {
+        $scope.currentReminder = {
+            title: '',
+            notes: '',
+            date: ''
+        }
+    }
 	$scope.createReminder = function (newReminder){
 		reminderFactory.save(newReminder, function(){
 			$scope.reminders.push(newReminder);
+            resetReminder();
 			$scope.cancelAction();
 		});
 	};
