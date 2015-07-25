@@ -36,7 +36,7 @@ app.controller('ReminderCtrl', function($scope, $location, reminderFactory) {
     $scope.currentReminder = {
         title: '',
         notes: '',
-        date: ''
+        remind_date: new Date()
     }
 	$scope.isEditing = false;
 	$scope.isCreating = false;
@@ -57,7 +57,7 @@ app.controller('ReminderCtrl', function($scope, $location, reminderFactory) {
         $scope.currentReminder = {
             title: '',
             notes: '',
-            date: ''
+            remind_date: ''
         }
     }
 	$scope.createReminder = function (newReminder){
@@ -70,3 +70,50 @@ app.controller('ReminderCtrl', function($scope, $location, reminderFactory) {
 	$scope.reminders = reminderFactory.query();
 });
 
+app.controller('DatePickerCtrl', function ($scope) {
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.opened = true;
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
+
+  $scope.format = 'dd-MMMM-yyyy';
+
+  var tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  var afterTomorrow = new Date();
+  afterTomorrow.setDate(tomorrow.getDate() + 2);
+  $scope.events =
+    [
+      {
+        date: tomorrow,
+        status: 'full'
+      },
+      {
+        date: afterTomorrow,
+        status: 'partially'
+      }
+    ];
+
+  $scope.getDayClass = function(date, mode) {
+    if (mode === 'day') {
+      var dayToCheck = new Date(date).setHours(0,0,0,0);
+
+      for (var i=0;i<$scope.events.length;i++){
+        var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+
+        if (dayToCheck === currentDay) {
+          return $scope.events[i].status;
+        }
+      }
+    }
+
+    return '';
+  };
+});
