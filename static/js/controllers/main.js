@@ -1,4 +1,4 @@
-app.controller('MainCtrl', function (AuthService, $scope, $state){
+app.controller('main', function (AuthService, $scope, $state){
     $scope.auth = AuthService.authentication();
     $scope.logout = function(){
 		AuthService.logout(); 

@@ -1,4 +1,4 @@
-app.controller('LoginCtrl', function LoginController($scope, $http, AuthService, $state) {
+app.controller('login', function LoginController($scope, $http, AuthService, $state) {
 	$scope.user = {};
 
 	$scope.login = function() {

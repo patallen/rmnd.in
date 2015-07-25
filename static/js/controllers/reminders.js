@@ -1,4 +1,4 @@
-app.controller('ReminderCtrl', function($scope, $location, reminderFactory) {
+app.controller('reminder', function($scope, $location, reminderFactory) {
     $scope.currentReminder = {
         title: '',
         notes: '',

@@ -7,7 +7,7 @@
 			<label for="title">Title</label>
 			<input type="text" id="title" ng-model="currentReminder.title" class="form-control">
 		</div>
-		<div class="col-md-6" ng-controller="DatePickerCtrl">
+		<div class="col-md-6" ng-controller="datepicker">
 				<label>Date:</label>
 			<p class="input-group">
 				<input type="text" class="form-control" datepicker-popup="[[ format ]]" ng-model="currentReminder.remind_date" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />

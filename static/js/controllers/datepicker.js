@@ -1,4 +1,4 @@
-app.controller('DatePickerCtrl', function ($scope) {
+app.controller('datepicker', function ($scope) {
 	$scope.open = function($event) {
 		$event.preventDefault();
 		$event.stopPropagation();
