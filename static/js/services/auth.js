@@ -1,5 +1,3 @@
-"use strict";
-
 app.factory('AuthService', ['$http', 'jwtHelper', 'store', function($http, jwtHelper, store) {
 	var authServiceFactory = {};
 	var _authentication = {
