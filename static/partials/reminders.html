@@ -1,11 +1,11 @@
 <div class="col-sm-6 col-sm-offset-3">
 	<button ng-click="startCreating()" ng-hide="isCreating" class="btn btn-primary">Create</button>
 	<button ng-click="cancelAction()" ng-hide="!isCreating && !isEditing" class="btn btn-default">Cancel</button>
-	<form ng-show="isCreating" ng-submit="createReminder(currentReminder)">
+	<form name="reminderForm" ng-show="isCreating" ng-submit="createReminder(currentReminder, reminderForm.$valid)">
 		<div class="row">
 		<div class="form-group col-md-6">
 			<label for="title">Title</label>
-			<input type="text" id="title" ng-model="currentReminder.title" class="form-control">
+			<input type="text" id="title" ng-model="currentReminder.title" class="form-control" ng-required="true">
 		</div>
 		<div class="col-md-6" ng-controller="datepicker">
 				<label>Date:</label>
@@ -21,7 +21,7 @@
 			<label for="notes">Notes</label>
 			<textarea id="notes" ng-model="currentReminder.notes" class="form-control"></textarea>
 		</div>
-		<input type="submit" class="btn btn-primary" value="Create">
+		<input type="submit" class="btn btn-primary btn-block" value="Create" ng-disabled="reminderForm.$invalid">
 	</form>
 	<ul class="list-group">
 		<li class="list-group-item" ng-repeat="reminder in reminders">
