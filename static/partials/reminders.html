@@ -1,7 +1,7 @@
 <div class="col-sm-6 col-sm-offset-3">
 	<button ng-click="startCreating()" ng-hide="isCreating" class="btn btn-primary">Create</button>
 	<button ng-click="cancelAction()" ng-hide="!isCreating && !isEditing" class="btn btn-default">Cancel</button>
-	<form name="reminderForm" ng-show="isCreating" ng-submit="createReminder(currentReminder, reminderForm.$valid)">
+	<form name="reminderForm" ng-show="isCreating" ng-submit="createReminder(currentReminder, reminderForm.$valid)" novalidate>
 		<div class="row">
 		<div class="form-group col-md-6">
 			<label for="title">Title</label>
