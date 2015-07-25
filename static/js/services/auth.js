@@ -10,12 +10,12 @@ app.factory('AuthService', ['$http', 'jwtHelper', 'store', function($http, jwtHe
 		_authentication.username = decodedToken.username;
 		_authentication.isAuthenticated = true;
 		store.set('jwt', token);
-	}
+	};
 	var _logout = function(){
-		_authentication.username = '',
+		_authentication.username = '';
 		_authentication.isAuthenticated = false;
 		store.remove('jwt');
-	}
+	};
 	var _fillAuthData = function(){
 		var token = localStorage.getItem('jwt');
 		if (token){
@@ -23,9 +23,9 @@ app.factory('AuthService', ['$http', 'jwtHelper', 'store', function($http, jwtHe
 			_authentication.isAuthenticated = true;
 			_authentication.username = decodedToken.username;
 		}
-	}
+	};
 	var _getAuthentication = function(){
-	    return _authentication;
+		return _authentication;
 	};
 
 	authServiceFactory.login = _login;

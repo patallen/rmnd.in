@@ -3,7 +3,7 @@ app.controller('reminder', function($scope, $location, reminderFactory) {
         title: '',
         notes: '',
         remind_date: new Date()
-    }
+    };
 	$scope.isEditing = false;
 	$scope.isCreating = false;
 
@@ -24,8 +24,8 @@ app.controller('reminder', function($scope, $location, reminderFactory) {
             title: '',
             notes: '',
             remind_date: ''
-        }
-    }
+        };
+    };
 	$scope.createReminder = function (newReminder){
 		reminderFactory.save(newReminder, function(){
 			$scope.reminders.push(newReminder);
