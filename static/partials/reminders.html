@@ -12,9 +12,12 @@
 				<button ng-click="cancelAction()" ng-hide="!isCreating && !isEditing" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
 				</p>
 			</div>
+			<div class="container-fluid">
+				<input class="form-control"type=text ng-model=search>
+			</div>
 		</div>
 	</div>
-	<form name="reminderForm" ng-show="isCreating" ng-submit="createReminder(currentReminder, reminderForm.$valid)" novalidate>
+	<form name="reminderForm" ng-show="isCreating" ng-submit="createReminder(currentReminder, reminderForm.$valid)" class="reminder-form" novalidate>
 		<div class="row">
 		<div class="form-group col-md-6">
 			<label for="title">Title</label>
@@ -38,7 +41,7 @@
 	</form>
 	<div class="list-wrapper">
 		<ul class="list-group reminders-list">
-			<li class="list-group-item" ng-repeat="reminder in reminders | orderBy : sortType : sortReverse">
+			<li class="list-group-item" ng-repeat="reminder in reminders | orderBy : sortType : sortReverse | filter : search  : strict">
 				<a ng-href="/reminders/[[ reminder.id ]]">[[ reminder.title ]]</a>
 				<div class="pull-right">
 					<a href ng-click="edit(reminder)"><i class="glyphicon glyphicon-pencil"></i></a>
