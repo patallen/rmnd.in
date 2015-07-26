@@ -15,7 +15,7 @@
     <div class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/">rmnd.in</a>
+				<a class="navbar-brand" ui-sref="home">rmnd.in</a>
 			</div>
 			<ul ng-show="auth.isAuthenticated" class="nav navbar-nav navbar-right">
 				<li>
@@ -23,8 +23,11 @@
 						Welcome, [[ auth.username ]]!
 					</p>
 				</li>
-				<li>
-					<a href="/">Home</a>
+				<li ui-sref-active="active">
+					<a ui-sref="home">Home</a>
+				</li>
+				<li ui-sref-active="active">
+					<a ui-sref="reminders">Reminders</a>
 				</li>
 				<li>
 					<a ng-click="logout()" href="">Logout</a>
