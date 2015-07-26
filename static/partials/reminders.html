@@ -25,7 +25,11 @@
 	</form>
 	<ul class="list-group">
 		<li class="list-group-item" ng-repeat="reminder in reminders">
-			[[ reminder.title ]]	
+			<a ng-href="/reminders/[[ reminder.id ]]">[[ reminder.title ]]</a>
+			<div class="pull-right">
+				<a href ng-click="edit(reminder)"><i class="glyphicon glyphicon-pencil"></i></a>
+				<a href ng-click="delete(reminder)"><i class="glyphicon glyphicon-trash"></i></a>
+			</div>
 		</li>
 	</ul>
 </div>
