@@ -17,15 +17,21 @@ app.controller('reminder', function($scope, $location, Reminder) {
 		}
 	};
 
+	// Create / Edit Functions
+	
+	// If isEditing, set this to the value of reminder being edited
     $scope.currentReminder = {
         title: '',
         notes: '',
         remind_date: ''
     };
+    $scope.btnValue = 'Create';
 	$scope.isEditing = false;
 	$scope.isCreating = false;
 
-	$scope.startEditing = function(){
+	$scope.startEditing = function(reminder){
+		$scope.currentReminder = reminder;
+		$scope.btnValue = 'Update';
 		$scope.isEditing = true;
 		$scope.isCreating = false;
 	};
@@ -36,6 +42,8 @@ app.controller('reminder', function($scope, $location, Reminder) {
 	$scope.cancelAction = function(){
 		$scope.isEditing = false;
 		$scope.isCreating = false;
+		resetReminder();
+		$scope.btnValue = 'Create';
 	};
     var resetReminder = function() {
         $scope.currentReminder = {
@@ -44,13 +52,20 @@ app.controller('reminder', function($scope, $location, Reminder) {
             remind_date: ''
         };
     };
-	$scope.createReminder = function (newReminder, formValid){
+	$scope.createEditReminder = function (reminder, isEditing, formValid){
 		if (formValid){
-			Reminder.save(newReminder, function(){
-				$scope.reminders.push(newReminder);
-				resetReminder();
-				$scope.cancelAction();
-			});
+			if(!isEditing){
+				Reminder.save(reminder, function(){
+					$scope.reminders.push(reminder);
+					resetReminder();
+					$scope.cancelAction();
+				});
+			}else{
+				Reminder.update({ id:reminder.id }, reminder, function(){
+					resetReminder();
+					$scope.cancelAction();
+				});	
+			}
 		}
 	};
 	$scope.reminders = Reminder.query();

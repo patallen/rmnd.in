@@ -9,7 +9,7 @@
 			</span>
 			<div class="pull-right">
 				<p class="navbar-btn">
-				<button ng-click="startCreating()" ng-hide="isCreating" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></button>
+				<button ng-click="startCreating()" ng-hide="isCreating || isEditing" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></button>
 				<button ng-click="cancelAction()" ng-hide="!isCreating && !isEditing" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
 				</p>
 			</div>
@@ -18,7 +18,7 @@
 			</div>
 		</div>
 	</div>
-	<form name="reminderForm" ng-show="isCreating" ng-submit="createReminder(currentReminder, reminderForm.$valid)" class="reminder-form" novalidate>
+	<form name="reminderForm" ng-show="isCreating || isEditing" ng-submit="createEditReminder(currentReminder, isEditing, reminderForm.$valid)" class="reminder-form" novalidate>
 		<div class="row">
 		<div class="form-group col-md-6">
 			<label for="title">Title</label>
@@ -38,14 +38,14 @@
 			<label for="notes">Notes</label>
 			<textarea id="notes" ng-model="currentReminder.notes" class="form-control"></textarea>
 		</div>
-		<input type="submit" class="btn btn-primary btn-block" value="Create" ng-disabled="reminderForm.$invalid">
+		<input type="submit" class="btn btn-primary btn-block" value="[[ btnValue ]]" ng-disabled="reminderForm.$invalid">
 	</form>
 	<div class="list-wrapper">
 		<ul class="list-group reminders-list">
 			<li class="list-group-item" ng-repeat="reminder in reminders | orderBy : sortType : sortReverse | filter : search  : strict">
 				<a ng-href="/reminders/[[ reminder.id ]]">[[ reminder.title ]]</a>
 				<div class="pull-right">
-					<a href ng-click="edit(reminder)"><i class="glyphicon glyphicon-pencil"></i></a>
+					<a href ng-click="startEditing(reminder)"><i class="glyphicon glyphicon-pencil"></i></a>
 					<a href ng-click="delete(reminder)"><i class="glyphicon glyphicon-trash"></i></a>
 				</div>
 			</li>
