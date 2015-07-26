@@ -4,11 +4,18 @@ app.controller('reminder', function($scope, $location, Reminder) {
 
 	$scope.toggleReverse = function() {
 		$scope.sortReverse = !$scope.sortReverse;
-	}
+	};
 
 	$scope.setSortType = function(sortType){
-		$scope.sortType = sortType;	
-	}
+		$scope.sortType = sortType;
+	};
+	$scope.getDirectionClass = function(){
+		if($scope.sortReverse === true){
+			return 'glyphicon-arrow-up';
+		}else{
+			return 'glyphicon-arrow-down';
+		}
+	};
 
     $scope.currentReminder = {
         title: '',
@@ -47,7 +54,6 @@ app.controller('reminder', function($scope, $location, Reminder) {
 		}
 	};
 	$scope.reminders = Reminder.query();
-	console.log($scope.reminders)
 
 	$scope.delete = function(reminder) {
 		Reminder.delete(reminder, function(){

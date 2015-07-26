@@ -5,6 +5,7 @@
 				<a href="" ng-class="{active: sortType=='title'}" ng-click="setSortType('title')">Title</a> | 
 				<a href="" ng-class="{active: sortType=='remind_date'}" ng-click="setSortType('remind_date')">Remind Date</a> | 
 				<a href="" ng-class="{active: sortType=='created_at'}" ng-click="setSortType('created_at')">Create Date</a>
+				<a href="" ng-click="toggleReverse()"><i ng-class="getDirectionClass()" class="glyphicon"></i></a>
 			</span>
 			<div class="pull-right">
 				<p class="navbar-btn">
