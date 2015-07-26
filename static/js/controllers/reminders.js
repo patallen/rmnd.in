@@ -18,7 +18,7 @@ app.controller('reminder', function($scope, $location, Reminder) {
 	};
 
 	// Create / Edit Functions
-	
+
 	// If isEditing, set this to the value of reminder being edited
     $scope.currentReminder = {
         title: '',
@@ -55,8 +55,9 @@ app.controller('reminder', function($scope, $location, Reminder) {
 	$scope.createEditReminder = function (reminder, isEditing, formValid){
 		if (formValid){
 			if(!isEditing){
-				Reminder.save(reminder, function(){
-					$scope.reminders.push(reminder);
+				Reminder.save(reminder, function(res){
+					console.log(res);
+					$scope.reminders.push(res);
 					resetReminder();
 					$scope.cancelAction();
 				});
@@ -64,7 +65,7 @@ app.controller('reminder', function($scope, $location, Reminder) {
 				Reminder.update({ id:reminder.id }, reminder, function(){
 					resetReminder();
 					$scope.cancelAction();
-				});	
+				});
 			}
 		}
 	};
