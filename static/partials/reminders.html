@@ -1,6 +1,19 @@
 <div class="col-sm-6 col-sm-offset-3">
-	<button ng-click="startCreating()" ng-hide="isCreating" class="btn btn-primary">Create</button>
-	<button ng-click="cancelAction()" ng-hide="!isCreating && !isEditing" class="btn btn-default">Cancel</button>
+	<div class="row">
+		<div class="reminder-control">
+			<span class="navbar-text">
+				<a href="" ng-class="{active: sortType=='title'}" ng-click="setSortType('title')">Title</a> | 
+				<a href="" ng-class="{active: sortType=='remind_date'}" ng-click="setSortType('remind_date')">Remind Date</a> | 
+				<a href="" ng-class="{active: sortType=='created_at'}" ng-click="setSortType('created_at')">Create Date</a>
+			</span>
+			<div class="pull-right">
+				<p class="navbar-btn">
+				<button ng-click="startCreating()" ng-hide="isCreating" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></button>
+				<button ng-click="cancelAction()" ng-hide="!isCreating && !isEditing" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
+				</p>
+			</div>
+		</div>
+	</div>
 	<form name="reminderForm" ng-show="isCreating" ng-submit="createReminder(currentReminder, reminderForm.$valid)" novalidate>
 		<div class="row">
 		<div class="form-group col-md-6">
@@ -23,13 +36,15 @@
 		</div>
 		<input type="submit" class="btn btn-primary btn-block" value="Create" ng-disabled="reminderForm.$invalid">
 	</form>
-	<ul class="list-group">
-		<li class="list-group-item" ng-repeat="reminder in reminders">
-			<a ng-href="/reminders/[[ reminder.id ]]">[[ reminder.title ]]</a>
-			<div class="pull-right">
-				<a href ng-click="edit(reminder)"><i class="glyphicon glyphicon-pencil"></i></a>
-				<a href ng-click="delete(reminder)"><i class="glyphicon glyphicon-trash"></i></a>
-			</div>
-		</li>
-	</ul>
+	<div class="list-wrapper">
+		<ul class="list-group reminders-list">
+			<li class="list-group-item" ng-repeat="reminder in reminders | orderBy : sortType : sortReverse">
+				<a ng-href="/reminders/[[ reminder.id ]]">[[ reminder.title ]]</a>
+				<div class="pull-right">
+					<a href ng-click="edit(reminder)"><i class="glyphicon glyphicon-pencil"></i></a>
+					<a href ng-click="delete(reminder)"><i class="glyphicon glyphicon-trash"></i></a>
+				</div>
+			</li>
+		</ul>
+	</div>
 </div>

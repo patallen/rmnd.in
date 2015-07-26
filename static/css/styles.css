@@ -1,7 +1,22 @@
 body {
-	padding-top: 20px;
+	margin-top: 50px;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide {
     display: none !important;
+}
+
+.list-wrapper {
+	margin-top: 10px;
+	max-height: 600px;
+	overflow-y: scroll;
+}
+
+.reminder-control a.active {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.reminder-control .navbar-btn {
+	margin-right: 15px;
 }

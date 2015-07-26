@@ -1,4 +1,15 @@
 app.controller('reminder', function($scope, $location, Reminder) {
+	$scope.sortType = 'created_at';
+	$scope.sortReverse = true;
+
+	$scope.toggleReverse = function() {
+		$scope.sortReverse = !$scope.sortReverse;
+	}
+
+	$scope.setSortType = function(sortType){
+		$scope.sortType = sortType;	
+	}
+
     $scope.currentReminder = {
         title: '',
         notes: '',
@@ -36,6 +47,7 @@ app.controller('reminder', function($scope, $location, Reminder) {
 		}
 	};
 	$scope.reminders = Reminder.query();
+	console.log($scope.reminders)
 
 	$scope.delete = function(reminder) {
 		Reminder.delete(reminder, function(){

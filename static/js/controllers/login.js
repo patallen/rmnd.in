@@ -9,7 +9,7 @@ app.controller('login', function LoginController($scope, $http, AuthService, $st
 		})
 		.then(function(response){
 			AuthService.login(response.data.token);
-			$state.go('home');
+			$state.go('reminders');
 		}, function(error){
 			alert(error.data);	
 		});	
