@@ -15,7 +15,6 @@ app.config(function($interpolateProvider, $locationProvider, $urlRouterProvider,
 		return store.get('jwt');	
 	};
 	$httpProvider.interceptors.push('jwtInterceptor');
-	
 	$locationProvider.html5Mode(true);
 	$urlRouterProvider.otherwise('/');
 	$stateProvider
@@ -49,6 +48,10 @@ app.run(['AuthService', '$rootScope', '$state', '$location',
 	});	
 }]);
 
-app.factory('reminderFactory', function($resource) {
-	return $resource('/api/reminders/:reminderId', { reminderId: '@_id' });
-});
+app.factory('Reminder', ['$resource', function($resource) {
+	return $resource('/api/reminders/:id/', null,
+		{
+			'update': {method: 'PUT'}
+		}			
+	);
+}]);

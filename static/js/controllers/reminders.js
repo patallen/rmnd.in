@@ -1,4 +1,4 @@
-app.controller('reminder', function($scope, $location, reminderFactory) {
+app.controller('reminder', function($scope, $location, Reminder) {
     $scope.currentReminder = {
         title: '',
         notes: '',
@@ -28,12 +28,18 @@ app.controller('reminder', function($scope, $location, reminderFactory) {
     };
 	$scope.createReminder = function (newReminder, formValid){
 		if (formValid){
-			reminderFactory.save(newReminder, function(){
+			Reminder.save(newReminder, function(){
 				$scope.reminders.push(newReminder);
 				resetReminder();
 				$scope.cancelAction();
 			});
 		}
 	};
-	$scope.reminders = reminderFactory.query();
+	$scope.reminders = Reminder.query();
+
+	$scope.delete = function(reminder) {
+		Reminder.delete(reminder, function(){
+			_.remove($scope.reminders, reminder);
+		});
+	};
 });
