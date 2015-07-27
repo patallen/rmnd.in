@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('reminders.urls')),
     url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
+    url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
     url(r'^api-auth/',
         include('rest_framework.urls', namespace='rest_framework')
         ),

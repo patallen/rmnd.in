@@ -35,9 +35,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Third Party Apps
+    'allauth',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_auth',
     # My Apps
     'reminders',
 )
