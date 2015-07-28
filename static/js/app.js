@@ -27,6 +27,11 @@ app.config(function($interpolateProvider, $locationProvider, $urlRouterProvider,
 			controller: 'reminder',
 			templateUrl: "/static/partials/reminders.html"
 		})
+		.state('register', {
+			url: "/register",
+			controller: 'login',
+			templateUrl: "/static/partials/register.html"
+		})
         .state('login', {
             url: '/login',
             controller: 'login',
@@ -40,10 +45,14 @@ app.run(['AuthService', '$rootScope', '$state', '$location',
 	// Fill AuthService's authentication with user info if authed
 	AuthService.fillAuthData();
 
-	// If user is not authenticated, redirect to login
 	$rootScope.$on("$stateChangeStart", function(event, next, current) {
 		if(!AuthService.authentication().isAuthenticated){
-			$location.path('/login');
+			if(next.url == "/register"){
+				// if going to register do not redirect to login	
+			} else {
+				// if not authenticated redirect to login
+				$location.path('/login');
+			}
 		}
 	});	
 }]);
