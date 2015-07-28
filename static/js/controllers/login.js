@@ -1,3 +1,5 @@
+"use strict";
+
 app.controller('login', function LoginController($scope, $http, AuthService, $state) {
 	$scope.user = {};
 
@@ -11,7 +13,7 @@ app.controller('login', function LoginController($scope, $http, AuthService, $st
 			AuthService.login(response.data.token);
 			$state.go('reminders');
 		}, function(error){
-			alert(error.data);	
-		});	
+			alert(error.data);
+		});
 	};
 });

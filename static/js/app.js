@@ -29,7 +29,7 @@ app.config(function($interpolateProvider, $locationProvider, $urlRouterProvider,
 		})
 		.state('register', {
 			url: "/register",
-			controller: 'login',
+			controller: 'registration',
 			templateUrl: "/static/partials/register.html"
 		})
         .state('login', {

@@ -11,58 +11,59 @@
 		<link href="{% static 'css/styles.css' %}" rel="stylesheet">
     </head>
     <body ng-controller="main" ng-cloak>
-    <div class="container">
-    <div class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" ui-sref="home">rmnd.in</a>
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" ui-sref="home">rmnd.in</a>
+				</div>
+				<ul ng-show="auth.isAuthenticated" class="nav navbar-nav navbar-right">
+					<li>
+						<p class="navbar-text">
+							Welcome, [[ auth.username ]]!
+						</p>
+					</li>
+					<li ui-sref-active="active">
+						<a ui-sref="home">Home</a>
+					</li>
+					<li ui-sref-active="active">
+						<a ui-sref="reminders">Reminders</a>
+					</li>
+					<li>
+						<a ng-click="logout()" href="">Logout</a>
+					</li>
+				</ul>
+				<ul ng-hide="auth.isAuthenticated" class="nav navbar-nav navbar-right">
+					<li>
+						<a href="/login">Login</a>
+					</li>
+				</ul>
 			</div>
-			<ul ng-show="auth.isAuthenticated" class="nav navbar-nav navbar-right">
-				<li>
-					<p class="navbar-text">
-						Welcome, [[ auth.username ]]!
-					</p>
-				</li>
-				<li ui-sref-active="active">
-					<a ui-sref="home">Home</a>
-				</li>
-				<li ui-sref-active="active">
-					<a ui-sref="reminders">Reminders</a>
-				</li>
-				<li>
-					<a ng-click="logout()" href="">Logout</a>
-				</li>
-			</ul>
-			<ul ng-hide="auth.isAuthenticated" class="nav navbar-nav navbar-right">
-				<li>
-					<a href="/login">Login</a>
-				</li>
-			</ul>
 		</div>
-    </div>
 
-		<ui-view></ui-view>
+			<ui-view></ui-view>
 
-	</div>
-    <!-- Angular Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-resource.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.1/ui-bootstrap-tpls.js"></script>
-	<script src="https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
-	<script src="https://cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.0/lodash.js"></script>
+		</div>
+		<!-- Angular Scripts -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-resource.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.1/ui-bootstrap-tpls.js"></script>
+		<script src="https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
+		<script src="https://cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.0/lodash.js"></script>
 
-    <!-- Application Scripts -->
-    <script src="{% static 'js/app.js' %}"></script>
+		<!-- Application Scripts -->
+		<script src="{% static 'js/app.js' %}"></script>
 
-    <!-- Service Scripts -->
-    <script src="{% static 'js/services/auth.js' %}"></script>
+		<!-- Service Scripts -->
+		<script src="{% static 'js/services/auth.js' %}"></script>
 
-    <!-- Controller Scripts -->
-    <script src="{% static 'js/controllers/datepicker.js' %}"></script>
-    <script src="{% static 'js/controllers/login.js' %}"></script>
-    <script src="{% static 'js/controllers/main.js' %}"></script>
-    <script src="{% static 'js/controllers/reminders.js' %}"></script>
+		<!-- Controller Scripts -->
+		<script src="{% static 'js/controllers/datepicker.js' %}"></script>
+		<script src="{% static 'js/controllers/login.js' %}"></script>
+		<script src="{% static 'js/controllers/main.js' %}"></script>
+		<script src="{% static 'js/controllers/registration.js' %}"></script>
+		<script src="{% static 'js/controllers/reminders.js' %}"></script>
     </body>
 </html>
