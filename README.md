@@ -21,11 +21,12 @@ A small project with the goal of creating a fast and easy way of scheduling emai
 
 ## TODO
 Fundamentals
-- [ ] Registration Functionality
+- [ ] Add flash/toastr messages
 - [ ] Redis/Celery Email Scheduling
 - [ ] Cron jobs to run through celery tasks
 - [ ] Permalink (/reminders/:id/) for reminder details
 - [ ] Time selection (by hour)
+- [x] Registration Functionality
 
 Nice-to-haves
 - [ ] Categories
