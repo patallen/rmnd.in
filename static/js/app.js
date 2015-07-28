@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module('app', ['ngResource','angular-jwt', 'angular-storage', 'ui.router', 'ui.bootstrap']);
+var app = angular.module('app', ['ngResource','angular-jwt', 'angular-storage', 'ui.router', 'ui.bootstrap.datetimepicker']);
 
 app.config(function($interpolateProvider, $locationProvider, $urlRouterProvider, $resourceProvider, $httpProvider, $stateProvider, jwtInterceptorProvider){
 	$resourceProvider.defaults.stripTrailingSlashes = false;

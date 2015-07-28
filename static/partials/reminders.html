@@ -20,19 +20,21 @@
 	</div>
 	<form name="reminderForm" ng-show="isCreating || isEditing" ng-submit="createEditReminder(currentReminder, isEditing, reminderForm.$valid)" class="reminder-form" novalidate>
 		<div class="row">
-		<div class="form-group col-md-6">
-			<label for="title">Title</label>
-			<input type="text" id="title" ng-model="currentReminder.title" class="form-control" ng-required="true">
-		</div>
-		<div class="col-md-6" ng-controller="datepicker">
-				<label>Date:</label>
-			<p class="input-group">
-				<input type="text" class="form-control" datepicker-popup="[[ format ]]" ng-model="currentReminder.remind_date" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
-				<span class="input-group-btn">
-				<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-				</span>
-			</p>
-		</div>
+            <div class="form-group col-md-6">
+                <label for="title">Title</label>
+                <input type="text" id="title" ng-model="currentReminder.title" class="form-control" ng-required="true">
+            </div>
+            <div class="dropdown col-md-6">
+                <label>Date/Time</label>
+                <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+                    <div class="input-group">
+                        <input type="text" class="form-control" data-ng-model="currentReminder.remind_date"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <datetimepicker ng-model="currentReminder.remind_date" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'hour' }"/>
+                </ul>
+            </div>
 		</div>
 		<div class="form-group">
 			<label for="notes">Notes</label>
