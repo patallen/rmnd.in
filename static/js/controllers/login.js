@@ -1,6 +1,7 @@
 "use strict";
 
-app.controller('login', function LoginController($scope, $http, AuthService, $state) {
+app.controller('login', ['$scope', '$http', 'AuthService', '$state', 
+                         function LoginController($scope, $http, AuthService, $state) {
 	$scope.user = {};
 
 	$scope.login = function() {
@@ -16,4 +17,4 @@ app.controller('login', function LoginController($scope, $http, AuthService, $st
 			alert(error.data);
 		});
 	};
-});
+}]);

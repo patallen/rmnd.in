@@ -1,6 +1,7 @@
 "use strict";
 
-app.controller('registration', function($http, $scope, $state){
+app.controller('registration', ['$http', '$scope', '$state', 
+                                function($http, $scope, $state){
 	$scope.regInfo = {};
 	// TODO: Add validation
 	$scope.register = function(regInfo){
@@ -13,4 +14,4 @@ app.controller('registration', function($http, $scope, $state){
 				console.log(err)
 			});
 	};
-});
+}]);

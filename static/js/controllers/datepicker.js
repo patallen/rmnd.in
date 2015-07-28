@@ -1,4 +1,4 @@
-app.controller('datepicker', function ($scope) {
+app.controller('datepicker', ['$scope', function ($scope) {
 	$scope.open = function($event) {
 		$event.preventDefault();
 		$event.stopPropagation();
@@ -43,4 +43,4 @@ app.controller('datepicker', function ($scope) {
 		}
 		return '';
 	};
-});
+}]);

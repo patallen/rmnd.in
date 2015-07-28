@@ -1,4 +1,5 @@
-app.controller('main', function (AuthService, $scope, $state){
+app.controller('main', ['AuthService', '$scope', '$state', 
+                        function (AuthService, $scope, $state){
     $scope.auth = AuthService.authentication();
     $scope.logout = function(){
 		AuthService.logout();
@@ -10,4 +11,4 @@ app.controller('main', function (AuthService, $scope, $state){
     },function(authentication){
         $scope.auth = AuthService.authentication();
     });
-});
+}]);

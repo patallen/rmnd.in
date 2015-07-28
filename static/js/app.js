@@ -2,7 +2,8 @@
 
 var app = angular.module('app', ['ngResource','angular-jwt', 'angular-storage', 'ui.router', 'ui.bootstrap.datetimepicker']);
 
-app.config(function($interpolateProvider, $locationProvider, $urlRouterProvider, $resourceProvider, $httpProvider, $stateProvider, jwtInterceptorProvider){
+app.config(['$interpolateProvider', '$locationProvider', '$urlRouterProvider', '$resourceProvider', '$httpProvider', '$stateProvider', 'jwtInterceptorProvider',
+            function($interpolateProvider, $locationProvider, $urlRouterProvider, $resourceProvider, $httpProvider, $stateProvider, jwtInterceptorProvider){
 	$resourceProvider.defaults.stripTrailingSlashes = false;
 
 	$interpolateProvider.startSymbol('[[');
@@ -37,7 +38,7 @@ app.config(function($interpolateProvider, $locationProvider, $urlRouterProvider,
             controller: 'login',
             templateUrl: "/static/partials/login.html"
         });
-});
+}]);
 
 app.run(['AuthService', '$rootScope', '$state', '$location', 
 		function(AuthService, $rootScope, $state, $location){

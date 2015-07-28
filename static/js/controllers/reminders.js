@@ -1,4 +1,5 @@
-app.controller('reminder', function($scope, $location, Reminder) {
+app.controller('reminder', ['$scope', '$location', 'Reminder',
+                            function($scope, $location, Reminder) {
 	$scope.sortType = 'created_at';
 	$scope.sortReverse = true;
 
@@ -76,4 +77,4 @@ app.controller('reminder', function($scope, $location, Reminder) {
 			_.remove($scope.reminders, reminder);
 		});
 	};
-});
+}]);
