@@ -25,7 +25,9 @@ Fundamentals
 - [ ] Redis/Celery Email Scheduling
 - [ ] Cron jobs to run through celery tasks
 - [ ] Permalink (/reminders/:id/) for reminder details
-- [ ] Time selection (by hour)
+- [ ] Server response form validation
+- [x] Client-side orm validation
+- [x] Time selection (by hour)
 - [x] Registration Functionality
 
 Nice-to-haves
