@@ -1,9 +1,19 @@
+/* ---- Bootstrap Overrides ---- */
+.container {
+	max-width: 768px;
+}
+
+
+/* ---------- My CSS ---------- */
 body {
 	margin-top: 50px;
 }
-
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide {
     display: none !important;
+}
+
+.reminders-list {
+	margin-bottom: 0;
 }
 
 .list-wrapper {
@@ -24,7 +34,8 @@ body {
 .reminder-form {
 	margin-top: 10px;
 }
+
 .login-form {
-	margin-top: 30px;
+	margin-top: 40px;
 }
 
