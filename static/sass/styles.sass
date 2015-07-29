@@ -1,0 +1,46 @@
+/* ---- Bootstrap Overrides ---- */
+.container
+    max-width: 768px
+
+/* ------- Custom Styles ------- */
+body
+    margin-top: 50px
+
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak,
+.ng-hide
+    display: none !important;
+    
+.reminders-list
+    margin-bottom: 0
+
+.list-wrapper
+    margin-top: 10px
+    max-height: calc(90vh - 100px)
+    overflow-y: scroll
+
+.reminder-control
+    a.active
+        text-decoration: none
+        font-weight: bold
+    .navbar-btn
+        margin-right: 15px
+
+/* ---- Forms ---- */
+.reminder-form
+    margin-top: 10px
+
+.login-form,
+.register-form
+    margin-top: 40px
+
+.validate-form
+    .ng-dirty
+        &.ng-valid
+            border-color: green
+        &.ng-invalid
+            border-color: red
