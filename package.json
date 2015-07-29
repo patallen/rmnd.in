@@ -1,0 +1,23 @@
+{
+  "name": "rmnd.in",
+  "version": "0.0.1",
+  "description": "Simple Email Reminder App",
+  "main": "Gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/patallen/rmnd.in.git"
+  },
+  "author": "Patrick Allen",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/patallen/rmnd.in/issues"
+  },
+  "devDependencies": {
+    "gulp": "~3.9.0",
+    "gulp-sass": "~2.0.4",
+    "gulp-autoprefixer": "~2.3.1"
+  }
+}
