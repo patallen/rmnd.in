@@ -36,13 +36,13 @@ body {
 	margin-top: 10px;
 }
 
-.login-form {
+.login-form, .register-form {
 	margin-top: 40px;
 }
-.ng-dirty.ng-valid {
+.validate-form .ng-dirty.ng-valid {
 	border-color: green;
 }
-.ng-dirty.ng-invalid {
+.validate-form .ng-dirty.ng-invalid {
 	border-color: red;
 }
 

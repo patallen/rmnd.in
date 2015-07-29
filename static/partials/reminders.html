@@ -14,11 +14,11 @@
 				</p>
 			</div>
 			<div class="container-fluid">
-				<input class="form-control"type=text ng-model=search>
+				<input class="form-control" type="text" ng-model="search">
 			</div>
 		</div>
 	</div>
-	<form name="reminderForm" ng-show="isCreating || isEditing" ng-submit="createEditReminder(currentReminder, isEditing, reminderForm.$valid)" class="reminder-form" novalidate>
+	<form name="reminderForm" ng-show="isCreating || isEditing" ng-submit="createEditReminder(currentReminder, isEditing, reminderForm.$valid)" class="reminder-form validate-form" novalidate>
 		<div class="row">
             <div class="form-group col-sm-6">
                 <label for="title">Title</label>
