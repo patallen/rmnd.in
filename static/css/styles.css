@@ -31,11 +31,18 @@ body {
 	margin-right: 15px;
 }
 
+/* ---- Forms ---- */
 .reminder-form {
 	margin-top: 10px;
 }
 
 .login-form {
 	margin-top: 40px;
+}
+.ng-dirty.ng-valid {
+	border-color: green;
+}
+.ng-dirty.ng-invalid {
+	border-color: red;
 }
 
