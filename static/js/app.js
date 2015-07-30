@@ -1,6 +1,13 @@
 "use strict";
 
-var app = angular.module('app', ['ngResource','angular-jwt', 'angular-storage', 'ui.router', 'ui.bootstrap.datetimepicker']);
+var app = angular.module('app', 
+		['ngResource',
+		 'angular-jwt',
+		 'angular-storage',
+		 'ui.router',
+		 'ui.bootstrap.datetimepicker',
+		 'ngAnimate'
+		]);
 
 app.config(['$interpolateProvider', '$locationProvider', '$urlRouterProvider', '$resourceProvider', '$httpProvider', '$stateProvider', 'jwtInterceptorProvider',
             function($interpolateProvider, $locationProvider, $urlRouterProvider, $resourceProvider, $httpProvider, $stateProvider, jwtInterceptorProvider){
