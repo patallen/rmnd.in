@@ -38,10 +38,14 @@ INSTALLED_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
+    'django_crontab',
     # My Apps
     'reminders',
 )
 
+CRONJOBS = [
+    ('*/1 * * * *', 'reminders.cron.collect_reminders')
+]
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
