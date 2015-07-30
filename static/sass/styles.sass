@@ -1,10 +1,14 @@
 /* ---- Bootstrap Overrides ---- */
 .container
-    max-width: 768px
+  max-width: 768px
+
+/* ---- Helper Classes ---- */
+.margin-top-10
+  margin-top: 10px; 
 
 /* ------- Custom Styles ------- */
 body
-    margin-top: 50px
+  margin-top: 50px
 
 [ng\:cloak],
 [ng-cloak],
@@ -13,34 +17,36 @@ body
 .ng-cloak,
 .x-ng-cloak,
 .ng-hide
-    display: none !important;
+  display: none !important;
     
 .reminders-list
-    margin-bottom: 0
+  margin-bottom: 0
 
 .list-wrapper
-    margin-top: 10px
-    max-height: calc(90vh - 100px)
-    overflow-y: scroll
+  margin-top: 10px
+  max-height: calc(90vh - 100px)
+  overflow-y: scroll
 
 .reminder-control
-    a.active
-        text-decoration: none
-        font-weight: bold
-    .navbar-btn
-        margin-right: 15px
+  a.active
+    text-decoration: none
+    font-weight: bold
+  .navbar-btn
+    margin-right: 15px
 
 /* ---- Forms ---- */
 .reminder-form
-    margin-top: 10px
+  margin-top: 10px
 
 .login-form,
 .register-form
-    margin-top: 40px
+  margin-top: 40px
 
 .validate-form
-    .ng-dirty
-        &.ng-valid
-            border-color: green
-        &.ng-invalid
-            border-color: red
+  .ng-dirty
+      &.ng-valid
+        border-color: green
+      &.ng-invalid
+        border-color: red
+
+

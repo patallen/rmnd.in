@@ -32,8 +32,11 @@
 					</li>
 				</ul>
 				<ul ng-hide="auth.isAuthenticated" class="nav navbar-nav navbar-right">
-					<li>
-						<a href="/login">Login</a>
+					<li ui-sref-active="active">
+						<a ui-sref="login">Login</a>
+					</li>
+					<li ui-sref-active="active">
+						<a ui-sref="register">Sign Up</a>
 					</li>
 				</ul>
 			</div>
