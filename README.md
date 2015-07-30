@@ -18,6 +18,7 @@ A small project with the goal of creating a fast and easy way of scheduling emai
 ### Finish Setup
 1. `$ python manage.py migrate`
 1. `$ python manage.py createsuperuser`
+1. `$ python manage.py crontab add`
 
 ## TODO
 Fundamentals
