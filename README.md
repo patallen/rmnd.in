@@ -22,11 +22,13 @@ A small project with the goal of creating a fast and easy way of scheduling emai
 
 ## TODO
 Fundamentals
+- [ ] Task Queue for emails 
+- [ ] Add reminders to queue in collect_reminders
+- [ ] Create custom app layout
 - [ ] Add flash/toastr messages
-- [ ] Redis/Celery Email Scheduling
-- [ ] Cron jobs to run through celery tasks
-- [ ] Permalink (/reminders/:id/) for reminder details
+- [ ] Permalink (/reminders/:id/) for reminder details (maybe not)
 - [ ] Server response form validation
+- [x] Cron jobs to collect reminders to email 
 - [x] Client-side orm validation
 - [x] Time selection (by hour)
 - [x] Registration Functionality
