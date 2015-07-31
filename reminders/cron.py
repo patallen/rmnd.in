@@ -1,8 +1,9 @@
 from reminders.models import Reminder
-from django.contrib.auth.models import User
 from django.utils import timezone
 import os
 import logging
+
+from reminders.tasks import print_reminder
 
 cdir = os.path.dirname(os.path.realpath(__file__))
 cdirup = os.path.dirname(cdir)
@@ -13,12 +14,14 @@ log.setLevel(logging.DEBUG)
 loghandle = logging.FileHandler(cfile, mode="a")
 log.addHandler(loghandle)
 
+
 def collect_reminders():
     """
     Function collects all reminders that are not complete
     and are past the remind_date. This runs on a cronjob
     every X minutes.
     """
+
     # Collect all reminders not complete and past due
     try:
         incomplete_rems = Reminder.objects.filter(complete=False)
@@ -28,10 +31,10 @@ def collect_reminders():
         log.debug("Unable to find reminders")
 
     for rem in reminders:
-        # TODO: Add each rem to the celery queue
-
+        # TODO: For each reminder, start a task
+        print_reminder.delay(rem)
         # Set complete to true so the reminder isn't picked up again
-        rem.complete = True
-        rem.save()
+        # rem.complete = True
+        # rem.save()
 
     log.debug("-------------------------")

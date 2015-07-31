@@ -20,6 +20,10 @@ A small project with the goal of creating a fast and easy way of scheduling emai
 1. `$ python manage.py createsuperuser`
 1. `$ python manage.py crontab add`
 
+### Set Up Task Queue
+1. `$ sudo apt-get install rabbitmq-server`
+1. Start celery worker: `$ celery -A rmndin worker -l info`
+
 ## TODO
 Fundamentals
 - [ ] Task Queue for emails 

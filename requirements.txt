@@ -1,3 +1,7 @@
+amqp==1.4.6
+anyjson==0.3.3
+billiard==3.3.0.20
+celery==3.1.18
 defusedxml==0.4.1
 Django==1.8.3
 django-common-helpers==0.7.0
@@ -8,10 +12,12 @@ djangorestframework-jwt==1.6.0
 djoser==0.3.1
 drf-extensions==0.2.7
 ipython==3.2.1
+kombu==3.0.26
 oauthlib==1.0.0
 psycopg2==2.6.1
 PyJWT==1.4.0
 python3-openid==3.0.5
+pytz==2015.4
 requests==2.7.0
 requests-oauthlib==0.5.0
 six==1.9.0
