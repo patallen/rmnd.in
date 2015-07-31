@@ -14,7 +14,24 @@ loghandle = logging.FileHandler(cfile, mode="a")
 log.addHandler(loghandle)
 
 def collect_reminders():
-    rem = Reminder.objects.create(title='Cron',
-                                  remind_date=timezone.now(),
-                                  owner=User.objects.first())
-    log.debug(rem)
+    """
+    Function collects all reminders that are not complete
+    and are past the remind_date. This runs on a cronjob
+    every X minutes.
+    """
+    # Collect all reminders not complete and past due
+    try:
+        incomplete_rems = Reminder.objects.filter(complete=False)
+        reminders = incomplete_rems.filter(remind_date__lte=timezone.now())
+        log.debug(reminders)
+    except:
+        log.debug("Unable to find reminders")
+
+    for rem in reminders:
+        # TODO: Add each rem to the celery queue
+
+        # Set complete to true so the reminder isn't picked up again
+        rem.complete = True
+        rem.save()
+
+    log.debug("-------------------------")
