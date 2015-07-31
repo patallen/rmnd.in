@@ -124,3 +124,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+EMAIL_BACKEND = 'sgbackend.SendGridBackend'
+SENDGRID_USER = os.environ['DJANGO_SENDGRID_USER']
+SENDGRID_PASSWORD = os.environ['DJANGO_SENDGRID_PASSWORD']

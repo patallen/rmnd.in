@@ -24,6 +24,15 @@ A small project with the goal of creating a fast and easy way of scheduling emai
 1. `$ sudo apt-get install rabbitmq-server`
 1. Start celery worker: `$ celery -A rmndin worker -l info`
 
+### Environment Variables
+1. `vim ~/.virtualenvs/venvname/bin/postactivate`
+1. Add:
+
+'''
+export DJANGO_SENDGRID_USER='sendgrid_username'
+export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
+'''
+
 ## TODO
 Fundamentals
 - [ ] Task Queue for emails 
