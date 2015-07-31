@@ -8,6 +8,7 @@ class Reminder(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     remind_date = models.DateTimeField(null=True)
+    complete = models.BooleanField(default=False)
     owner = models.ForeignKey(User, related_name='reminders')
 
     def __str__(self):
