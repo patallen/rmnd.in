@@ -24,18 +24,17 @@ def send_email(rem):
     and sends it's contents the the appropriate user via email.
     """
     email = rem.owner.email
+    username = rem.owner.username
 
     subject = "!Reminder from rmnd.in"
     title = rem.title
     notes = rem.notes
     date = rem.remind_date
 
-    body = "You have a reminder:\n\n{} on {}\n\nNotes:\n{}".format(title, date, notes)
-    send_mail(subject,
-              body,
-              'reminders@rmnd.in',
-              [email],
-              fail_silently=False)
+    body = ("{}, you have a reminder:\n\n{} on {}\n\nNotes:\n{}"
+            .format(username, title, date, notes))
+    send_mail(subject, body, 'reminders@rmnd.in',
+              [email], fail_silently=False)
 
 
 @shared_task
@@ -46,11 +45,11 @@ def collect_reminders():
     """
     incomplete = Reminder.objects.filter(complete=False)
     rems_to_send = incomplete.filter(remind_date__lte=timezone.now())
-    
+
     # Save each reminder as complete
     # Add each reminder as send_email task
     for rem in rems_to_send:
-        rem.complete=True
+        rem.complete = True
         rem.save()
         send_email.delay(rem)
         log.debug("\nTitle: {} \nComplete: {}".format(rem.title, rem.complete))
