@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from datetime import timedelta
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -38,14 +39,10 @@ INSTALLED_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
-    'django_crontab',
     # My Apps
     'reminders',
 )
 
-CRONJOBS = [
-    ('*/1 * * * *', 'reminders.cron.collect_reminders')
-]
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -116,6 +113,12 @@ USE_L10N = True
 USE_TZ = True
 
 
+CELERYBEAT_SCHEDULE = {
+    'collect-every-30-seconds': {
+        'task': 'reminders.tasks.collect_reminders',
+        'schedule': timedelta(seconds=30),
+    },
+}
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
