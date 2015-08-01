@@ -18,30 +18,30 @@ A small project with the goal of creating a fast and easy way of scheduling emai
 ### Finish Setup
 1. `$ python manage.py migrate`
 1. `$ python manage.py createsuperuser`
-1. `$ python manage.py crontab add`
 
 ### Set Up Task Queue
 1. `$ sudo apt-get install rabbitmq-server`
-1. Start celery worker: `$ celery -A rmndin worker -l info`
+1. Start celery worker with Beat `celery -A rmndin worker -B`
 
 ### Environment Variables
 1. `vim ~/.virtualenvs/venvname/bin/postactivate`
 1. Add:
 
-'''
+```
 export DJANGO_SENDGRID_USER='sendgrid_username'
 export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
-'''
+```
 
 ## TODO
 Fundamentals
-- [ ] Task Queue for emails 
-- [ ] Add reminders to queue in collect_reminders
 - [ ] Create custom app layout
 - [ ] Add flash/toastr messages
 - [ ] Permalink (/reminders/:id/) for reminder details (maybe not)
 - [ ] Server response form validation
-- [x] Cron jobs to collect reminders to email 
+- [ ] Only let users choose a date in the future
+- [x] Task Queue for emails 
+- [x] Add reminders to queue in collect_reminders
+- [x] Celery Beat Scheduler to collect reminders to email 
 - [x] Client-side orm validation
 - [x] Time selection (by hour)
 - [x] Registration Functionality
