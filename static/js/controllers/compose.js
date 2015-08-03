@@ -1,5 +1,6 @@
 app.controller('compose', ['$scope', 'Reminder', '$state', '$stateParams',
 			   function($scope, Reminder, $state, $stateParams){
+	
 	$scope.btnValue = 'Create';
 	$scope.isEditing = false;
 	$scope.reminder = {
@@ -8,19 +9,11 @@ app.controller('compose', ['$scope', 'Reminder', '$state', '$stateParams',
 		notes: ''
 	};
 
-	var _setEditing = function(){
-		$scope.btnValue = 'Update';
-		$scope.isEditing = true;
-	};
-	var _resetState = function(){
-		$scope.btnValue = 'Create';
-		$scope.isEditing = false;
-        $scope.reminder = {
-            title: '',
-            notes: '',
-            remind_date: ''
-        };
-	};
+	// If state is editReminder
+	if ($state.includes('editReminder')){
+		_setEditing();	
+	}
+
 	$scope.saveReminder = function (reminder, isEditing, formValid){
 		if (formValid){
 			if(!isEditing){
@@ -29,10 +22,33 @@ app.controller('compose', ['$scope', 'Reminder', '$state', '$stateParams',
 				});
 			}else{
 				Reminder.update({ id:reminder.id }, reminder, function(){
-					resetReminder();
+					_resetState();
 				});
 			}
 			$state.go('reminders');
 		}
+	};
+	
+	function _setEditing(){
+		$scope.btnValue = 'Update';
+		$scope.isEditing = true;
+		Reminder.get({id: $stateParams.reminderId},
+				function(res){
+					$scope.reminder = res
+				}, 
+				function(err){
+					// TODO: Add flash message text for error
+					console.log('Error: ' + err.statusText)
+					$state.go('reminders');
+			});
+	};
+	function _resetState(){
+		$scope.btnValue = 'Create';
+		$scope.isEditing = false;
+        $scope.reminder = {
+            title: '',
+            notes: '',
+            remind_date: ''
+        };
 	};
 }]);
