@@ -27,13 +27,23 @@ app.config(['$interpolateProvider', '$locationProvider', '$urlRouterProvider', '
 	$urlRouterProvider.otherwise('/');
 	$stateProvider
         .state('home', {
-            url: "/",
+            url: "",
             templateUrl: "/static/partials/home.html"
         })
 		.state('reminders', {
 			url: "/reminders",
 			controller: 'reminder',
 			templateUrl: "/static/partials/reminders.html"
+		})
+		.state('addReminder', {
+			url: "/reminders/add",
+			controller: 'compose',
+			templateUrl: "/static/partials/compose.html"
+		})
+		.state('editReminder', {
+			url: "/reminders/:reminderId/edit",
+			controller: 'compose',
+			templateUrl: "/static/partials/compose.html"
 		})
 		.state('register', {
 			url: "/register",

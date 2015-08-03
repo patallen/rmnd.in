@@ -1,5 +1,5 @@
-app.controller('reminder', ['$scope', '$location', 'Reminder',
-                            function($scope, $location, Reminder) {
+app.controller('reminder', ['$scope', 'Reminder',
+                            function($scope, Reminder) {
 	$scope.sortType = 'created_at';
 	$scope.sortReverse = true;
 
@@ -20,56 +20,7 @@ app.controller('reminder', ['$scope', '$location', 'Reminder',
 
 	// Create / Edit Functions
 
-	// If isEditing, set this to the value of reminder being edited
-    $scope.currentReminder = {
-        title: '',
-        notes: '',
-        remind_date: ''
-    };
-    $scope.btnValue = 'Create';
-	$scope.isEditing = false;
-	$scope.isCreating = false;
-
-	$scope.startEditing = function(reminder){
-		$scope.currentReminder = reminder;
-		$scope.btnValue = 'Update';
-		$scope.isEditing = true;
-		$scope.isCreating = false;
-	};
-	$scope.startCreating = function(){
-		$scope.isEditing = false;
-		$scope.isCreating = true;
-	};
-	$scope.cancelAction = function(){
-		$scope.isEditing = false;
-		$scope.isCreating = false;
-		resetReminder();
-		$scope.btnValue = 'Create';
-	};
-    var resetReminder = function() {
-        $scope.currentReminder = {
-            title: '',
-            notes: '',
-            remind_date: ''
-        };
-    };
-	$scope.createEditReminder = function (reminder, isEditing, formValid){
-		if (formValid){
-			if(!isEditing){
-				Reminder.save(reminder, function(res){
-					console.log(res);
-					$scope.reminders.push(res);
-					resetReminder();
-					$scope.cancelAction();
-				});
-			}else{
-				Reminder.update({ id:reminder.id }, reminder, function(){
-					resetReminder();
-					$scope.cancelAction();
-				});
-			}
-		}
-	};
+	// If isEditing, see this to the value of reminder being edited
 	$scope.reminders = Reminder.query();
 
 	$scope.delete = function(reminder) {
