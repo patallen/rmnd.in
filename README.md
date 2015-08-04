@@ -39,10 +39,10 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 ## TODO
 Fundamentals
 - [ ] Create custom app layout
-- [ ] JWT token refresh
 - [ ] Server response form validation
 - [ ] Only let users choose a date in the future
 - [ ] Add page switch animations
+- [x] JWT token refresh
 - [x] Add flash/toastr messages
 - [x] Permalink (/reminders/:id/edit) for reminder edit
 - [x] Task Queue for emails 
