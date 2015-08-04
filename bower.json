@@ -1,0 +1,32 @@
+{
+  "name": "rmnd.in",
+  "version": "0.0.1",
+  "homepage": "https://github.com/patallen/rmnd.in",
+  "authors": [
+    "Patrick Allen <prallen90@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "angular-bootstrap-datetimepicker": "~0.3.13",
+    "toastr": "~2.1.1",
+    "jquery": "~2.1.4",
+    "angular": "~1.4.3",
+    "moment": "~2.10.6",
+    "angular-jwt": "~0.0.9",
+    "angular-resource": "~1.4.3",
+    "angular-ui-router": "~0.2.15",
+    "lodash": "~3.10.1",
+    "a0-angular-storage": "~0.0.12"
+  },
+  "resolutions": {
+    "angular": "~1.4.3"
+  }
+}

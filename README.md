@@ -19,6 +19,11 @@ A small project with the goal of creating a fast and easy way of scheduling emai
 1. `$ python manage.py migrate`
 1. `$ python manage.py createsuperuser`
 
+###
+1. Install npm then `$ npm install` from project root
+1. Run `$ bower install` to install dependencies
+1. Run `$ gulp styles` to compile styles
+
 ### Set Up Task Queue
 1. `$ sudo apt-get install rabbitmq-server`
 1. Start celery worker with Beat `celery -A rmndin worker -B`
