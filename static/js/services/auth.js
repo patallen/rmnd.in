@@ -26,6 +26,9 @@ app.factory('AuthService', ['$http', 'jwtHelper', 'store', function($http, jwtHe
 				_authentication.username = "";
 			}
 			else {
+				// Refresh token on page load
+				// TODO: check orig_iat expiration?
+				_refreshToken(JSON.parse(token));
 				var decodedToken = jwtHelper.decodeToken(token);
 				_authentication.isAuthenticated = true;
 				_authentication.username = decodedToken.username;
@@ -34,6 +37,16 @@ app.factory('AuthService', ['$http', 'jwtHelper', 'store', function($http, jwtHe
 	};
 	var _getAuthentication = function(){
 		return _authentication;
+	};
+
+	function _refreshToken(token){
+		$http({
+			url: '/api-token-refresh/',
+			method: 'POST',
+			data: {'token': token} 
+		}).then(function(res){
+			store.set('jwt', res.data.token);
+		})
 	};
 
 	authServiceFactory.login = _login;
