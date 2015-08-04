@@ -19,9 +19,17 @@ app.factory('AuthService', ['$http', 'jwtHelper', 'store', function($http, jwtHe
 	var _fillAuthData = function(){
 		var token = localStorage.getItem('jwt');
 		if (token){
-			var decodedToken = jwtHelper.decodeToken(token);
-			_authentication.isAuthenticated = true;
-			_authentication.username = decodedToken.username;
+			var tokenExpired = jwtHelper.isTokenExpired(token);
+
+			if (tokenExpired){
+				_authentication.isAuthenticated = false;
+				_authentication.username = "";
+			}
+			else {
+				var decodedToken = jwtHelper.decodeToken(token);
+				_authentication.isAuthenticated = true;
+				_authentication.username = decodedToken.username;
+			}
 		}
 	};
 	var _getAuthentication = function(){
