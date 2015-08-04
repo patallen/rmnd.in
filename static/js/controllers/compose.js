@@ -19,10 +19,12 @@ app.controller('compose', ['$scope', 'Reminder', '$state', '$stateParams',
 			if(!isEditing){
 				Reminder.save(reminder, function(res){
 					_resetState();
+					toastr.success('Successfully created reminder!');
 				});
 			}else{
 				Reminder.update({ id:reminder.id }, reminder, function(){
 					_resetState();
+					toastr.success('Successfully saved reminder!');
 				});
 			}
 			$state.go('reminders');
@@ -38,7 +40,7 @@ app.controller('compose', ['$scope', 'Reminder', '$state', '$stateParams',
 				}, 
 				function(err){
 					// TODO: Add flash message text for error
-					console.log('Error: ' + err.statusText)
+					toastr.error(err.statusText);
 					$state.go('reminders');
 			});
 	};

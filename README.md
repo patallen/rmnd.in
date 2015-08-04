@@ -37,9 +37,10 @@ Fundamentals
 - [ ] Create custom app layout
 - [ ] JWT token refresh
 - [ ] Add flash/toastr messages
-- [ ] Permalink (/reminders/:id/) for reminder details (maybe not)
 - [ ] Server response form validation
 - [ ] Only let users choose a date in the future
+- [ ] Add page switch animations
+- [x] Permalink (/reminders/:id/edit) for reminder edit
 - [x] Task Queue for emails 
 - [x] Add reminders to queue in collect_reminders
 - [x] Celery Beat Scheduler to collect reminders to email 
