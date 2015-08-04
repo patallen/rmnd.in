@@ -17,10 +17,7 @@ app.controller('reminder', ['$scope', 'Reminder',
 			return 'glyphicon-arrow-down';
 		}
 	};
-
-	// Create / Edit Functions
-
-	// If isEditing, see this to the value of reminder being edited
+	
 	$scope.reminders = Reminder.query();
 
 	$scope.delete = function(reminder) {

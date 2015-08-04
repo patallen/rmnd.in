@@ -9,20 +9,23 @@
 			</span>
 			<div class="pull-right">
 				<p class="navbar-btn">
-				<a ui-sref="addReminder" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></a>
+				<a ui-sref="addReminder" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> New Reminder</a>
 				</p>
 			</div>
 			<div class="container-fluid">
-				<input class="form-control" type="text" ng-model="search">
+				<div class="input-group col-xs-12">
+					<span class="input-group-addon">Search</span>
+					<input class="form-control" type="text" ng-model="search">
+				</div>
 			</div>
 		</div>
 	</div>
 	<div class="list-wrapper">
 		<ul class="list-group reminders-list">
 			<li class="list-group-item" ng-repeat="reminder in reminders | orderBy : sortType : sortReverse | filter : search  : strict">
-				<a ng-href="/reminders/[[ reminder.id ]]">[[ reminder.title ]]</a>
+				<a ng-href="/reminders/[[ reminder.id ]]/edit">[[ reminder.title ]]</a>
 				<div class="pull-right">
-					<a href ng-click="startEditing(reminder)"><i class="glyphicon glyphicon-pencil"></i></a>
+					<a ng-href="/reminders/[[ reminder.id ]]/edit"><i class="glyphicon glyphicon-pencil"></i></a>
 					<a href ng-click="delete(reminder)"><i class="glyphicon glyphicon-trash"></i></a>
 				</div>
 			</li>
