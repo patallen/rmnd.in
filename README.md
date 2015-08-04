@@ -15,14 +15,9 @@ A small project with the goal of creating a fast and easy way of scheduling emai
 1. Give the user a password
 1. Grant user all privileges on database
 
-### Finish Setup
+### Finish Django Setup
 1. `$ python manage.py migrate`
 1. `$ python manage.py createsuperuser`
-
-###
-1. Install npm then `$ npm install` from project root
-1. Run `$ bower install` to install dependencies
-1. Run `$ gulp styles` to compile styles
 
 ### Set Up Task Queue
 1. `$ sudo apt-get install rabbitmq-server`
@@ -37,14 +32,18 @@ export DJANGO_SENDGRID_USER='sendgrid_username'
 export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 ```
 
+### Dependencies
+1. Install npm then `$ npm install` from project root
+1. Run `$ gulp` to install dependencies, compile styles, and start watching
+
 ## TODO
 Fundamentals
 - [ ] Create custom app layout
 - [ ] JWT token refresh
-- [ ] Add flash/toastr messages
 - [ ] Server response form validation
 - [ ] Only let users choose a date in the future
 - [ ] Add page switch animations
+- [x] Add flash/toastr messages
 - [x] Permalink (/reminders/:id/edit) for reminder edit
 - [x] Task Queue for emails 
 - [x] Add reminders to queue in collect_reminders
