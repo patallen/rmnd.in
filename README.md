@@ -38,6 +38,7 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 
 ## TODO
 Fundamentals
+- [ ] Create and use Reminder Service
 - [ ] Create custom app layout
 - [ ] Server response form validation
 - [ ] Only let users choose a date in the future

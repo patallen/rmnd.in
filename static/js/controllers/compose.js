@@ -1,5 +1,5 @@
-app.controller('compose', ['$scope', 'Reminder', '$state', '$stateParams',
-			   function($scope, Reminder, $state, $stateParams){
+app.controller('compose', ['$scope', 'Reminder', '$state', '$stateParams', '$location',
+			   function($scope, Reminder, $state, $stateParams, $location){
 	
 	$scope.btnValue = 'Create';
 	$scope.isEditing = false;
@@ -27,7 +27,7 @@ app.controller('compose', ['$scope', 'Reminder', '$state', '$stateParams',
 					toastr.success('Successfully saved reminder!');
 				});
 			}
-			$state.go('reminders');
+			$location.path('reminders');
 		}
 	};
 	
@@ -41,7 +41,7 @@ app.controller('compose', ['$scope', 'Reminder', '$state', '$stateParams',
 				function(err){
 					// TODO: Add flash message text for error
 					toastr.error(err.statusText);
-					$state.go('reminders');
+					$location.path('/reminders');
 			});
 	};
 	function _resetState(){
