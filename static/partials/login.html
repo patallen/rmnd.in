@@ -1,16 +1,18 @@
-<div class="col-sm-6 col-sm-offset-3">
-	<form class="login-form">
-		<div class="form-group">
-			<label for="username">Username</label>
-			<input type="input" id="username" ng-model="user.username" class="form-control">
-		</div>
-		<div class="form-group">
-			<label for="password">Password</label>
-			<input type="password" id="password" ng-model="user.password" class="form-control">
-		</div>
-		<input type="submit" ng-click="login()" class="btn btn-block btn-primary">
-	</form>
-	<p class="text-center margin-top-10">
-		Not registered? <a href="/register">Sign Up Here</a>
-	</p>
+<div class="container">
+	<div class="col-sm-6 col-sm-offset-3">
+		<form class="login-form">
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input type="input" id="username" ng-model="user.username" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" id="password" ng-model="user.password" class="form-control">
+			</div>
+			<input type="submit" ng-click="login()" class="btn btn-block btn-primary">
+		</form>
+		<p class="text-center margin-top-10">
+			Not registered? <a href="/register">Sign Up Here</a>
+		</p>
+	</div>
 </div>

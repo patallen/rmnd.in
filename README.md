@@ -42,7 +42,7 @@ Fundamentals
 - [ ] Create custom app layout
 - [ ] Server response form validation
 - [ ] Only let users choose a date in the future
-- [ ] Add page switch animations
+- [x] Add page switch animations
 - [x] JWT token refresh
 - [x] Add flash/toastr messages
 - [x] Permalink (/reminders/:id/edit) for reminder edit

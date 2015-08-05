@@ -1,34 +1,36 @@
-<div class="col-sm-10 col-sm-offset-1">
-	<div class="row">
-		<div class="reminder-control">
-			<span class="navbar-text">
-				<a href="" ng-class="{active: sortType=='title'}" ng-click="setSortType('title')">Title</a> | 
-				<a href="" ng-class="{active: sortType=='remind_date'}" ng-click="setSortType('remind_date')">Remind Date</a> | 
-				<a href="" ng-class="{active: sortType=='created_at'}" ng-click="setSortType('created_at')">Create Date</a>
-				<a href="" ng-click="toggleReverse()"><i ng-class="getDirectionClass()" class="glyphicon"></i></a>
-			</span>
-			<div class="pull-right">
-				<p class="navbar-btn">
-				<a ui-sref="addReminder" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> New Reminder</a>
-				</p>
-			</div>
-			<div class="container-fluid">
-				<div class="input-group col-xs-12">
-					<span class="input-group-addon">Search</span>
-					<input class="form-control" type="text" ng-model="search">
+<div class="container">
+	<div class="col-sm-10 col-sm-offset-1">
+		<div class="row">
+			<div class="reminder-control">
+				<span class="navbar-text">
+					<a href="" ng-class="{active: sortType=='title'}" ng-click="setSortType('title')">Title</a> | 
+					<a href="" ng-class="{active: sortType=='remind_date'}" ng-click="setSortType('remind_date')">Remind Date</a> | 
+					<a href="" ng-class="{active: sortType=='created_at'}" ng-click="setSortType('created_at')">Create Date</a>
+					<a href="" ng-click="toggleReverse()"><i ng-class="getDirectionClass()" class="glyphicon"></i></a>
+				</span>
+				<div class="pull-right">
+					<p class="navbar-btn">
+					<a ui-sref="addReminder" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> New Reminder</a>
+					</p>
+				</div>
+				<div class="container-fluid">
+					<div class="input-group col-xs-12">
+						<span class="input-group-addon">Search</span>
+						<input class="form-control" type="text" ng-model="search">
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="list-wrapper">
-		<ul class="list-group reminders-list">
-			<li class="list-group-item" ng-repeat="reminder in reminders | orderBy : sortType : sortReverse | filter : search  : strict">
-				<a ng-href="/reminders/[[ reminder.id ]]/edit">[[ reminder.title ]]</a>
-				<div class="pull-right">
-					<a ng-href="/reminders/[[ reminder.id ]]/edit"><i class="glyphicon glyphicon-pencil"></i></a>
-					<a href ng-click="delete(reminder)"><i class="glyphicon glyphicon-trash"></i></a>
-				</div>
-			</li>
-		</ul>
+		<div class="list-wrapper">
+			<ul class="list-group reminders-list">
+				<li class="list-group-item" ng-repeat="reminder in reminders | orderBy : sortType : sortReverse | filter : search  : strict">
+					<a ng-href="/reminders/[[ reminder.id ]]/edit">[[ reminder.title ]]</a>
+					<div class="pull-right">
+						<a ng-href="/reminders/[[ reminder.id ]]/edit"><i class="glyphicon glyphicon-pencil"></i></a>
+						<a href ng-click="delete(reminder)"><i class="glyphicon glyphicon-trash"></i></a>
+					</div>
+				</li>
+			</ul>
+		</div>
 	</div>
 </div>
