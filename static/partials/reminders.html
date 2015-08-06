@@ -26,7 +26,7 @@
 				<li class="list-group-item" ng-repeat="reminder in reminders | orderBy : sortType : sortReverse | filter : search  : strict">
 					<a ng-href="/reminders/[[ reminder.id ]]/edit">[[ reminder.title ]]</a>
 					<div class="pull-right">
-						<small class="text-muted">[[ reminder.remind_date | date]]</small>
+						<small class="text-muted">[[ reminder.remind_date | humanize ]]</small>
 						<a ng-href="/reminders/[[ reminder.id ]]/edit"><i class="glyphicon glyphicon-pencil"></i></a>
 						<a href ng-click="delete(reminder)"><i class="glyphicon glyphicon-trash"></i></a>
 					</div>
