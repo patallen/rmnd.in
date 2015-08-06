@@ -38,10 +38,13 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 
 ## TODO
 Fundamentals
+- [ ] Only display unsent reminders on main page
+- [ ] Separate unsent reminders from completed in UI
 - [ ] Create and use Reminder Service
-- [ ] Create custom app layout
+- [ ] Create custom responsive app layout
 - [ ] Server response form validation
 - [ ] Only let users choose a date in the future
+- [x] Add filter for humanized time-to-reminder
 - [x] Add page switch animations
 - [x] JWT token refresh
 - [x] Add flash/toastr messages
@@ -54,6 +57,7 @@ Fundamentals
 - [x] Registration Functionality
 
 Nice-to-haves
+- [ ] Add flags (important/favorite/etc)
 - [ ] Categories
 - [ ] Repeat reminders
 - [ ] Multiple reminder times for single task
