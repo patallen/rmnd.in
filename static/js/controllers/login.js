@@ -1,20 +1,24 @@
-"use strict";
+(function(){
+	"use strict";
 
-app.controller('login', ['$scope', '$http', 'AuthService', '$state', 
-                         function LoginController($scope, $http, AuthService, $state) {
-	$scope.user = {};
+	angular.module('app')
+		.controller('login', loginCtrl);
 
-	$scope.login = function() {
-		$http({
-			url: '/api-token-auth/',
-			method: 'POST',
-			data: $scope.user
-		})
-		.then(function(response){
-			AuthService.login(response.data.token);
-			$state.go('reminders');
-		}, function(error){
-			alert(error.data);
-		});
-	};
-}]);
+	function loginCtrl($scope, $http, AuthService, $state) {
+		$scope.user = {};
+
+		$scope.login = function() {
+			$http({
+				url: '/api-token-auth/',
+				method: 'POST',
+				data: $scope.user
+			})
+			.then(function(response){
+				AuthService.login(response.data.token);
+				$state.go('reminders');
+			}, function(error){
+				alert(error.data);
+			});
+		};
+	}
+})();

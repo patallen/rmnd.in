@@ -1,4 +1,7 @@
-app.factory('AuthService', ['$http', 'jwtHelper', 'store', function($http, jwtHelper, store) {
+angular.module('app')
+	.factory('AuthService', authService)
+
+function authService($http, jwtHelper, store) {
 	var authServiceFactory = {};
 	var _authentication = {
         username: "",
@@ -55,4 +58,4 @@ app.factory('AuthService', ['$http', 'jwtHelper', 'store', function($http, jwtHe
 	authServiceFactory.authentication= _getAuthentication;
 
 	return authServiceFactory;
-}]);
+};

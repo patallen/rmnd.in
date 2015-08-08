@@ -1,15 +1,16 @@
 "use strict";
 
-var app = angular.module('app', 
+angular
+	.module('app',
 		['ngResource',
 		 'angular-jwt',
 		 'angular-storage',
 		 'ui.router',
 		 'ui.bootstrap.datetimepicker',
 		 'ngAnimate'
-		]);
+		])
 
-app.config(['$interpolateProvider', '$locationProvider', '$urlRouterProvider', '$resourceProvider', '$httpProvider', '$stateProvider', 'jwtInterceptorProvider',
+.config(['$interpolateProvider', '$locationProvider', '$urlRouterProvider', '$resourceProvider', '$httpProvider', '$stateProvider', 'jwtInterceptorProvider',
             function($interpolateProvider, $locationProvider, $urlRouterProvider, $resourceProvider, $httpProvider, $stateProvider, jwtInterceptorProvider){
 	$resourceProvider.defaults.stripTrailingSlashes = false;
 
@@ -20,7 +21,7 @@ app.config(['$interpolateProvider', '$locationProvider', '$urlRouterProvider', '
 	$httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
 	jwtInterceptorProvider.tokenGetter = function(store){
-		return store.get('jwt');	
+		return store.get('jwt');
 	};
 	$httpProvider.interceptors.push('jwtInterceptor');
 	$locationProvider.html5Mode(true);
@@ -55,9 +56,9 @@ app.config(['$interpolateProvider', '$locationProvider', '$urlRouterProvider', '
             controller: 'login',
             templateUrl: "/static/partials/login.html"
         });
-}]);
+}])
 
-app.run(['AuthService', '$rootScope', '$state', '$location', 
+.run(['AuthService', '$rootScope', '$state', '$location',
 		function(AuthService, $rootScope, $state, $location){
 
 	// Fill AuthService's authentication with user info if authed
@@ -66,19 +67,19 @@ app.run(['AuthService', '$rootScope', '$state', '$location',
 	$rootScope.$on("$stateChangeStart", function(event, next, current) {
 		if(!AuthService.authentication().isAuthenticated){
 			if(next.url == "/register"){
-				// if going to register do not redirect to login	
+				// if going to register do not redirect to login
 			} else {
 				// if not authenticated redirect to login
 				$location.path('/login');
 			}
 		}
-	});	
-}]);
+	});
+}])
 
-app.factory('Reminder', ['$resource', function($resource) {
+.factory('Reminder', ['$resource', function($resource) {
 	return $resource('/api/reminders/:id/', null,
 		{
 			'update': {method: 'PUT'}
-		}			
+		}
 	);
 }]);

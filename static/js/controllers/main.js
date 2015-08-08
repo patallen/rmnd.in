@@ -1,14 +1,20 @@
-app.controller('main', ['AuthService', '$scope', '$state', 
-                        function (AuthService, $scope, $state){
-    $scope.auth = AuthService.authentication();
-    $scope.logout = function(){
-		AuthService.logout();
-		$state.go('login');
-    };
+(function(){
+	"use strict";
 
-    $scope.$watch(function(){
-        return AuthService.authentication();
-    },function(authentication){
-        $scope.auth = AuthService.authentication();
-    });
-}]);
+	angular.module('app')
+		.controller('main', mainCtrl)
+
+	function mainCtrl(AuthService, $scope, $state){
+		$scope.auth = AuthService.authentication();
+		$scope.logout = function(){
+			AuthService.logout();
+			$state.go('login');
+		};
+
+		$scope.$watch(function(){
+			return AuthService.authentication();
+		},function(authentication){
+			$scope.auth = AuthService.authentication();
+		});
+	};
+})();
