@@ -2,9 +2,11 @@
 	"use strict";
 
 	angular.module('app')
-		.controller('datepicker', datepickerCtrl)
+		.controller('datepicker', datepicker)
 
-	function datepickerCtrl($scope) {
+	datepicker.$inject = ['$scope'];
+
+	function datepicker($scope) {
 		$scope.open = function($event) {
 			$event.preventDefault();
 			$event.stopPropagation();

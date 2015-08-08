@@ -2,9 +2,11 @@
 	"use strict";
 
 	angular.module('app')
-		.controller('login', loginCtrl);
+		.controller('login', login);
 
-	function loginCtrl($scope, $http, AuthService, $state) {
+	login.$inject = ['$scope', '$http', 'AuthService', '$state'];
+
+	function login($scope, $http, AuthService, $state) {
 		$scope.user = {};
 
 		$scope.login = function() {

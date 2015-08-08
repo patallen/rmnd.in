@@ -2,9 +2,11 @@
 	"use strict";
 
 	angular.module('app')
-		.controller('registration', registerCtrl);
+		.controller('registration', registration);
 
-	function registerCtrl($http, $scope, $state){
+	registration.$inject = ['$http', '$scope', '$state'];
+
+	function registration($http, $scope, $state){
 		$scope.regInfo = {};
 		// TODO: Add validation
 		$scope.register = function(regInfo){

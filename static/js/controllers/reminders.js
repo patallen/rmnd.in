@@ -2,9 +2,11 @@
 	"use strict";
 
 	angular.module('app')
-		.controller('reminder', reminderCtrl)
+		.controller('reminder', reminder);
 
-	function reminderCtrl($scope, Reminder) {
+	reminder.$inject = ['$scope', 'Reminder'];
+
+	function reminder($scope, Reminder) {
 		$scope.sortType = 'created_at';
 		$scope.sortReverse = true;
 
@@ -30,5 +32,5 @@
 				_.remove($scope.reminders, reminder);
 			});
 		};
-	};
+	}
 })();

@@ -1,9 +1,11 @@
 (function(){
 	"use strict";
 	angular.module('app')
-		.controller('compose', composeCtrl)
+		.controller('compose', compose);
 
-	function composeCtrl($scope, Reminder, $state, $stateParams, $location){
+	compose.$inject = ['$scope', 'Reminder', '$state', '$stateParams', '$location'];
+
+	function compose($scope, Reminder, $state, $stateParams, $location){
 		$scope.btnValue = 'Create';
 		$scope.isEditing = false;
 		$scope.reminder = {
@@ -39,14 +41,14 @@
 			$scope.isEditing = true;
 			Reminder.get({id: $stateParams.reminderId},
 					function(res){
-						$scope.reminder = res
+						$scope.reminder = res;
 					}, 
 					function(err){
 						// TODO: Add flash message text for error
 						toastr.error(err.statusText);
 						$location.path('/reminders');
 				});
-		};
+		}
 		function _resetState(){
 			$scope.btnValue = 'Create';
 			$scope.isEditing = false;
@@ -55,6 +57,6 @@
 				notes: '',
 				remind_date: ''
 			};
-		};
-	};
+		}
+	}
 })();

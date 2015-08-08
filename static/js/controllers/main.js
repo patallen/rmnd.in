@@ -2,9 +2,11 @@
 	"use strict";
 
 	angular.module('app')
-		.controller('main', mainCtrl)
+		.controller('main', main);
 
-	function mainCtrl(AuthService, $scope, $state){
+	main.$inject = ['AuthService', '$scope', '$state'];
+
+	function main(AuthService, $scope, $state){
 		$scope.auth = AuthService.authentication();
 		$scope.logout = function(){
 			AuthService.logout();
@@ -16,5 +18,5 @@
 		},function(authentication){
 			$scope.auth = AuthService.authentication();
 		});
-	};
+	}
 })();
