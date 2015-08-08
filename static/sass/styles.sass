@@ -7,9 +7,6 @@
   margin-top: 10px; 
 
 /* ------- Custom Styles ------- */
-body
-  margin-top: 50px
-
 [ng\:cloak],
 [ng-cloak],
 [data-ng-cloak],
@@ -38,9 +35,10 @@ body
 .view
   margin: 0 auto
   position: absolute
-  top: 0
+  top: 50px 
   width: 100%
-  padding-top: 50px
+  padding-top: 10px
+
   &.ng-enter,
   &.ng-leave
     transition: .3s ease all
@@ -84,3 +82,67 @@ body
   &.ng-enter,
   &.ng-leave
     transition: all linear 0.3s
+
+/***** Custom Styles *****/
+@import url('http://fonts.googleapis.com/css?family=Roboto:400,400italic,700')
+
+$primary: #FF5722
+$primaryDk: #E64A19
+$primaryLt: #FFCCBC
+$icons: #FFFFFF 
+$accent: #9E9E9E
+$primaryText: #212121
+$secondaryText: #727272
+$divider: #B6B6B6
+
+body
+  height: 100%
+  font-family: Roboto
+
+header#main-header
+  position: fixed
+  top: 0
+  width: 100%
+  height: 50px
+  background-color: $primary
+  color: $icons
+  box-shadow: 0px -13px 10px 10px rgb(0,0,0)
+
+.contain
+  max-width: 660px
+  margin: 0 auto
+  padding: 0
+
+ul.nav,
+ul.nav-right
+  margin: 0
+  padding: 0
+  height: 50px
+  float: left
+  li
+    float: left
+    list-style-type: none
+    line-height: 50px
+    &.username
+      font-size: 110%
+      color: $icons 
+      padding: 0 10px
+    a
+      text-decoration: none
+      color: white
+      padding: 0 8px
+      display: block
+      &:hover,
+        background: $primaryDk
+    &.active a
+        background: $primaryDk
+
+ul.nav-right
+  float: right
+.nav-brand
+  font-size: 1.4em
+  line-height: 50px
+  margin-left: 10px
+  a
+    color: white
+    text-decoration: none

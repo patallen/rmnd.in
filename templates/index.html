@@ -17,62 +17,35 @@
 		<nav>
 			<div class="contain">
 				<span class="nav-brand">
-				<a href="/">rmnd.in</a>
+					<a ui-sref="home">rmnd.in</a>
 				</span>
+				<ul ng-show="auth.isAuthenticated" class="nav-right">
+					<li class="username">
+						[[ auth.username ]]
+					</li>
+					<li ui-sref-active="active">
+						<a ui-sref="reminders">Reminders</a>
+					</li>
+					<li>
+						<a ng-click="logout()" href="">Logout</a>
+					</li>
+				</ul>
+				<ul ng-hide="auth.isAuthenticated" class="nav-right">
+					<li ui-sref-active="active">
+						<a ui-sref="login">Login</a>
+					</li>
+					<li ui-sref-active="active">
+						<a ui-sref="register">Sign Up</a>
+					</li>
+				</ul>
 			</div>
-			<ul ng-show="auth.isAuthenticated" class="nav-right">
-				<li>
-					[[ auth.username ]]
-				</li>
-				<li ui-sref-active="active">
-					<a ui-sref="reminders">Reminders</a>
-				</li>
-				<li>
-					<a ng-click="logout()" href="">Logout</a>
-				</li>
-			</ul>
-			<ul ng-hide="auth.isAuthenticated" class="nav-right">
-				<li ui-sref-active="active">
-					<a ui-sref="login">Login</a>
-				</li>
-				<li ui-sref-active="active">
-					<a ui-sref="register">Sign Up</a>
-				</li>
-			</ul>
 		</nav>
     </header>
-		<div class="container">
-			<div class="navbar navbar-default navbar-fixed-top">
-				<div class="container">
-					<div class="navbar-header">
-						<a class="navbar-brand" ui-sref="home">rmnd.in</a>
-					</div>
-					<ul ng-show="auth.isAuthenticated" class="nav navbar-nav navbar-right">
-						<li>
-							<p class="navbar-text">
-								Welcome, [[ auth.username ]]!
-							</p>
-						</li>
-						<li ui-sref-active="active">
-							<a ui-sref="reminders">Reminders</a>
-						</li>
-						<li>
-							<a ng-click="logout()" href="">Logout</a>
-						</li>
-					</ul>
-					<ul ng-hide="auth.isAuthenticated" class="nav navbar-nav navbar-right">
-						<li ui-sref-active="active">
-							<a ui-sref="login">Login</a>
-						</li>
-						<li ui-sref-active="active">
-							<a ui-sref="register">Sign Up</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
+	<div class="container">
 
-			<div class="view" ui-view></div>
+	</div>
+
+	<div class="view" ui-view></div>
 
 		<!-- Angular Scripts -->
 		<script src="{% static 'components/jquery/dist/jquery.min.js' %}"></script>
