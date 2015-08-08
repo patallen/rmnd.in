@@ -1,4 +1,6 @@
 /* ---- Bootstrap Overrides ---- */
+*
+  box-sizing: border-box
 .container
   max-width: 768px
 
@@ -117,28 +119,44 @@ ul.nav,
 ul.nav-right
   margin: 0
   padding: 0
-  height: 50px
   float: left
   li
     float: left
     list-style-type: none
+    a
+      text-decoration: none
+      padding: 0 8px
+      display: block
+
+ul.nav-main
+  height: 50px
+  li
     line-height: 50px
     &.username
       font-size: 110%
       color: $icons 
       padding: 0 10px
     a
-      text-decoration: none
-      color: white
-      padding: 0 8px
-      display: block
+      color: $icons 
       &:hover,
         background: $primaryDk
     &.active a
-        background: $primaryDk
+      background: $primaryDk
+
+.nav-pills
+  li 
+    a
+      padding: 5px
+    &.active a
+      background-color: $primary
+      color: $icons
+    &:hover a
+      background-color: white
+      border: 1px solid $primary
 
 ul.nav-right
   float: right
+
 .nav-brand
   font-size: 1.4em
   line-height: 50px
@@ -146,3 +164,17 @@ ul.nav-right
   a
     color: white
     text-decoration: none
+
+.reminder-nav,
+.reminder-sort
+  padding: 0 10px
+  height: 50px
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+.reminder-sort
+  background-color: $primaryDk
+  color: white
+  a
+    color: white
