@@ -4,9 +4,9 @@
 			<!-- Contains New Reminder button and All/Upcoming/Sent filters -->
 			<div class="reminder-nav">
 				<ul class="nav nav-pills">
-					<li class="active"><a href="#">All</a></li>
-					<li><a href="#">Upcoming</a></li>
-					<li><a href="#">Sent</a></li>
+					<li ng-class="{ active: isActiveFilter('all')}"><a href="#" ng-click="setFilter('all')">All</a></li>
+					<li ng-class="{ active: isActiveFilter('upcoming')}"><a href="#" ng-click="setFilter('upcoming')">Upcoming</a></li>
+					<li ng-class="{ active: isActiveFilter('sent')}"><a href="#" ng-click="setFilter('sent')">Sent</a></li>
 				</ul>
 				<a ui-sref="addReminder" class="btn btn-orange"><i class="glyphicon glyphicon-plus"></i> New Reminder</a>
 			</div><!-- end reminder-nav -->
@@ -26,7 +26,7 @@
 		</div>
 		<div class="list-wrapper">
 			<ul class="list-group reminders-list">
-				<li class="list-group-item" ng-repeat="reminder in reminders | orderBy : sortType : sortReverse | filter : search  : strict">
+				<li class="list-group-item" ng-repeat="reminder in reminders | orderBy : sortType : sortReverse | filter : filter : strict | filter : search  : strict">
 					<a ng-href="/reminders/[[ reminder.id ]]/edit">[[ reminder.title ]]</a>
 					<div class="pull-right">
 						<small class="text-muted">[[ reminder.remind_date | humanize ]]</small>

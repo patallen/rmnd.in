@@ -9,7 +9,31 @@
 	function reminder($scope, Reminder) {
 		$scope.sortType = 'created_at';
 		$scope.sortReverse = true;
+		$scope.filter; 
+		$scope.filterStr = 'all';
+		
 
+		$scope.setFilter = function (filter){
+			if (filter =='upcoming'){
+				$scope.filter = {complete: false};
+				$scope.filterStr = 'upcoming';
+			}
+			else if (filter=='sent'){
+				$scope.filter = {complete: true};	
+				$scope.filterStr = 'sent';
+			}
+			else{
+				$scope.filter = '';	
+				$scope.filterStr = 'all';
+			}
+		};
+
+		$scope.isActiveFilter = function (filter){
+			if(filter == $scope.filterStr){
+				return true;	
+			}	
+			return false;
+		}
 		$scope.toggleReverse = function() {
 			$scope.sortReverse = !$scope.sortReverse;
 		};
