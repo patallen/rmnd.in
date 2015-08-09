@@ -2,12 +2,14 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var bower = require('gulp-bower');
+var livereload = require('gulp-livereload');
 
 gulp.task('styles', function(){
     gulp.src('static/sass/**/*.sass')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer('last 2 version'))
-        .pipe(gulp.dest('static/css/'));
+        .pipe(gulp.dest('static/css/'))
+		.pipe(livereload());
 });
 gulp.task('bower', function(){
 	return bower()
@@ -15,6 +17,7 @@ gulp.task('bower', function(){
 });
 
 gulp.task('watch', function(){
+	livereload.listen();
     gulp.watch('static/sass/**/*.sass', ['styles']);
 });
 
