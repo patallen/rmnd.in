@@ -38,20 +38,22 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 
 ## TODO
 Fundamentals
+- [ ] Email activation
+- [ ] Password Reset
 - [ ] Only display unsent reminders on main page
-- [ ] Separate unsent reminders from completed in UI
 - [ ] Create and use Reminder Service
 - [ ] Create custom responsive app layout
 - [ ] Server response form validation
 - [ ] Only let users choose a date in the future
+- [x] Separate unsent reminders from completed in UI
 - [x] Add filter for humanized time-to-reminder
 - [x] Add page switch animations
 - [x] JWT token refresh
 - [x] Add flash/toastr messages
 - [x] Permalink (/reminders/:id/edit) for reminder edit
-- [x] Task Queue for emails 
+- [x] Task Queue for emails
 - [x] Add reminders to queue in collect_reminders
-- [x] Celery Beat Scheduler to collect reminders to email 
+- [x] Celery Beat Scheduler to collect reminders to email
 - [x] Client-side orm validation
 - [x] Time selection (by hour)
 - [x] Registration Functionality
