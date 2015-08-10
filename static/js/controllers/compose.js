@@ -1,5 +1,5 @@
-(function(){
-	"use strict";
+(function (){
+	'use strict';
 	angular.module('app')
 		.controller('compose', compose);
 
@@ -11,10 +11,16 @@
 		$scope.reminder = {
 			title: '',
 			remind_date: '',
-			notes: ''
+			notes: '',
+			priority: 'L'
 		};
+		$scope.priorityOptions = [
+			{val:'L', text: 'Low'},
+			{val:'M', text: 'Medium'},
+			{val:'H', text: 'High'},
+		];
 
-		// If state is editReminder
+
 		if ($state.includes('editReminder')){
 			_setEditing();	
 		}
@@ -22,7 +28,7 @@
 		$scope.saveReminder = function (reminder, isEditing, formValid){
 			if (formValid){
 				if(!isEditing){
-					Reminder.save(reminder, function(res){
+					Reminder.save(reminder, function(){
 						_resetState();
 						toastr.success('Successfully created reminder!');
 					});
@@ -39,10 +45,11 @@
 		function _setEditing(){
 			$scope.btnValue = 'Update';
 			$scope.isEditing = true;
+
 			Reminder.get({id: $stateParams.reminderId},
 					function(res){
 						$scope.reminder = res;
-					}, 
+					},
 					function(err){
 						toastr.error(err.statusText);
 						$location.path('/reminders');
