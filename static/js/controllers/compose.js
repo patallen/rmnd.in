@@ -44,7 +44,6 @@
 						$scope.reminder = res;
 					}, 
 					function(err){
-						// TODO: Add flash message text for error
 						toastr.error(err.statusText);
 						$location.path('/reminders');
 				});

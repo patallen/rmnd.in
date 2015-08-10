@@ -12,7 +12,7 @@
 		$scope.register = function(regInfo){
 			$http.post('/auth/register/', regInfo)
 				.success(function(){
-					// TODO: Add a toast/flash message
+					toastr.success('Thanks for signing up for rmnd.in');
 					$state.go('login');
 				})
 				.error(function(err){
