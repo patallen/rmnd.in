@@ -19,7 +19,10 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ReminderSerializer(serializers.ModelSerializer):
+    priority = serializers.ChoiceField(choices=Reminder.PRIORITY_CHOICES)
+    priority_display = serializers.CharField(source='get_priority_display',
+                                             read_only=True)
 
     class Meta:
-        model = Reminder 
+        model = Reminder
         read_only_fields = ('owner',)
