@@ -38,6 +38,7 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 
 ## TODO
 Fundamentals
+- [ ] User info/settings page (Full Name, Phone, etc...)
 - [ ] Email activation
 - [ ] Password Reset
 - [ ] Only display unsent reminders on main page
@@ -59,8 +60,8 @@ Fundamentals
 - [x] Registration Functionality
 
 Nice-to-haves
-- [ ] Add flags (important/favorite/etc)
+- [ ] Multiple reminder types (Email, Text, Tweet?)
 - [ ] Categories
 - [ ] Repeat reminders
 - [ ] Multiple reminder times for single task
-- [ ] Custom design
+- [x] Add priority (High, Medium, Low)
