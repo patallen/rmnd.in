@@ -33,13 +33,20 @@
 .reminders-shell
   margin-top: $headerHeight
   background: white
-
-.reminder
+.status
+  min-width: 60px
+  width: 60px
   display: flex
-  flex-direction: column
-  justify-content: space-around
   align-items: center
-
+  justify-content: space-around
+  .fa
+    font-size: 20px
+.reminder
+  overflow: hidden
+  cursor: pointer
+  display: flex
+  flex-direction: row
+  align-items: center
   padding: 10px
   height: $reminderHeight
   width: 100%
@@ -49,21 +56,33 @@
     border-bottom: 0
 
   .info
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    min-width: 0
     width: 100%
-    .title
+    height: 100%
+    .info-top
+      position: relative
+      min-width: 0
+      width: 100%
+      .title
+        white-space: nowrap
+        font-weight: bold
+        color: black
+      .time-left
+        .fa
+          margin-right: 4px
+        background: white
+        position: absolute
+        top: 0
+        right: 0
+        max-width: 60px
+        min-width: 60px
+    .description
+      min-width: 0
       white-space: nowrap
-      font-weight: bold
-      color: black
-    .time-left
-      .fa
-        margin-right: 4px
-      float: right
-      max-width: 60px
-      min-width: 60px
-  .description
-    white-space: nowrap
-    width: 100%
+      width: 100%
 
 .text-muted
   color: darkgray
-
