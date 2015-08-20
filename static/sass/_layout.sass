@@ -1,21 +1,74 @@
+@import 'variables'
+
+*
+  box-sizing: border-box
+
+html,
+body
+  height: 100%
+  background: $bgColor
+
 .container
   max-width: 700px
   margin: 0 auto
 
 .header-static
-  positon: fixed
-  top: 0
+  position: fixed
   width: 100%
-  height: $header-height
-  .container:
+  height: $headerHeight
+  .container
+    display: flex
+    justify-content: space-between
+    align-items: center
+    height: 100%
     max-width: 710px
-  .header-inner
-    height: $header-height/2
+
+  .brand
+    color: white
+    font-size: 24px
+
+  &.header-main
+    top: 0
+    background: $darkColor
+  &.header-filters
+    background: $bgColor
+    .container
+      border-bottom: 1px solid darken($bgColor, 10)
+
+.main-shell
+  padding-top: $headerHeight
 
 .reminders-shell
-  margin-top: $header-height
-  
+  margin-top: $headerHeight
+  background: white
+
 .reminder
-  height: $reminder-height
+  height: $reminderHeight
   width: 100%
   border-bottom: 1px solid lightgray
+  &:last-of-type
+    border-bottom: 0
+
+.btn
+  padding: 10px 16px
+  border-radius: 6px
+  text-decoration: none
+  color: gray
+  transition: .3s
+  i
+    margin-right: 6px
+  &.btn-dark
+    background-color: $darkColor
+    color: white
+    &:hover
+      background-color: lighten($darkColor, 10)
+
+.btn-pill
+  border-radius: 50px
+  &:hover
+   color: black
+  &.active
+    cursor: default
+    background: $primaryColor
+    color: white
+
