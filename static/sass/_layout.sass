@@ -43,9 +43,35 @@ body
   background: white
 
 .reminder
+  display: flex
+  flex-direction: column
+  justify-content: space-around
+  align-items: center
+
+  padding: 10px
   height: $reminderHeight
   width: 100%
+  font-size: 13px
   border-bottom: 1px solid lightgray
   &:last-of-type
     border-bottom: 0
+
+  .info
+    width: 100%
+    .title
+      white-space: nowrap
+      font-weight: bold
+      color: black
+    .time-left
+      .fa
+        margin-right: 4px
+      float: right
+      max-width: 60px
+      min-width: 60px
+  .description
+    white-space: nowrap
+    width: 100%
+
+.text-muted
+  color: darkgray
 
