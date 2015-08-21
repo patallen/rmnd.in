@@ -5,5 +5,6 @@ __pycache__
 node_modules
 static/css
 *.log
+*.pyc
 celerybeat-schedule
 static/components
