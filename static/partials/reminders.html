@@ -1,40 +1,35 @@
-<div class="container">
-	<div class="col-sm-10 col-sm-offset-1">
-		<div class="row">
-			<!-- Contains New Reminder button and All/Upcoming/Sent filters -->
-			<div class="reminder-nav">
-				<ul class="nav nav-pills">
-					<li ng-class="{ active: isActiveFilter('all')}"><a href="#" ng-click="setFilter('all')">All</a></li>
-					<li ng-class="{ active: isActiveFilter('upcoming')}"><a href="#" ng-click="setFilter('upcoming')">Upcoming</a></li>
-					<li ng-class="{ active: isActiveFilter('sent')}"><a href="#" ng-click="setFilter('sent')">Sent</a></li>
-				</ul>
-				<a ui-sref="addReminder" class="btn btn-orange"><i class="glyphicon glyphicon-plus"></i> New Reminder</a>
-			</div><!-- end reminder-nav -->
-		
-			<!-- Contains the orderBy functions and search -->
-			<div class="reminder-sort">
-				<span>
-					<a href="" ng-class="{active: sortType=='title'}" ng-click="setSortType('title')">Title</a> | 
-					<a href="" ng-class="{active: sortType=='remind_date'}" ng-click="setSortType('remind_date')">Remind Date</a> | 
-					<a href="" ng-class="{active: sortType=='created_at'}" ng-click="setSortType('created_at')">Create Date</a>
-					<a href="" ng-click="toggleReverse()"><i ng-class="getDirectionClass()" class="glyphicon"></i></a>
-				</span>
-				<div class="col-xs-6">
-					<input class="form-control" type="text" ng-model="search">
-				</div>
-			</div><!-- end reminder-sort -->
+<div class="header-static header-filters">
+	<div class="container">
+		<div class="nav">
+			<a ng-class="{ active: isActiveFilter('all')}" class="btn btn-pill" href="#" ng-click="setFilter('all')">ALL</a>
+			<a ng-class="{ active: isActiveFilter('upcoming')}" class="btn btn-pill" href="#" ng-click="setFilter('upcoming')">UPCOMING</a>
+			<a ng-class="{ active: isActiveFilter('sent')}" class="btn btn-pill" href="#" ng-click="setFilter('sent')">SENT</a>
 		</div>
-		<div class="list-wrapper">
-			<ul class="list-group reminders-list">
-				<li class="list-group-item" ng-repeat="reminder in reminders | orderBy : sortType : sortReverse | filter : filter : strict | filter : search  : strict">
-					<a ng-href="/reminders/[[ reminder.id ]]/edit">[[ reminder.title ]]</a>
-					<div class="pull-right">
-						<small class="text-muted">[[ reminder.remind_date | humanize ]] [[ reminder.priority_display ]]</small>
-						<a ng-href="/reminders/[[ reminder.id ]]/edit"><i class="glyphicon glyphicon-pencil"></i></a>
-						<a href ng-click="delete(reminder)"><i class="glyphicon glyphicon-trash"></i></a>
-					</div>
-				</li>
-			</ul>
+		<a ui-sref="addReminder" class="btn btn-dark" href="#"><i class="fa fa-plus"></i>ADD REMINDER</a>
+	</div>
+</div>
+
+<!-- Reminders components start here -->
+<div class="container">
+	<div class="reminders-shell">
+	    <!-- TODO: Add back in search functionality -->
+		<div class="reminder" ng-repeat="reminder in reminders | orderBy : sortType :sortReverse | filter : filter : strict | filter : search  : strict">
+			<div class="status">
+				<i class="fa fa-clock-o fa-blue"></i>
+			</div>
+			<div class="info">
+				<div class="info-top">
+					<span class="title">[[ reminder.title ]]</span>
+					<span class="time-left text-muted"><i class="fa fa-clock-o"></i>[[ reminder.remind_date | humanize ]]</span>
+				</div>
+				<span class="description">[[ reminder.notes ]]</span>
+			</div>
+			<div class="menu">
+			    <!-- TODO: Add pause functionality -->
+				<i class="fa fa-pause"></i>
+				<a ng-href="/reminders/[[ reminder.id ]]/edit"><i class="fa fa-edit"></i></a>
+				<a href ng-click="delete(reminder)"><i class="fa fa-trash-o"></i></a>
+			</div>
 		</div>
 	</div>
 </div>
