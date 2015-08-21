@@ -6,7 +6,6 @@ angular
 		 'angular-jwt',
 		 'angular-storage',
 		 'ui.router',
-		 'ui.bootstrap.datetimepicker',
 		 'ngAnimate'
 		])
 

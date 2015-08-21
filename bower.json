@@ -14,12 +14,9 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "~3.3.5",
-    "angular-bootstrap-datetimepicker": "~0.3.13",
     "toastr": "~2.1.1",
     "jquery": "~2.1.4",
     "angular": "~1.4.3",
-    "moment": "~2.10.6",
     "angular-jwt": "~0.0.9",
     "angular-resource": "~1.4.3",
     "angular-ui-router": "~0.2.15",
