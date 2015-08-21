@@ -8,6 +8,10 @@ A small project with the goal of creating a fast and easy way of scheduling emai
 1. Install postgresql & libpq-dev
 1. `$ mkvirualenv rmndin`
 1. `$ pip install -r requirements.txt`
+1. Install npm
+1. `$ sudo npm install gulp bower -g`
+1. `$ sudo npm install` to add dependencies to node_modules
+1. `$ gulp`
 
 ### Set up the Database
 1. Create posgres database
@@ -38,14 +42,16 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 
 ## TODO
 Fundamentals
+- [ ] Reminder comonent menu with Angular
+- [ ] Custom Login, Signup and Compose forms
+- [ ] Only let users choose a date in the future
+- [ ] Show reminder priority (with color)
 - [ ] User info/settings page (Full Name, Phone, etc...)
 - [ ] Email activation
 - [ ] Password Reset
-- [ ] Only display unsent reminders on main page
 - [ ] Create and use Reminder Service
 - [ ] Create custom responsive app layout
 - [ ] Server response form validation
-- [ ] Only let users choose a date in the future
 - [x] Separate unsent reminders from completed in UI
 - [x] Add filter for humanized time-to-reminder
 - [x] Add page switch animations
