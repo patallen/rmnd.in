@@ -19,7 +19,7 @@
 		<div class="container">
 			<a href="/" class="brand">rmnd.in</a>
 			<nav ng-show="auth.isAuthenticated">
-				<a href >[[ auth.username ]]<i class="fa fa-chevron-down"></i></a>
+				<a href ng-click="logout()">[[ auth.username ]]<i class="fa fa-chevron-down"></i></a>
 			</nav>
 			<nav ng-hide="auth.isAuthenticated" class="flex-nav">
 				<a href="/register">Sign Up</a>

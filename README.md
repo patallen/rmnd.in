@@ -42,16 +42,15 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 
 ## TODO
 Fundamentals
-- [ ] Reminder comonent menu with Angular
-- [ ] Custom Login, Signup and Compose forms
-- [ ] Only let users choose a date in the future
+- [ ] Reminder component menu with Angular
 - [ ] Show reminder priority (with color)
 - [ ] User info/settings page (Full Name, Phone, etc...)
 - [ ] Email activation
 - [ ] Password Reset
 - [ ] Create and use Reminder Service
-- [ ] Create custom responsive app layout
 - [ ] Server response form validation
+- [x] Custom Login, Signup and Compose forms
+- [x] Only let users choose a date in the future
 - [x] Separate unsent reminders from completed in UI
 - [x] Add filter for humanized time-to-reminder
 - [x] Add page switch animations
