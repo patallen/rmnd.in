@@ -1,6 +1,7 @@
 @import 'variables'
 /* Buttons */
 .btn
+  border: 0
   padding: 10px 16px
   border-radius: 4px
   text-decoration: none
@@ -13,6 +14,9 @@
     color: white
     &:hover
       background-color: lighten($darkColor, 10)
+  &.btn-block
+    width: 100%
+
 
 .btn-pill
   border-radius: 50px
@@ -23,3 +27,27 @@
     background: $primaryColor
     color: white
 
+/* Forms */
+input[type=text],
+input[type=email],
+input[type=password],
+textarea
+  height: 34px
+  width: 100%
+  padding: 6px
+  outline: 0
+  border: 0
+  margin: 8px 0 16px
+  background-color: white !important
+  &:focus
+    border: 1px solid $primaryColor
+
+textarea
+  min-height: 100px
+
+.login-form,
+.signup-form
+  width: 300px
+  margin: 20px auto 0
+  p
+    text-align: center
