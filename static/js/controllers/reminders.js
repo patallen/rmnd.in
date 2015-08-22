@@ -7,31 +7,33 @@
 	reminder.$inject = ['$scope', 'Reminder'];
 
 	function reminder($scope, Reminder) {
-		$scope.sortType = 'created_at';
+		$scope.sortType = ['-complete', '-remind_date'];
 		$scope.sortReverse = true;
-		$scope.filter; 
+		$scope.filter;
 		$scope.filterStr = 'all';
-		
+
 
 		$scope.setFilter = function (filter){
 			if (filter =='upcoming'){
 				$scope.filter = {complete: false};
 				$scope.filterStr = 'upcoming';
+				$scope.sortType = '-remind_date';
 			}
 			else if (filter=='sent'){
-				$scope.filter = {complete: true};	
+				$scope.filter = {complete: true};
 				$scope.filterStr = 'sent';
 			}
 			else{
-				$scope.filter = '';	
+				$scope.filter = '';
 				$scope.filterStr = 'all';
+				$scope.sortType = ['-complete', '-remind_date'];
 			}
 		};
 
 		$scope.isActiveFilter = function (filter){
 			if(filter == $scope.filterStr){
-				return true;	
-			}	
+				return true;
+			}
 			return false;
 		}
 		$scope.toggleReverse = function() {
