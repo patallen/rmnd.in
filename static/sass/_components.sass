@@ -14,7 +14,14 @@
     color: white
     &:hover
       background-color: lighten($darkColor, 10)
+  &.btn-primary
+    background-color: $primaryColor
+    color: white
+  &.btn-default
+    background-color: lightgray
   &.btn-block
+    display: block
+    text-align: center
     width: 100%
 
 
@@ -31,7 +38,8 @@
 input[type=text],
 input[type=email],
 input[type=password],
-textarea
+textarea,
+select
   height: 34px
   width: 100%
   padding: 6px
@@ -44,6 +52,9 @@ textarea
 
 textarea
   min-height: 100px
+
+input[type=submit]:disabled
+  background-color: lighten($primaryColor, 20) 
 
 .login-form,
 .signup-form
