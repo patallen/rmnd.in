@@ -5,8 +5,9 @@
   margin: 0 auto
 
 .header-static
+  font-size: 1.1em
   position: fixed
-  z-index: 2 
+  z-index: 2
   width: 100%
   height: $headerHeight
   .container
@@ -16,13 +17,30 @@
     height: 100%
     max-width: 710px
 
-  .brand
-    color: white
-    font-size: 24px
+  a
+    text-decoration: none
+    color: darken(#f9f9f9, 25)
+
+    &.brand
+      color: white
+      font-size: 24px
+      color: white
+      transition: .3s
+      &:hover
+        color: darken(#f9f9f9, 30)
+      
 
   &.header-main
     top: 0
     background: $darkColor
+    a
+      line-height: $headerHeight
+    nav a
+      padding: 0 14px
+      display: inline-block
+      height: 80px
+      &:hover
+       color:  white
   &.header-filters
     background: $bgColor
     .container

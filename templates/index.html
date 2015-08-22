@@ -15,9 +15,16 @@
     </head>
     <body ng-controller="main" ng-cloak>
     <header class="header-static header-main">
-			<div class="container">
-				<span class="brand">rmnd.in</span>
-			</div>
+		<div class="container">
+			<a href="/" class="brand">rmnd.in</a>
+			<nav ng-show="auth.isAuthenticated">
+				<a href ng-click="logout()">Logout</a>
+			</nav>
+			<nav ng-hide="auth.isAuthenticated" class="flex-nav">
+				<a href="/register">Sign Up</a>
+				<a href="/login">Log In</a>
+			</nav>
+		</div>
 	</header>
 	<div class="main-shell" ui-view></div>
 
