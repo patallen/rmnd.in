@@ -28,7 +28,7 @@ angular
 	$urlRouterProvider.otherwise('/');
 	$stateProvider
         .state('home', {
-            url: "",
+            url: "/",
             templateUrl: "/static/partials/home.html"
         })
 		.state('reminders', {
@@ -66,7 +66,7 @@ angular
 
 	$rootScope.$on("$stateChangeStart", function(event, next, current) {
 		if(!AuthService.authentication().isAuthenticated){
-			if(next.url == "/register"){
+			if(next.url == "/register" || next.url == "/"){
 				// if going to register do not redirect to login
 			} else {
 				// if not authenticated redirect to login
