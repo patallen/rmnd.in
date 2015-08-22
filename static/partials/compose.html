@@ -1,36 +1,21 @@
 <div class="container">
 	<form name="reminderForm" ng-submit="saveReminder(reminder, isEditing, reminderForm.$valid)" class="reminder-form validate-form" novalidate>
-		<div class="row">
-			<div class="form-group col-sm-8">
-				<label for="title">Title</label>
-				<input type="text" id="title" ng-model="reminder.title" class="form-control" ng-required="true">
-			</div>
-			<div class="form-group col-sm-4">
-				<label for="title">Priority</label>
-				<select id="priority" ng-options="p.val as p.text for p in priorityOptions" ng-model="reminder.priority" class="form-control" ng-required="true">
-					<option value="">-- Select a Priority --</option>
-				</select>
-			</div>
-			<div class="form-group dropdown col-sm-6">
-				<label>Date/Time</label>
-				
-					<div class="input-group">
-						<input type="text" class="form-control" data-ng-model="reminder.remind_date"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="form-group">
+			<label for="title">Title</label>
+			<input type="text" id="title" ng-model="reminder.title" class="form-control" ng-required="true">
+
+			<label for="title">Priority</label>
+			<select id="priority" ng-options="p.val as p.text for p in priorityOptions" ng-model="reminder.priority" class="form-control" ng-required="true">
+				<option value="">-- Select a Priority --</option>
+			</select>
+
+			<label>Date</label>
+			<input type="text" pick-a-date="reminder.remind_date" pick-a-date-options="pickerOptions"/>
+			<label>Time</label>
+			<input type="text" pick-a-time="reminder.remind_date" pick-a-time-options="pickerOptions"/>
 			<label for="notes">Notes</label>
 			<textarea id="notes" ng-model="reminder.notes" class="form-control"></textarea>
-		</div>
-		<div class="row">
-			<div class="col-md-6">
-				<input type="submit" class="btn btn-primary btn-block" value="[[ btnValue ]]" ng-disabled="reminderForm.$invalid">
-			</div>
-			<div class="col-md-6">
-				<a ui-sref="reminders" class="btn btn-danger btn-block">Cancel</a>
-			</div>
-		</div>
+
+			<input type="submit" class="btn btn-primary btn-block" value="[[ btnValue ]]" ng-disabled="reminderForm.$invalid">
+			<a ui-sref="reminders">Cancel</a>
 	</form>
 </div>

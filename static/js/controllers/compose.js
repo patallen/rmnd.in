@@ -6,6 +6,7 @@
 	compose.$inject = ['$scope', 'Reminder', '$state', '$stateParams', '$location'];
 
 	function compose($scope, Reminder, $state, $stateParams, $location){
+		$scope.getCurrentDate = _getCurrentDate();
 		$scope.btnValue = 'Create';
 		$scope.isEditing = false;
 		$scope.reminder = {
@@ -22,7 +23,7 @@
 
 
 		if ($state.includes('editReminder')){
-			_setEditing();	
+			_setEditing();
 		}
 
 		$scope.saveReminder = function (reminder, isEditing, formValid){
@@ -41,7 +42,19 @@
 				$location.path('reminders');
 			}
 		};
-		
+
+		$scope.pickerOptions = {
+			min: _zeroTime(new Date()),
+			interval: 60,
+		}
+
+		function _zeroTime(date){
+			date.setHours(0);
+			date.setMinutes(0);
+
+			return date;
+		}
+
 		function _setEditing(){
 			$scope.btnValue = 'Update';
 			$scope.isEditing = true;
@@ -63,6 +76,10 @@
 				notes: '',
 				remind_date: ''
 			};
+		}
+
+		function _getCurrentDate(){
+			return new Date();
 		}
 	}
 })();

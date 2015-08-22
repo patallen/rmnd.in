@@ -6,7 +6,8 @@ angular
 		 'angular-jwt',
 		 'angular-storage',
 		 'ui.router',
-		 'ngAnimate'
+		 'ngAnimate',
+		 'angular-datepicker'
 		])
 
 .config(['$interpolateProvider', '$locationProvider', '$urlRouterProvider', '$resourceProvider', '$httpProvider', '$stateProvider', 'jwtInterceptorProvider',

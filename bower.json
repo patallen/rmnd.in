@@ -23,7 +23,8 @@
     "lodash": "~3.10.1",
     "a0-angular-storage": "~0.0.12",
     "angular-animate": "~1.4.3",
-    "normalize-scss": "~3.0.3"
+    "normalize-scss": "~3.0.3",
+    "angular-native-picker": "~1.0.4"
   },
   "resolutions": {
     "angular": "~1.4.3"
