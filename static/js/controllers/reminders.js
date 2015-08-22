@@ -7,12 +7,20 @@
 	reminder.$inject = ['$scope', 'Reminder'];
 
 	function reminder($scope, Reminder) {
+		$scope.menuActive = null;
+		$scope.setMenuActive = _setMenuActive;
 		$scope.sortType = ['-complete', '-remind_date'];
 		$scope.sortReverse = true;
 		$scope.filter;
 		$scope.filterStr = 'all';
 
-
+		function _setMenuActive(index){
+			if ($scope.menuActive == index){
+				$scope.menuActive = null;
+			} else {
+				$scope.menuActive = index;
+			}
+		}
 		$scope.setFilter = function (filter){
 			if (filter =='upcoming'){
 				$scope.filter = {complete: false};

@@ -12,8 +12,11 @@
 <!-- Reminders components start here -->
 <div class="container">
 	<div class="reminders-shell">
-	    <!-- TODO: Add back in search functionality -->
-		<div class="reminder" ng-repeat="reminder in reminders | orderBy : sortType : sortReverse | filter : filter : strict | filter : search  : strict">
+		<!-- TODO: Add back in search functionality -->
+		<div class="reminder"
+			ng-repeat="reminder in reminders | orderBy : sortType : sortReverse | filter : filter : strict | filter : search  : strict"
+			ng-class="{ menuActive: menuActive == $index }"
+			ng-click="setMenuActive($index)">
 			<div class="status">
 				<i class="fa fa-clock-o fa-blue"></i>
 			</div>
@@ -25,7 +28,7 @@
 				<span class="description">[[ reminder.notes ]]</span>
 			</div>
 			<div class="menu">
-			    <!-- TODO: Add pause functionality -->
+				<!-- TODO: Add pause functionality -->
 				<i class="fa fa-pause"></i>
 				<a ng-href="/reminders/[[ reminder.id ]]/edit"><i class="fa fa-edit"></i></a>
 				<a href ng-click="delete(reminder)"><i class="fa fa-trash-o"></i></a>

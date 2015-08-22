@@ -61,6 +61,9 @@
   width: 100%
   font-size: 13px
   border-bottom: 1px solid lightgray
+  &.menuActive
+    .menu
+      margin-right: 0
   &:last-of-type
     border-bottom: 0
 
@@ -105,8 +108,14 @@
   .menu
     padding: 8px
     .fa
+      padding: 7px
+      background: $darkColor
+      color: white
+      border-radius: 30px
       font-size: 20px
-      color: $darkColor
+      transition: .1s linear
+      &:hover
+        background: $primaryColor
     display: flex
     align-items: center
     justify-content: space-around
@@ -117,7 +126,7 @@
     top: 0
     bottom: 0
     background: darken($bgColor, 6)
-    transition: .3s ease-in
+    transition: .2s linear
 
 .reminder.menu-active
   .description
