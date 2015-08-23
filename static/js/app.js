@@ -90,8 +90,8 @@ angular
 	}
 
 	vm.addReminder = function (newReminder){
-		return Reminder.save(newReminder, function(){
-			vm.reminders.push(newReminder);
+		return Reminder.save(newReminder, function(res){
+			vm.reminders.push(res);
 			toastr.success('Successfully created reminder!');
 		});
 	};
