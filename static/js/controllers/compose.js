@@ -6,14 +6,9 @@
 	compose.$inject = ['$scope', 'Reminder', 'ReminderService',  '$state', '$stateParams', '$location'];
 
 	function compose($scope, Reminder,ReminderService, $state, $stateParams, $location){
+		$scope.reminder = {};
 		$scope.btnValue = 'Create';
 		$scope.isEditing = false;
-		$scope.reminder = {
-			title: '',
-			remind_date: '',
-			notes: '',
-			priority: 'L'
-		};
 		$scope.priorityOptions = [
 			{val:'L', text: 'Low'},
 			{val:'M', text: 'Medium'},
@@ -40,22 +35,15 @@
 			}
 		};
 
-		$scope.pickerOptions = {
-			min: _zeroTime(new Date()),
-			interval: 60,
-		};
-
-		function _zeroTime(date){
-			date.setHours(0);
-			date.setMinutes(0);
-
-			return date;
-		}
-
 		function _setEditing(){
 			$scope.btnValue = 'Update';
 			$scope.isEditing = true;
-			$scope.reminder = ReminderService.getReminder($stateParams.reminderId);
+			ReminderService.getReminder($stateParams.reminderId)
+				.$promise
+				.then(function(data){
+					$scope.reminder = data;
+					$scope.reminder.remind_date = Date.parse(data.remind_date);
+				});
 			// TODO: Error handling
 		}
 
