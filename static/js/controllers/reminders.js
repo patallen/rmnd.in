@@ -14,6 +14,21 @@
 		$scope.filter;
 		$scope.filterStr = 'all';
 
+		$scope.getPriority = function(reminder){
+			switch(reminder.priority){
+				case 'L':
+					return 'Low';
+					break;
+				case 'M':
+					return 'Medium';
+					break;
+				case 'H':
+					return 'High';
+					break;
+				default:
+					return 'Low';
+			}
+		}
 		function _setMenuActive(index){
 			if ($scope.menuActive == index){
 				$scope.menuActive = null;
@@ -58,7 +73,7 @@
 				return 'glyphicon-arrow-down';
 			}
 		};
-			
+
 		$scope.reminders = ReminderService.reminders;
 
 		$scope.delete = function(reminder) {

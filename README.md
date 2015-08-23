@@ -45,11 +45,11 @@ Fundamentals
 - [ ] Figure out response/err handling for ReminderService
 - [ ] Main nav dropdown (logout, settings...)
 - [ ] Proper icons for reminder status
-- [ ] Show reminder priority (with color)
 - [ ] User info/settings page (Full Name, Phone, etc...)
 - [ ] Email activation
 - [ ] Password Reset
 - [ ] Server response form validation
+- [x] Show reminder priority (with color)
 - [x] Create and use Reminder Service
 - [x] Reminder component menu with Angular
 - [x] Custom Login, Signup and Compose forms
