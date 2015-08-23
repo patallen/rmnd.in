@@ -16,7 +16,7 @@
 		<div class="reminder"
 			ng-repeat="reminder in reminders | orderBy : sortType : sortReverse | filter : filter : strict | filter : search  : strict"
 			ng-class="{ menuActive: menuActive == $index }"
-			ng-click="setMenuActive($index)">
+			ng-click="setMenuActive($index)" ng-animate>
 			<div class="status">
 				<i class="fa fa-clock-o fa-blue"></i>
 			</div>
