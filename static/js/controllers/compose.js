@@ -42,7 +42,7 @@
 				.$promise
 				.then(function(data){
 					$scope.reminder = data;
-					$scope.reminder.remind_date = Date.parse(data.remind_date);
+					$scope.reminder.remind_date = new Date(data.remind_date);
 				});
 			// TODO: Error handling
 		}
