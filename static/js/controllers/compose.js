@@ -3,10 +3,9 @@
 	angular.module('app')
 		.controller('compose', compose);
 
-	compose.$inject = ['$scope', 'Reminder', '$state', '$stateParams', '$location'];
+	compose.$inject = ['$scope', 'Reminder', 'ReminderService',  '$state', '$stateParams', '$location'];
 
-	function compose($scope, Reminder, $state, $stateParams, $location){
-		$scope.getCurrentDate = _getCurrentDate();
+	function compose($scope, Reminder,ReminderService, $state, $stateParams, $location){
 		$scope.btnValue = 'Create';
 		$scope.isEditing = false;
 		$scope.reminder = {
@@ -29,15 +28,13 @@
 		$scope.saveReminder = function (reminder, isEditing, formValid){
 			if (formValid){
 				if(!isEditing){
-					Reminder.save(reminder, function(){
-						_resetState();
-						toastr.success('Successfully created reminder!');
-					});
+					ReminderService.addReminder(reminder);
+					// TODO: Error handling
+					_resetState();
 				}else{
-					Reminder.update({ id:reminder.id }, reminder, function(){
-						_resetState();
-						toastr.success('Successfully saved reminder!');
-					});
+					ReminderService.updateReminder(reminder);
+					// TODO: Error handling
+					_resetState();
 				}
 				$location.path('reminders');
 			}
@@ -46,7 +43,7 @@
 		$scope.pickerOptions = {
 			min: _zeroTime(new Date()),
 			interval: 60,
-		}
+		};
 
 		function _zeroTime(date){
 			date.setHours(0);
@@ -58,16 +55,10 @@
 		function _setEditing(){
 			$scope.btnValue = 'Update';
 			$scope.isEditing = true;
-
-			Reminder.get({id: $stateParams.reminderId},
-					function(res){
-						$scope.reminder = res;
-					},
-					function(err){
-						toastr.error(err.statusText);
-						$location.path('/reminders');
-				});
+			$scope.reminder = ReminderService.getReminder($stateParams.reminderId);
+			// TODO: Error handling
 		}
+
 		function _resetState(){
 			$scope.btnValue = 'Create';
 			$scope.isEditing = false;
@@ -76,10 +67,6 @@
 				notes: '',
 				remind_date: ''
 			};
-		}
-
-		function _getCurrentDate(){
-			return new Date();
 		}
 	}
 })();

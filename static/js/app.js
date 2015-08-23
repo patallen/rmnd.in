@@ -75,11 +75,40 @@ angular
 		}
 	});
 }])
-
 .factory('Reminder', ['$resource', function($resource) {
 	return $resource('/api/reminders/:id/', null,
 		{
 			'update': {method: 'PUT'}
 		}
 	);
+}])
+.service('ReminderService', ['$resource', 'Reminder', function($resource, Reminder){
+	var vm = this;
+	vm.reminders = _getReminders();
+	function _getReminders(){
+		return Reminder.query();	
+	}
+
+	vm.addReminder = function (newReminder){
+		return Reminder.save(newReminder, function(){
+			vm.reminders.push(newReminder);
+			toastr.success('Successfully created reminder!');
+		});
+	};
+	vm.updateReminder = function(updateReminder){
+		return Reminder.update({id:updateReminder.id}, updateReminder, function(){
+			angular.extend(_.find(vm.reminders, {'id': updateReminder.id}), updateReminder);
+			toastr.success('Successfully saved reminder!');
+		});
+	};
+	vm.deleteReminder = function(deleteReminder){
+		Reminder.delete(deleteReminder, function(){
+			_.remove(vm.reminders, deleteReminder);	
+		});
+	};
+	vm.getReminder = function(reminderId){
+		return Reminder.get({id: reminderId});
+	};
+	return vm;
 }]);
+

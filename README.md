@@ -42,14 +42,15 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 
 ## TODO
 Fundamentals
+- [ ] Figure out response/err handling for ReminderService
 - [ ] Main nav dropdown (logout, settings...)
 - [ ] Proper icons for reminder status
 - [ ] Show reminder priority (with color)
-- [ ] Create and use Reminder Service
 - [ ] User info/settings page (Full Name, Phone, etc...)
 - [ ] Email activation
 - [ ] Password Reset
 - [ ] Server response form validation
+- [x] Create and use Reminder Service
 - [x] Reminder component menu with Angular
 - [x] Custom Login, Signup and Compose forms
 - [x] Only let users choose a date in the future

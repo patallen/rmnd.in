@@ -4,9 +4,9 @@
 	angular.module('app')
 		.controller('reminder', reminder);
 
-	reminder.$inject = ['$scope', 'Reminder'];
+	reminder.$inject = ['$scope', 'Reminder', 'ReminderService'];
 
-	function reminder($scope, Reminder) {
+	function reminder($scope, Reminder, ReminderService) {
 		$scope.menuActive = null;
 		$scope.setMenuActive = _setMenuActive;
 		$scope.sortType = ['-complete', '-remind_date'];
@@ -58,13 +58,11 @@
 				return 'glyphicon-arrow-down';
 			}
 		};
-
-		$scope.reminders = Reminder.query();
+			
+		$scope.reminders = ReminderService.reminders;
 
 		$scope.delete = function(reminder) {
-			Reminder.delete(reminder, function(){
-				_.remove($scope.reminders, reminder);
-			});
+			ReminderService.deleteReminder(reminder);
 		};
 	}
 })();
