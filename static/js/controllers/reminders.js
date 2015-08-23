@@ -9,7 +9,7 @@
 	function reminder($scope, Reminder, ReminderService) {
 		$scope.menuActive = null;
 		$scope.setMenuActive = _setMenuActive;
-		$scope.sortType = ['-complete', '-remind_date'];
+		$scope.sortType = ['-complete', 'created_at'];
 		$scope.sortReverse = true;
 		$scope.filter;
 		$scope.filterStr = 'all';
@@ -34,7 +34,7 @@
 			else{
 				$scope.filter = '';
 				$scope.filterStr = 'all';
-				$scope.sortType = ['-complete', '-remind_date'];
+				$scope.sortType = ['-complete', 'created_at'];
 			}
 		};
 
