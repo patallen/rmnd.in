@@ -29,21 +29,25 @@
       &:hover
         color: darken(#f9f9f9, 30)
 
-  &.header-main
-    top: 0
-    background: $darkColor
-    a
-      line-height: $headerHeight
-    nav a
-      padding: 0 14px
-      display: inline-block
-      height: 80px
-      &:hover
-       color:  white
-  &.header-filters
-    background: $bgColor
-    .container
-      border-bottom: 1px solid darken($bgColor, 10)
+.header-main
+  z-index: 3
+  top: 0
+  background: $darkColor
+  a
+    font-size: 1.1em
+    line-height: $headerHeight
+    i.fa
+      margin-left: 10px
+  nav a
+    padding: 0 14px
+    display: inline-block
+    height: 80px
+    &:hover
+      color:  white
+&.header-filters
+  background: $bgColor
+  .container
+    border-bottom: 1px solid darken($bgColor, 10)
 
 .main-shell
   padding-top: $headerHeight

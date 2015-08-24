@@ -7,16 +7,23 @@
 	main.$inject = ['AuthService', '$scope', '$state'];
 
 	function main(AuthService, $scope, $state){
+		$scope.menuActive = false;
+		$scope.toggleMenu = toggleMenu;
 		$scope.auth = AuthService.authentication();
 		$scope.logout = function(){
 			AuthService.logout();
 			$state.go('login');
+			toggleMenu();
 		};
-
+		
 		$scope.$watch(function(){
 			return AuthService.authentication();
 		},function(authentication){
 			$scope.auth = AuthService.authentication();
 		});
+
+		function toggleMenu(){
+			$scope.menuActive = !$scope.menuActive;
+		}
 	}
 })();
