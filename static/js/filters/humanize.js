@@ -1,9 +1,13 @@
 (function(){
 	angular.module('app')
 		.filter('humanize', humanize)
+	humanize.$inject = ['$interval'];
+	function humanize($interval){
+		// Set the interval to once per second
+		// This will ensure that time-ago's are up-to-date
+		$interval(function(){}, 1000)
 
-	function humanize(){
-		return function(date){
+		function getHumanReadable(date){
 			date = new Date(date)
 			// CONSTANTS
 			var DAY = 60*60*24,
@@ -24,37 +28,6 @@
 			var minutes = Math.floor(left / MIN);
 			left = left % MIN;
 			var seconds = left % MIN;
-
-			// if (days > 0){
-			// 	if (days === 1){
-			// 		return "1 day and " + hours + " hours";
-			// 	}
-			// 	else {
-			// 		return days + " days and " + hours + " hours";
-			// 	}
-			// }
-			// else if (hours > 0){
-			// 	if (hours === 1){
-			// 		return "1 hour and " + minutes + " min";
-			// 	}
-			// 	else {
-			// 		return hours + " hours " + minutes + " min";
-			// 	}
-			// }
-			// else if (minutes > 0){
-			// 	if (minutes === 1){
-			// 		return "1 min";
-			// 	}
-			// 	else {
-			// 		return minutes + " min";
-			// 	}
-			// }
-			// else if (minutes === 0){
-			// 	return "Less than a minute";
-			// }
-			// else {
-			// 	return "Past";
-			// }
 
 			if (days > 0){
 				if (days === 1){
@@ -87,5 +60,8 @@
 				return "Past";
 			}
 		};
+		// Filter needs to be stateful to keep up to date
+		getHumanReadable.$stateful = true;
+		return getHumanReadable;
 	};
 })();

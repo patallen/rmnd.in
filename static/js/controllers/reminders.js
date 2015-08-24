@@ -4,9 +4,9 @@
 	angular.module('app')
 		.controller('reminder', reminder);
 
-	reminder.$inject = ['$scope', 'Reminder', 'ReminderService'];
+	reminder.$inject = ['$scope', '$interval', 'Reminder', 'ReminderService'];
 
-	function reminder($scope, Reminder, ReminderService) {
+	function reminder($scope, $interval, Reminder, ReminderService) {
 		$scope.menuActive = null;
 		$scope.setMenuActive = _setMenuActive;
 		$scope.sortType = ['-complete', 'created_at'];
