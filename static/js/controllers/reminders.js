@@ -37,6 +37,7 @@
 			}
 		}
 		$scope.setFilter = function (filter){
+			_setMenuActive($scope.menuActive);
 			if (filter =='upcoming'){
 				$scope.filter = {complete: false};
 				$scope.filterStr = 'upcoming';
