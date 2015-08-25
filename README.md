@@ -42,6 +42,7 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 
 ## TODO
 Fundamentals
+- [ ] Menu based on reminder instead of $index
 - [ ] Update all reminders at an interval
 - [ ] Figure out response/err handling for ReminderService
 - [ ] User info/settings page (Full Name, Phone, etc...)
