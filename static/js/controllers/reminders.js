@@ -8,6 +8,7 @@
 
 	function reminder($scope, $interval, Reminder, ReminderService) {
 		$scope.menuActive = null;
+		$scope.getStatusClass = _getStatusClass;
 		$scope.setMenuActive = _setMenuActive;
 		$scope.sortType = ['-complete', 'created_at'];
 		$scope.sortReverse = true;
@@ -52,6 +53,27 @@
 				$scope.filterStr = 'all';
 				$scope.sortType = ['-complete', 'created_at'];
 			}
+		};
+
+		function _getStatusClass(reminder) {
+			var now = new Date().getTime();
+			var rt = new Date(reminder.remind_date).getTime();
+			console.log(rt);
+			console.log(now);
+			if (reminder.on_hold){
+			 	return "fa fa-pause fa-pink"
+			} else if (rt > now){
+			 	return "fa fa-clock-o fa-blue"
+			} else {
+			 	return "fa fa-check fa-green"
+			}
+			// if (reminder.complete){
+			// 	return "fa fa-check fa-green"
+			// } else if (reminder.on_hold){
+			// 	return "fa fa-pause fa-pink"
+			// } else {
+			// 	return "fa fa-clock-o fa-blue"
+			// }
 		};
 
 		$scope.isActiveFilter = function (filter){

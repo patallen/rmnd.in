@@ -18,7 +18,7 @@
 			ng-class="{ menuActive: menuActive == $index }"
 			ng-click="setMenuActive($index)" ng-animate>
 			<div class="status">
-				<i class="fa fa-clock-o fa-blue"></i>
+				<i ng-class="getStatusClass(reminder)"></i>
 			</div>
 			<div class="info">
 				<div class="info-top">
