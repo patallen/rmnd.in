@@ -7,14 +7,23 @@
 	reminder.$inject = ['$scope', '$interval', 'Reminder', 'ReminderService'];
 
 	function reminder($scope, $interval, Reminder, ReminderService) {
-		$scope.menuActive = null;
-		$scope.getStatusClass = _getStatusClass;
+		var _menuActive = null;
 		$scope.setMenuActive = _setMenuActive;
+		$scope.getMenuActive = _getMenuActive;
+
+		$scope.getStatusClass = _getStatusClass;
+
 		$scope.sortType = ['-complete', 'created_at'];
 		$scope.sortReverse = true;
 		$scope.filter;
 		$scope.filterStr = 'all';
 
+		function _setMenuActive(reminder){
+			_menuActive = reminder;
+		}
+		function _getMenuActive(){
+			return _menuActive;
+		}
 		$scope.getPriority = function(reminder){
 			switch(reminder.priority){
 				case 'L':
@@ -30,15 +39,7 @@
 					return 'Low';
 			}
 		}
-		function _setMenuActive(index){
-			if ($scope.menuActive == index){
-				$scope.menuActive = null;
-			} else {
-				$scope.menuActive = index;
-			}
-		}
 		$scope.setFilter = function (filter){
-			_setMenuActive($scope.menuActive);
 			if (filter =='upcoming'){
 				$scope.filter = {complete: false};
 				$scope.filterStr = 'upcoming';

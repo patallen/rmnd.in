@@ -15,8 +15,8 @@
 		<!-- TODO: Add back in search functionality -->
 		<div class="reminder"
 			ng-repeat="reminder in reminders | orderBy : sortType : sortReverse | filter : filter : strict | filter : search  : strict"
-			ng-class="{ menuActive: menuActive == $index }"
-			ng-click="setMenuActive($index)" ng-animate>
+			ng-class="{ menuActive: reminder == getMenuActive()}"
+			ng-click="setMenuActive(reminder)" ng-animate>
 			<div class="status">
 				<i ng-class="getStatusClass(reminder)"></i>
 			</div>
