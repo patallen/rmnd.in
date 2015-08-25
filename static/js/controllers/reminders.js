@@ -19,7 +19,11 @@
 		$scope.filterStr = 'all';
 
 		function _setMenuActive(reminder){
-			_menuActive = reminder;
+			if (reminder == _menuActive){
+				_menuActive = null;
+			} else {
+				_menuActive = reminder;
+			}
 		}
 		function _getMenuActive(){
 			return _menuActive;
