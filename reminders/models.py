@@ -11,12 +11,14 @@ class Reminder(models.Model):
         (MEDIUM, 'Medium'),
         (LOW, 'Low'),
     )
+
     title = models.CharField(max_length=120, blank=False)
     notes = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     remind_date = models.DateTimeField(null=True)
     complete = models.BooleanField(default=False)
+    on_hold = models.BooleanField(default=False)
     priority = models.CharField(max_length=1,
                                 choices=PRIORITY_CHOICES,
                                 default=LOW)
