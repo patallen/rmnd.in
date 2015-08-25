@@ -23,15 +23,24 @@
 		$scope.saveReminder = function (reminder, isEditing, formValid){
 			if (formValid){
 				if(!isEditing){
-					ReminderService.addReminder(reminder);
-					// TODO: Error handling
-					_resetState();
-				}else{
-					ReminderService.updateReminder(reminder);
-					// TODO: Error handling
-					_resetState();
+					ReminderService.addReminder(reminder)
+                        .$promise.then(function(res){
+                            _resetState();
+                            $location.path('reminders');
+                        }).catch(function(err){
+                            toastr.error("Could not create reminder.");
+                        })
+					
+				} else {
+					ReminderService.updateReminder(reminder)
+                        .$promise.then(function(res){
+                            _resetState();
+                            $location.path('reminders');
+                        }).catch(function(err){
+                            toastr.error("Could not save reminder.");
+                        });
 				}
-				$location.path('reminders');
+				
 			}
 		};
 

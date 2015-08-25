@@ -70,14 +70,14 @@
 			} else {
 				return "fa fa-check fa-green"
 			}
-			// if (reminder.complete){
-			// 	return "fa fa-check fa-green"
-			// } else if (reminder.on_hold){
-			// 	return "fa fa-pause fa-pink"
-			// } else {
-			// 	return "fa fa-clock-o fa-blue"
-			// }
-		};
+            // if (reminder.complete){
+            // 	return "fa fa-check fa-green"
+            // } else if (reminder.on_hold){
+            // 	return "fa fa-pause fa-pink"
+            // } else {
+            // 	return "fa fa-clock-o fa-blue"
+            // }
+		}
 
 		$scope.isActiveFilter = function (filter){
 			if(filter == $scope.filterStr){
