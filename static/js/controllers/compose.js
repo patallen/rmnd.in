@@ -6,7 +6,9 @@
 	compose.$inject = ['$scope', 'Reminder', 'ReminderService',  '$state', '$stateParams', '$location'];
 
 	function compose($scope, Reminder,ReminderService, $state, $stateParams, $location){
-		$scope.reminder = {};
+		$scope.reminder = {
+			priority: 'L'	
+		};
 		$scope.btnValue = 'Create';
 		$scope.isEditing = false;
 		$scope.priorityOptions = [
