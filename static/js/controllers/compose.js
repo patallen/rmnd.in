@@ -7,7 +7,8 @@
 
 	function compose($scope, Reminder,ReminderService, $state, $stateParams, $location){
 		$scope.reminder = {
-			priority: 'L'	
+			priority: 'L',
+			remind_date: new Date()
 		};
 		$scope.btnValue = 'Create';
 		$scope.isEditing = false;

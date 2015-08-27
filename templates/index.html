@@ -10,6 +10,8 @@
 		<link href="{% static 'css/styles.css' %}" rel="stylesheet">
 		<link href="{% static 'components/toastr/toastr.min.css' %}" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{% static 'components/jquery-ui/themes/ui-darkness/jquery-ui.min.css' %}">
+		<link rel="stylesheet" href="{% static 'components/jquery-ui/themes/ui-darkness/theme.css' %}">
     </head>
     <body ng-controller="main" ng-cloak>
     <header class="header-static header-main">
@@ -38,6 +40,7 @@
 
 		<!-- Angular Scripts -->
 		<script src="{% static 'components/jquery/dist/jquery.min.js' %}"></script>
+		<script src="{% static 'components/jquery-ui/jquery-ui.js' %}"></script>
 		<script src="{% static 'components/angular/angular.js' %}"></script>
 		<script src="{% static 'components/angular-animate/angular-animate.js' %}"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script>
@@ -61,6 +64,9 @@
 		<script src="{% static 'js/controllers/main.js' %}"></script>
 		<script src="{% static 'js/controllers/registration.js' %}"></script>
 		<script src="{% static 'js/controllers/reminders.js' %}"></script>
+		
+		<!-- Directive Scripts -->
+		<script src="{% static 'js/directives/datepicker.js' %}"></script>
 
 		<!-- Filter Scripts -->
 		<script src="{% static 'js/filters/humanize.js' %}"></script>

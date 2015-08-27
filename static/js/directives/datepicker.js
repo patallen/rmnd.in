@@ -1,14 +1,20 @@
 angular.module('app')
-.directive('datePicker', function(){
+.directive('datePicker', function($filter){
 	return {
 		restrict: 'A',
-		require: ngModel,
+		require: 'ngModel',
 		link: function(scope, element, attrs, ngModelCtrl){
+            ngModelCtrl.$parsers.push(function(data){
+                return data;
+            });
+            ngModelCtrl.$formatters.push(function(data){
+                return $filter('date')(data, 'MM/dd/yyyy');
+            })
 			$(function(){
 				element.datepicker({
-					dateFormat: 'mm/dd/yy',
 					onSelect: function(date){
-						ngModelCtrl.$setViewValue(date);
+						ngModelCtrl.$setViewValue(new Date(date));
+						scope.$apply();
 					}
 				});
 			});
