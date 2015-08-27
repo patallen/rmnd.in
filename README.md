@@ -42,6 +42,7 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 
 ## TODO
 Fundamentals
+- [ ] Datepicker and timepicker directives
 - [ ] Update all reminders at an interval
 - [ ] User info/settings page (Full Name, Phone, etc...)
 - [ ] Email activation
