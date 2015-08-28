@@ -18,8 +18,16 @@
 					<input type="text" ng-model="reminder.remind_date" date-picker>
 				</div>
 				<div class="half">
-					<label>Time</label>
-					<input type="time" ng-model="reminder.remind_date">
+					<div class="row">
+						<div class="half">
+							<label>Time</label>
+							<select ng-model="time.hours" ng-options="t.val as t.text for t in times"></select>
+						</div>
+						<div class="half">
+							<label>AM/PM</label>
+							<select ng-model="time.ampm" ng-options="a for a in ['AM', 'PM']"></select>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="row">

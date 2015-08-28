@@ -42,12 +42,13 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 
 ## TODO
 Fundamentals
-- [ ] Datepicker and timepicker directives
 - [ ] Update all reminders at an interval
 - [ ] User info/settings page (Full Name, Phone, etc...)
 - [ ] Email activation
 - [ ] Password Reset
 - [ ] Server response form validation
+- [x] Custom Time Picker 
+- [x] Datepicker directive
 - [x] Figure out response/err handling for ReminderService
 - [x] Menu based on reminder instead of $index
 - [x] Proper icons for reminder status
