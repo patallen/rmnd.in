@@ -14,6 +14,14 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 from datetime import timedelta
 
+SENDGRID_USER = os.environ['DJANGO_SENDGRID_USER']
+SENDGRID_PASSWORD = os.environ['DJANGO_SENDGRID_PASSWORD']
+DB_NAME = os.environ['RMNDIN_DB_NAME']
+DB_USER = os.environ['RMNDIN_DB_USER']
+DB_PASS = os.environ['RMNDIN_DB_PASS']
+
+EMAIL_BACKEND = 'sgbackend.SendGridBackend'
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -79,9 +87,9 @@ WSGI_APPLICATION = 'rmndin.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tominderdb',
-        'USER': 'username',
-        'PASSWORD': 'password',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASS,
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -129,7 +137,3 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
-
-EMAIL_BACKEND = 'sgbackend.SendGridBackend'
-SENDGRID_USER = os.environ['DJANGO_SENDGRID_USER']
-SENDGRID_PASSWORD = os.environ['DJANGO_SENDGRID_PASSWORD']
