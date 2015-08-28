@@ -14,11 +14,11 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 from datetime import timedelta
 
-SENDGRID_USER = os.environ['DJANGO_SENDGRID_USER']
-SENDGRID_PASSWORD = os.environ['DJANGO_SENDGRID_PASSWORD']
-DB_NAME = os.environ['RMNDIN_DB_NAME']
-DB_USER = os.environ['RMNDIN_DB_USER']
-DB_PASS = os.environ['RMNDIN_DB_PASS']
+SENDGRID_USER = os.environ.get('DJANGO_SENDGRID_USER', 'username')
+SENDGRID_PASSWORD = os.environ.get('DJANGO_SENDGRID_PASSWORD', 'password')
+DB_NAME = os.environ.get('RMNDIN_DB_NAME', 'tominderdb')
+DB_USER = os.environ.get('RMNDIN_DB_USER', 'username')
+DB_PASS = os.environ.get('RMNDIN_DB_PASS', 'password')
 
 EMAIL_BACKEND = 'sgbackend.SendGridBackend'
 
