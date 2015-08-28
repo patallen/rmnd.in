@@ -47,7 +47,7 @@ Fundamentals
 - [ ] Email activation
 - [ ] Password Reset
 - [ ] Server response form validation
-- [x] Custom Time Picker 
+- [x] Custom Time Picker
 - [x] Datepicker directive
 - [x] Figure out response/err handling for ReminderService
 - [x] Menu based on reminder instead of $index

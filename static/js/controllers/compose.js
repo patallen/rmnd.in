@@ -13,12 +13,12 @@
 		$scope.time = {
 			hours: 0,
 			ampm: 'AM'
-		}
+		};
 		function _zeroTime(date){
 			date.setMinutes(0);
 			date.setSeconds(0);
 			date.setMilliseconds(0);
-			return date
+			return date;
 		}
 		$scope.times = [
 			{val: 1, text: '1:00'},
@@ -33,20 +33,24 @@
 			{val: 10, text: '10:00'},
 			{val: 11, text: '11:00'},
 			{val: 0, text: '12:00'},
-		]
+		];
 
 		$scope.$watchGroup(['time.hours', 'time.ampm'], function(){
 			var hour = $scope.time.hours,
-				ampm = $scope.time.ampm
+				ampm = $scope.time.ampm;
 
 			var res;
 			if (ampm == 'PM'){
-				res = hour + 12;
+				if (hour == 12){
+					res = hour;
+				} else {
+					res = hour + 12;
+				}
 			} else {
 				res = hour;
 			}
 			$scope.reminder.remind_date.setHours(res);
-		})
+		});
 		$scope.btnValue = 'Create';
 		$scope.isEditing = false;
 		$scope.priorityOptions = [
@@ -69,7 +73,7 @@
                             $location.path('reminders');
                         }).catch(function(err){
                             toastr.error("Could not create reminder.");
-                        })
+                        });
 				} else {
 					ReminderService.updateReminder(reminder)
                         .$promise.then(function(res){
@@ -90,8 +94,20 @@
 				.then(function(data){
 					$scope.reminder = data;
 					$scope.reminder.remind_date = new Date(data.remind_date);
+					var hours = $scope.reminder.remind_date.getHours();
+					if (hours > 11){
+						$scope.time.ampm = 'PM';
+						if (hours < 13){
+							$scope.time.hours = 0;
+						} else {
+							$scope.time.hours = hours - 12;
+						}
+					} else {
+						$scope.time.ampm = 'AM';
+						$scope.time.hours = hours;
+					}
+					console.log($scope.time.hours);
 				});
-			// TODO: Error handling
 		}
 
 		function _resetState(){
