@@ -1,0 +1,6 @@
+You have a reminder from rmnd.in.
+\n\n
+{{ title }}
+{{ notes }}
+\n\n
+You set this reminder was set on {{ updated_at }}

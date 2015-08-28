@@ -1,10 +1,15 @@
 from reminders.models import Reminder
 
+from django.template.loader import get_template
+from django.template import Context
+from django.core.mail import EmailMultiAlternatives
+
 from celery import shared_task
-from django.core.mail import send_mail
 from django.utils import timezone
+
 import logging
 import os
+
 
 # TODO: Get rid of logging stuff for production
 cdir = os.path.dirname(os.path.realpath(__file__))
@@ -24,17 +29,17 @@ def send_email(rem):
     and sends it's contents the the appropriate user via email.
     """
     email = rem.owner.email
-    username = rem.owner.username
+    subject = "Reminder from rmnd.in!"
+    plaintext = get_template('email/reminder.txt')
+    htmly = get_template('email/reminder.html')
+    d = Context({'title': rem.title, 'notes': rem.notes, 'updated_at': rem.updated_at})
 
-    subject = "!Reminder from rmnd.in"
-    title = rem.title
-    notes = rem.notes
-    date = rem.remind_date
-
-    body = ("{}, you have a reminder:\n\n{} on {}\n\nNotes:\n{}"
-            .format(username, title, date, notes))
-    send_mail(subject, body, 'reminders@rmnd.in',
-              [email], fail_silently=False)
+    text_content = plaintext.render(d)
+    html_content = htmly.render(d)
+    
+    message = EmailMultiAlternatives(subject, text_content, 'reminders@rmnd.in', [email])
+    message.attach_alternative(html_content, "text/html")
+    message.send()
 
 
 @shared_task
