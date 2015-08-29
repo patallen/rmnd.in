@@ -3,9 +3,9 @@
 	angular.module('app')
 		.controller('compose', compose);
 
-	compose.$inject = ['$scope', 'Reminder', 'ReminderService',  '$state', '$stateParams', '$location'];
+	compose.$inject = ['$scope', 'Reminder', 'ReminderService',  '$state', '$stateParams'];
 
-	function compose($scope, Reminder,ReminderService, $state, $stateParams, $location){
+	function compose($scope, Reminder,ReminderService, $state, $stateParams){
 		$scope.reminder = {
 			priority: 'L',
 			remind_date: _zeroTime(new Date())
@@ -70,7 +70,7 @@
 					ReminderService.addReminder(reminder)
                         .$promise.then(function(res){
                             _resetState();
-                            $location.path('reminders');
+                            $state.go('reminders');
                         }).catch(function(err){
                             toastr.error("Could not create reminder.");
                         });
@@ -78,7 +78,7 @@
 					ReminderService.updateReminder(reminder)
                         .$promise.then(function(res){
                             _resetState();
-                            $location.path('reminders');
+                            $state.go('reminders');
                         }).catch(function(err){
                             toastr.error("Could not save reminder.");
                         });
