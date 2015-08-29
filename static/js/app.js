@@ -108,6 +108,12 @@ angular
 	vm.getReminder = function(reminderId){
 		return Reminder.get({id: reminderId});
 	};
+	vm.teardown = function(){
+		vm.reminders = null;	
+	};
+	vm.init = function(){
+		vm.reminders = _getReminders();	
+	}
 	return vm;
 }]);
 

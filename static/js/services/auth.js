@@ -1,7 +1,7 @@
 angular.module('app')
 	.factory('AuthService', authService)
 
-function authService($http, jwtHelper, store) {
+function authService($http, jwtHelper, store, ReminderService) {
 	var authServiceFactory = {};
 	var _authentication = {
         username: "",
@@ -9,14 +9,18 @@ function authService($http, jwtHelper, store) {
 	};
 
 	var _login = function(token){
+		ReminderService.teardown();
 		var decodedToken = jwtHelper.decodeToken(token);
 		_authentication.username = decodedToken.username;
 		_authentication.isAuthenticated = true;
 		store.set('jwt', token);
+		// Populate reminders incase user was previously logged in
+		ReminderService.init();
 	};
 	var _logout = function(){
 		_authentication.username = '';
 		_authentication.isAuthenticated = false;
+		ReminderService.teardown();
 		store.remove('jwt');
 	};
 	var _fillAuthData = function(){
