@@ -137,3 +137,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+# DJOSER = {
+#     'DOMAIN': 'rmnd.in',
+#     'SITE_NAME': 'Rmnd.in',
+#     'SEND_ACTIVATION_EMAIL': True,
+#     'ACTIVATION_URL': 'activate/{uid}/{token}'
+# }
