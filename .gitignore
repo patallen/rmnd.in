@@ -8,3 +8,4 @@ static/css
 *.pyc
 celerybeat-schedule
 static/components
+static/dist
