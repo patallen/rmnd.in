@@ -40,14 +40,18 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 1. Install npm then `$ npm install` from project root
 1. Run `$ gulp` to install dependencies, compile styles, and start watching
 
+### Testing
+1. `$ sudo npm install -g karma`
+1. `$ karma start`
+
 ## TODO
 Fundamentals
-- [ ] Add homepage
 - [ ] Display message when user doesn't have reminders
 - [ ] Update all reminders at an interval
 - [ ] User info/settings page (Full Name, Phone, etc...)
 - [ ] Email activation
-- [ ] Password Reset
+- [x] Password Reset
+- [x] Add homepage
 - [x] Custom Time Picker
 - [x] Datepicker directive
 - [x] Figure out response/err handling for ReminderService
