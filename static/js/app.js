@@ -58,7 +58,12 @@ angular
         .state('forgotPassword', {
 			url: '/password/forgot',
 			controller: 'password',
-			templateUrl: "/static/partials/forgotpass.html"
+			templateUrl: '/static/partials/forgotpass.html'
+		})
+		.state('resetPassword', {
+			url: '/password/reset/confirm/:uid/:token',
+			controller: 'password',
+			templateUrl: '/static/partials/resetpass.html'
 		});
 
 }])
