@@ -1,6 +1,8 @@
 angular.module('app')
 	.factory('AuthService', authService)
 
+authService.$inject = ['$http', 'jwtHelper', 'store', 'ReminderService'];
+
 function authService($http, jwtHelper, store, ReminderService) {
 	var authServiceFactory = {};
 	var _authentication = {

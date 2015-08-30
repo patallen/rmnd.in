@@ -6,7 +6,7 @@ angular
 		 'angular-jwt',
 		 'angular-storage',
 		 'ui.router',
-		 'ngAnimate',
+		 'ngAnimate'
 		])
 
 .config(['$interpolateProvider', '$locationProvider', '$urlRouterProvider', '$resourceProvider', '$httpProvider', '$stateProvider', 'jwtInterceptorProvider',
@@ -19,9 +19,9 @@ angular
 	$httpProvider.defaults.xsrfCookieName = 'csrftoken';
 	$httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
-	jwtInterceptorProvider.tokenGetter = function(store){
+	jwtInterceptorProvider.tokenGetter = ['store', function(store){
 		return store.get('jwt');
-	};
+	}];
 	$httpProvider.interceptors.push('jwtInterceptor');
 	$locationProvider.html5Mode(true);
 	$urlRouterProvider.otherwise('/');

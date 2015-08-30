@@ -5,7 +5,7 @@
 
 	compose.$inject = ['$scope', 'Reminder', 'ReminderService',  '$state', '$stateParams'];
 
-	function compose($scope, Reminder,ReminderService, $state, $stateParams){
+	function compose($scope, Reminder, ReminderService, $state, $stateParams){
 		$scope.reminder = {
 			priority: 'L',
 			remind_date: _zeroTime(new Date())
