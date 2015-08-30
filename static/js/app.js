@@ -54,7 +54,13 @@ angular
             url: '/login',
             controller: 'login',
             templateUrl: "/static/partials/login.html"
-        });
+        })
+        .state('forgotPassword', {
+			url: '/password/forgot',
+			controller: 'password',
+			templateUrl: "/static/partials/forgotpass.html"
+		});
+
 }])
 
 .run(['AuthService', '$rootScope', '$state', '$location',
@@ -63,12 +69,26 @@ angular
 	// Fill AuthService's authentication with user info if authed
 	AuthService.fillAuthData();
 
+	// URLs that can only be accessed by authenticated users
+	var PROTECTED_URLS = new Array('/reminders', '/settings', '/logout')
+	
+	function inArray(value, array){
+		// Function takes a value and an array
+		// -- Returns true if value is in array
+		var exists = false;
+		for(var i=0; i<array.length; i++){
+			if (value === array[i]){
+				return true;
+			}
+		}
+		return false;
+	}
+
 	$rootScope.$on("$stateChangeStart", function(event, next, current) {
 		if(!AuthService.authentication().isAuthenticated){
-			if(next.url == "/register" || next.url == "/"){
-				// if going to register do not redirect to login
-			} else {
-				// if not authenticated redirect to login
+			// If user not authenticated, and URL is a protected,
+			// URL redirect the user to the login page.
+			if(inArray(next.url, PROTECTED_URLS)){
 				$location.path('/login');
 			}
 		}
