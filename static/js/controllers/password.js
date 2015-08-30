@@ -4,7 +4,7 @@
 	angular.module('app')
 		.controller('password', password);
 
-	login.$inject = ['$scope', '$http', '$state', '$stateParams'];
+	password.$inject = ['$scope', '$http', '$state', '$stateParams'];
 
 	function password($scope, $http, $state, $stateParams){
 		var uid = $stateParams.uid,
