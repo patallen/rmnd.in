@@ -16,9 +16,11 @@
     "url": "https://github.com/patallen/rmnd.in/issues"
   },
   "devDependencies": {
+    "event-stream": "^3.3.1",
     "gulp": "~3.9.0",
     "gulp-autoprefixer": "~2.3.1",
     "gulp-bower": "0.0.10",
+    "gulp-inject": "^1.5.0",
     "gulp-livereload": "^3.8.0",
     "gulp-sass": "~2.0.4",
     "jasmine-core": "^2.3.4",
@@ -29,6 +31,7 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-requirejs": "^0.2.2",
     "karma-safari-launcher": "^0.1.1",
+    "main-bower-files": "^2.9.0",
     "phantomjs": "^1.9.18",
     "requirejs": "^2.1.20"
   }
