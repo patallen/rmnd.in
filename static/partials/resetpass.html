@@ -1,0 +1,13 @@
+<div class="container">
+	<form class="login-form" name="resetpass-form">
+		<div class="form-group">
+			<label for="password1">Enter New Password</label>
+			<input type="password" id="password1" ng-model="changeInfo.new_password">
+		</div>
+		<div class="form-group">
+			<label for="password2">Confirm New Password</label>
+			<input type="password" id="password2" ng-model="changeInfo.re_new_password">
+		</div>
+		<input class="btn btn-dark btn-block" type="submit" ng-click="resetPassword()">
+	</form>
+</div>
