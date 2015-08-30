@@ -108,9 +108,9 @@ angular
 }])
 .service('ReminderService', ['$resource', 'Reminder', function($resource, Reminder){
 	var vm = this;
-	vm.reminders = _getReminders();
-	function _getReminders(){
-		return Reminder.query();	
+	vm.reminders = [];
+	vm.setReminders = function(){
+		vm.reminders = Reminder.query();
 	}
 
 	vm.addReminder = function (newReminder){
@@ -137,7 +137,7 @@ angular
 		vm.reminders = null;	
 	};
 	vm.init = function(){
-		vm.reminders = _getReminders();	
+		vm.setReminders();	
 	}
 	return vm;
 }]);
