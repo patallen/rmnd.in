@@ -6,6 +6,8 @@ var bowerFiles = require('main-bower-files');
 var inject = require('gulp-inject');
 var livereload = require('gulp-livereload');
 var es = require('event-stream');
+var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
 
 gulp.task('styles', function(){
     gulp.src('static/sass/**/*.sass')
@@ -30,6 +32,20 @@ gulp.task('bdev', ['bower', 'styles'], function(){
     return target.pipe(inject(bowerfiles, {name: 'bower'})).
 		pipe(inject(es.merge(custom), {name: 'custom'})).
 		pipe(gulp.dest('./templates'));
+});
+
+gulp.task('bprod', ['bdev'], function(){
+
+	var target = gulp.src('./templates/index.html');	
+    gulp.src(['./static/js/**/*.js', '!./static/js/test/**/*.js'])
+		.pipe(uglify())
+		.pipe(concat('app.min.js'))
+		.pipe(gulp.dest('./static/dist/'))
+
+	return gulp.src('./templates/index.html').
+	    pipe(inject(gulp.src('./static/dist/*'), {name: 'custom'})).
+	    pipe(gulp.dest('./templates'));
+	
 });
 gulp.task('default', ['bdev', 'styles', 'watch'], function(){
    // Perform bower and styles then watch server 
