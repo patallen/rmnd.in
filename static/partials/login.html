@@ -8,9 +8,16 @@
 			<label for="password">Password</label>
 			<input type="password" id="password" ng-model="user.password">
 		</div>
-		<input value="Log In" class="btn btn-dark btn-block" type="submit" ng-click="login()">
-		<p>
-			Not registered? <a href="/register">Sign Up Here</a>
-		</p>
+		<div class="form-group">
+        <input value="Log In" class="btn btn-dark btn-block" type="submit" ng-click="login()">
+        </div>
+        <div class="row margin-twenty-top">
+            <div class="half">
+            <a class="btn btn-block" href="/password/forgot">Forgot Pass?</a>
+            </div>
+            <div class="half">
+		            <a class="btn btn-block btn-primary" href="/register">Sign Up Here</a>
+            </div>
+        </div>
 	</form>
 </div>
