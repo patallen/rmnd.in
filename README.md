@@ -51,6 +51,7 @@ Fundamentals
 - [ ] Update all reminders at an interval
 - [ ] User info/settings page (Full Name, Phone, etc...)
 - [ ] Email activation
+- [x] Add pause reminder functionality
 - [x] Display message when user doesn't have reminders
 - [x] Password Reset
 - [x] Add homepage

@@ -4,14 +4,17 @@
 	angular.module('app')
 		.controller('reminder', reminder);
 
-	reminder.$inject = ['$scope', '$interval', 'Reminder', 'ReminderService'];
+	reminder.$inject = ['$scope', '$interval', 'ReminderService'];
 
-	function reminder($scope, $interval, Reminder, ReminderService) {
+	function reminder($scope, $interval, ReminderService) {
 		var _menuActive = null;
 		$scope.setMenuActive = _setMenuActive;
 		$scope.getMenuActive = _getMenuActive;
 
 		$scope.getStatusClass = _getStatusClass;
+    $scope.getPauseButtonClass = _getPauseButtonClass;
+
+    $scope.toggleHold = _toggleHold;
 
 		$scope.sortType = ['-complete', 'created_at'];
 		$scope.sortReverse = true;
@@ -78,6 +81,14 @@
             // 	return "fa fa-clock-o fa-blue"
             // }
 		}
+    
+    function _getPauseButtonClass(reminder) {
+      if (reminder.on_hold){
+        return "fa fa-play";
+      } else {
+        return "fa fa-pause";
+      }
+    }
 
 		$scope.isActiveFilter = function (filter){
 			if(filter == $scope.filterStr){
@@ -105,5 +116,16 @@
 		$scope.delete = function(reminder) {
 			ReminderService.deleteReminder(reminder);
 		};
+
+    function _toggleHold(reminder){
+      console.log(reminder);
+      var on_hold = reminder.on_hold;
+      if (on_hold){
+        reminder.on_hold = false;
+      } else {
+        reminder.on_hold = true;
+      }
+      ReminderService.updateReminder(reminder);
+    }
 	}
 })();

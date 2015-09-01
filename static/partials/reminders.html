@@ -38,7 +38,7 @@
 			</div>
 			<div class="menu">
 				<!-- TODO: Add pause functionality -->
-				<i class="fa fa-pause"></i>
+				<i ng-class="getPauseButtonClass(reminder)" ng-click="toggleHold(reminder)"></i>
 				<a ng-href="/reminders/[[ reminder.id ]]/edit"><i class="fa fa-edit"></i></a>
 				<a href ng-click="delete(reminder)"><i class="fa fa-trash-o"></i></a>
 			</div>
