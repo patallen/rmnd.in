@@ -13,8 +13,11 @@
 <div class="container">
 	<div class="reminders-shell">
 		<!-- TODO: Add back in search functionality -->
+    <div class="no-reminders" ng-hide="reminders.length">
+      You have no reminders! <a href="/reminders/add">Create One!</a>
+    </div>
 		<div class="reminder"
-			ng-repeat="reminder in reminders | orderBy : sortType : sortReverse | filter : filter : strict | filter : search  : strict"
+			ng-repeat="reminder in reminders | filter : filter : strict"
 			ng-class="{ menuActive: reminder == getMenuActive()}"
 			ng-click="setMenuActive(reminder)" ng-animate>
 			<div class="status">

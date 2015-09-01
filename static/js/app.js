@@ -50,12 +50,12 @@ angular
 			controller: 'registration',
 			templateUrl: "/static/partials/register.html"
 		})
-        .state('login', {
-            url: '/login',
-            controller: 'login',
-            templateUrl: "/static/partials/login.html"
-        })
-        .state('forgotPassword', {
+    .state('login', {
+      url: '/login',
+      controller: 'login',
+      templateUrl: "/static/partials/login.html"
+    })
+    .state('forgotPassword', {
 			url: '/password/forgot',
 			controller: 'password',
 			templateUrl: '/static/partials/forgotpass.html'
@@ -106,11 +106,16 @@ angular
 		}
 	);
 }])
-.service('ReminderService', ['$resource', 'Reminder', function($resource, Reminder){
+.service('ReminderService', ['AuthService', '$resource', 'Reminder', function(AuthService, $resource, Reminder){
 	var vm = this;
-	vm.reminders = [];
-	vm.setReminders = function(){
-		vm.reminders = Reminder.query();
+	vm.reminders = _setReminders();
+
+	function _setReminders(){
+    if (AuthService.authentication().isAuthenticated){
+      return Reminder.query();
+    } else {
+      return [];
+    }
 	}
 
 	vm.addReminder = function (newReminder){
@@ -127,17 +132,17 @@ angular
 	};
 	vm.deleteReminder = function(deleteReminder){
 		Reminder.delete(deleteReminder, function(){
-			_.remove(vm.reminders, deleteReminder);	
+			_.remove(vm.reminders, deleteReminder);
 		});
 	};
 	vm.getReminder = function(reminderId){
 		return Reminder.get({id: reminderId});
 	};
 	vm.teardown = function(){
-		vm.reminders = null;	
+		vm.reminders = null;
 	};
 	vm.init = function(){
-		vm.setReminders();	
+		vm.setReminders();
 	}
 	return vm;
 }]);
