@@ -14,7 +14,8 @@
 	<div class="reminders-shell">
 		<!-- TODO: Add back in search functionality -->
     <div class="no-reminders" ng-hide="reminders.length">
-      You have no reminders! <a href="/reminders/add">Create One!</a>
+      <h2>Woops, no reminders here!</h2>
+      <p>Why don't you <a href="/reminders/add">Create One!</a></p>
     </div>
 		<div class="reminder"
 			ng-repeat="reminder in reminders | filter : filter : strict"

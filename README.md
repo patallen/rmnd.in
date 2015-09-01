@@ -48,10 +48,10 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 
 ## TODO
 Fundamentals
-- [ ] Display message when user doesn't have reminders
 - [ ] Update all reminders at an interval
 - [ ] User info/settings page (Full Name, Phone, etc...)
 - [ ] Email activation
+- [x] Display message when user doesn't have reminders
 - [x] Password Reset
 - [x] Add homepage
 - [x] Custom Time Picker
