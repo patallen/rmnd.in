@@ -57,7 +57,7 @@ function authService($http, jwtHelper, store) {
 	authServiceFactory.login = _login;
 	authServiceFactory.logout = _logout;
 	authServiceFactory.fillAuthData = _fillAuthData;
-	authServiceFactory.authentication= _getAuthentication;
+	authServiceFactory.authentication= _getAuthentication();
 
 	return authServiceFactory;
 };
