@@ -1,9 +1,9 @@
 angular.module('app')
 	.factory('AuthService', authService)
 
-authService.$inject = ['$http', 'jwtHelper', 'store'];
+authService.$inject = ['$http', 'jwtHelper', 'store', 'ReminderService'];
 
-function authService($http, jwtHelper, store) {
+function authService($http, jwtHelper, store, ReminderService) {
 	var authServiceFactory = {};
 	var _authentication = {
         username: "",
@@ -11,12 +11,15 @@ function authService($http, jwtHelper, store) {
 	};
 
 	var _login = function(token){
+    ReminderService.clear();
 		var decodedToken = jwtHelper.decodeToken(token);
 		_authentication.username = decodedToken.username;
 		_authentication.isAuthenticated = true;
 		store.set('jwt', token);
+    ReminderService.init();
 	};
 	var _logout = function(){
+    ReminderService.clear();
 		_authentication.username = '';
 		_authentication.isAuthenticated = false;
 		store.remove('jwt');

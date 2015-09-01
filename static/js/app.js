@@ -76,7 +76,7 @@ angular
 
 	// URLs that can only be accessed by authenticated users
 	var PROTECTED_URLS = new Array('/reminders', '/settings', '/logout')
-	
+
 	function inArray(value, array){
 		// Function takes a value and an array
 		// -- Returns true if value is in array
@@ -90,7 +90,7 @@ angular
 	}
 
 	$rootScope.$on("$stateChangeStart", function(event, next, current) {
-		if(!AuthService.authentication().isAuthenticated){
+		if(!AuthService.authentication.isAuthenticated){
 			// If user not authenticated, and URL is a protected,
 			// URL redirect the user to the login page.
 			if(inArray(next.url, PROTECTED_URLS)){
@@ -106,16 +106,14 @@ angular
 		}
 	);
 }])
-.service('ReminderService', ['AuthService', '$resource', 'Reminder', function(AuthService, $resource, Reminder){
+.service('ReminderService', ['$resource', 'Reminder', function($resource, Reminder){
 	var vm = this;
-	vm.reminders = _setReminders();
+  vm.reminders = [];
+  _setReminders();
+  vm.setReminders = _setReminders;
 
 	function _setReminders(){
-    if (AuthService.authentication().isAuthenticated){
-      return Reminder.query();
-    } else {
-      return [];
-    }
+      vm.reminders = Reminder.query();
 	}
 
 	vm.addReminder = function (newReminder){
@@ -138,8 +136,8 @@ angular
 	vm.getReminder = function(reminderId){
 		return Reminder.get({id: reminderId});
 	};
-	vm.teardown = function(){
-		vm.reminders = null;
+	vm.clear = function(){
+		vm.reminders = [];
 	};
 	vm.init = function(){
 		vm.setReminders();
