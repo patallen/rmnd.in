@@ -40,7 +40,7 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 1. Install npm then `$ npm install` from project root
 1. Run `$ gulp` to install dependencies, compile styles, and start watching
 1. For development, run `$ gulp bdev`
-1. For production, run `$ gulp bprod`
+1. For production, run `$ gulp build-release`
 
 ### Testing
 1. `$ sudo npm install -g karma`
