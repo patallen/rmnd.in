@@ -3,9 +3,9 @@
 	angular.module('app')
 		.controller('compose', compose);
 
-	compose.$inject = ['$scope', 'Reminder', 'ReminderService',  '$state', '$stateParams'];
+	compose.$inject = ['$location','$scope', 'Reminder', 'ReminderService',  '$state', '$stateParams'];
 
-	function compose($scope, Reminder, ReminderService, $state, $stateParams){
+	function compose($location, $scope, Reminder, ReminderService, $state, $stateParams){
 		$scope.reminder = {
 			priority: 'L',
 			remind_date: _zeroTime(new Date())
@@ -107,7 +107,10 @@
 						$scope.time.hours = hours;
 					}
 					console.log($scope.time.hours);
-				});
+				}).catch(function(err){
+          $location.path('reminders');
+          toastr.error("The reminder you are looking for does not exist.");
+        });
 		}
 
 		function _resetState(){
