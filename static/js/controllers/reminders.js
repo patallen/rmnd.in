@@ -16,7 +16,7 @@
 
     $scope.toggleHold = _toggleHold;
 
-		$scope.sortType = ['-complete', 'created_at'];
+		$scope.sortType = ['-complete', '-created_at'];
 		$scope.sortReverse = true;
 		$scope.filter;
 		$scope.filterStr = 'all';
@@ -50,7 +50,7 @@
 			if (filter =='upcoming'){
 				$scope.filter = {complete: false};
 				$scope.filterStr = 'upcoming';
-				$scope.sortType = '-remind_date';
+				$scope.sortType = 'remind_date';
 			}
 			else if (filter=='sent'){
 				$scope.filter = {complete: true};

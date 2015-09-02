@@ -3,9 +3,9 @@
 	angular.module('app')
 		.controller('compose', compose);
 
-	compose.$inject = ['$location','$scope', 'Reminder', 'ReminderService',  '$state', '$stateParams'];
+	compose.$inject = ['$location','$scope', 'ReminderService',  '$state', '$stateParams'];
 
-	function compose($location, $scope, Reminder, ReminderService, $state, $stateParams){
+	function compose($location, $scope, ReminderService, $state, $stateParams){
 		$scope.reminder = {
 			priority: 'L',
 			remind_date: _zeroTime(new Date())
