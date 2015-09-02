@@ -15,6 +15,13 @@
 			$state.go('login');
 			toggleMenu();
 		};
+		$scope.getHomeLink = function(){
+			if ($scope.auth.isAuthenticated){
+				return '/reminders';	
+			} else {
+				return '/';
+			}
+		}
 
 		$scope.$watch(function(){
 			return AuthService.authentication;

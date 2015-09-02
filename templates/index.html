@@ -20,7 +20,7 @@
     <body ng-controller="main" ng-cloak>
 		<header class="header-static header-main">
 			<div class="container">
-				<a href="/" class="brand">rmnd.in</a>
+				<a ng-href="[[ getHomeLink() ]]" class="brand">rmnd.in</a>
 				<nav class="user-dropdown" ng-show="auth.isAuthenticated">
 					<a href ng-click="toggleMenu()">[[ auth.username ]]<i class="fa fa-chevron-down"></i></a>
 					<div ng-class="{ 'active': menuActive }" class="nav-drop">
