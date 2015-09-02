@@ -11,15 +11,15 @@ function authService($http, jwtHelper, store, ReminderService) {
 	};
 
 	var _login = function(token){
-    ReminderService.clear();
+		ReminderService.clear();
 		var decodedToken = jwtHelper.decodeToken(token);
 		_authentication.username = decodedToken.username;
 		_authentication.isAuthenticated = true;
 		store.set('jwt', token);
-    ReminderService.init();
+		ReminderService.init();
 	};
 	var _logout = function(){
-    ReminderService.clear();
+		ReminderService.clear();
 		_authentication.username = '';
 		_authentication.isAuthenticated = false;
 		store.remove('jwt');
@@ -56,7 +56,6 @@ function authService($http, jwtHelper, store, ReminderService) {
 			store.set('jwt', res.data.token);
 		})
 	};
-
 	authServiceFactory.login = _login;
 	authServiceFactory.logout = _logout;
 	authServiceFactory.fillAuthData = _fillAuthData;

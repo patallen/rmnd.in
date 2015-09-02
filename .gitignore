@@ -9,3 +9,4 @@ static/css
 celerybeat-schedule
 static/components
 static/dist
+*.old.css
