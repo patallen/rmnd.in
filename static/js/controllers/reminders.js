@@ -81,7 +81,7 @@
             // 	return "fa fa-clock-o fa-blue"
             // }
 		}
-    
+
     function _getPauseButtonClass(reminder) {
       if (reminder.on_hold){
         return "fa fa-play";

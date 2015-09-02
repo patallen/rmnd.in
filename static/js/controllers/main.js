@@ -15,7 +15,7 @@
 			$state.go('login');
 			toggleMenu();
 		};
-		
+
 		$scope.$watch(function(){
 			return AuthService.authentication;
 		},function(authentication){
