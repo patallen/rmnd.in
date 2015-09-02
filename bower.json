@@ -14,18 +14,19 @@
     "tests"
   ],
   "dependencies": {
-    "toastr": "~2.1.1",
-    "jquery": "~2.1.4",
+    "a0-angular-storage": "~0.0.12",
     "angular": "~1.4.3",
+    "angular-animate": "~1.4.3",
     "angular-jwt": "~0.0.9",
     "angular-resource": "~1.4.3",
     "angular-ui-router": "~0.2.15",
-    "lodash": "~3.10.1",
-    "a0-angular-storage": "~0.0.12",
-    "angular-animate": "~1.4.3",
-    "normalize-scss": "~3.0.3",
+    "datejs": "~1.0.0-rc3",
+    "font-awesome": "~4.4.0",
+    "jquery": "~2.1.4",
     "jquery-ui": "~1.11.4",
-    "datejs": "~1.0.0-rc3"
+    "lodash": "~3.10.1",
+    "normalize-scss": "~3.0.3",
+    "toastr": "~2.1.1"
   },
   "resolutions": {
     "angular": "~1.4.3"
