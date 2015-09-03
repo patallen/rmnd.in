@@ -18,7 +18,7 @@
       <p>Why don't you <a href="/reminders/add">Create One!</a></p>
     </div>
 		<div class="reminder"
-			ng-repeat="reminder in reminders | filter : filter : strict | orderBy : sortType"
+			ng-repeat="reminder in reminders | statusFilter : filterStr | orderBy : sortType"
 			ng-class="{ menuActive: reminder == getMenuActive()}"
 			ng-click="setMenuActive(reminder)" ng-animate>
 			<div class="status">
