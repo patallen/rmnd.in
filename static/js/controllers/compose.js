@@ -70,6 +70,7 @@
 					ReminderService.addReminder(reminder)
                         .$promise.then(function(res){
                             _resetState();
+                            toastr.error("Successfully created reminder!");
                             $state.go('reminders');
                         }).catch(function(err){
                             toastr.error("Could not create reminder.");
@@ -78,6 +79,7 @@
 					ReminderService.updateReminder(reminder)
                         .$promise.then(function(res){
                             _resetState();
+                            toastr.error("Successfully saved your reminder!");
                             $state.go('reminders');
                         }).catch(function(err){
                             toastr.error("Could not save reminder.");
