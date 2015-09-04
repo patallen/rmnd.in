@@ -48,9 +48,9 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 
 ## TODO
 Fundamentals
-- [ ] Update all reminders at an interval
-- [ ] User info/settings page (Full Name, Phone, etc...)
 - [ ] Email activation
+- [ ] Change user info (Email? username, first/last name, phone?)
+- [x] Change password while logged in
 - [x] Add pause reminder functionality
 - [x] Display message when user doesn't have reminders
 - [x] Password Reset
