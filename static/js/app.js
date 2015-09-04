@@ -67,7 +67,7 @@ angular
 		})
     .state('settings', {
       url: '/settings',
-      controller: 'settings',
+      controller: 'SettingsCtrl',
       templateUrl: '/static/partials/settings.html'
   });
 
