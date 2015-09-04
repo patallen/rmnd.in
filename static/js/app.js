@@ -64,7 +64,12 @@ angular
 			url: '/password/reset/confirm/:uid/:token',
 			controller: 'password',
 			templateUrl: '/static/partials/resetpass.html'
-		});
+		})
+    .state('settings', {
+      url: '/settings',
+      controller: 'settings',
+      templateUrl: '/static/partials/settings.html'
+  });
 
 }])
 
