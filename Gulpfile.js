@@ -66,7 +66,7 @@ gulp.task('prep-release', ['styles'], function(){
   gulp.src(bowerFiles('**/*.js')).pipe(uglify())
     .pipe(concat('libs.min.js'))
     .pipe(gulp.dest('./static/dist/js/'));
-  
+
   gulp.src(bowerFiles('**/*.css'))
     .pipe(minifyCss())
     .pipe(concat('libs.min.css'))
