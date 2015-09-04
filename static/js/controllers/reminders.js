@@ -103,15 +103,23 @@
 			ReminderService.deleteReminder(reminder);
 		};
 
-    function _toggleHold(reminder){
-      console.log(reminder);
-      var on_hold = reminder.on_hold;
-      if (on_hold){
-        reminder.on_hold = false;
-      } else {
-        reminder.on_hold = true;
-      }
-      ReminderService.updateReminder(reminder);
-    }
+		function _toggleHold(reminder){
+			var on_hold = reminder.on_hold;
+			var msg = '';
+
+			if (on_hold){
+				reminder.on_hold = false;
+				msg = "Reminder has been reinstated."
+			} else {
+				reminder.on_hold = true;
+				msg = "Reminder put on hold."
+			}
+			ReminderService.updateReminder(reminder)
+				.$promise.then(function(){
+					toastr.success(msg);
+				}).catch(function(){
+					toastr.error("Could not toggle hold.");
+				});
+		}
 	}
 })();

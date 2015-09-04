@@ -20,13 +20,11 @@
 		vm.addReminder = function (newReminder){
 			return Reminder.save(newReminder, function(res){
 				vm.reminders.push(res);
-				toastr.success('Successfully created reminder!');
 			});
 		};
 		vm.updateReminder = function(updateReminder){
 			return Reminder.update({id:updateReminder.id}, updateReminder, function(){
 				angular.extend(_.find(vm.reminders, {'id': updateReminder.id}), updateReminder);
-				toastr.success('Successfully saved reminder!');
 			});
 		};
 		vm.deleteReminder = function(deleteReminder){
