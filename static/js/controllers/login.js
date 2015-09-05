@@ -19,7 +19,7 @@
 				AuthService.login(response.data.token);
 				$state.go('reminders');
 			}, function(error){
-				toastr.error("Invalid username and/or password.")
+				toastr.error("Invalid username and/or password.");
 			});
 		};
 	}

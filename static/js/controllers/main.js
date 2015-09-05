@@ -17,11 +17,11 @@
 		};
 		$scope.getHomeLink = function(){
 			if ($scope.auth.isAuthenticated){
-				return '/reminders';	
+				return '/reminders';
 			} else {
 				return '/';
 			}
-		}
+		};
 
 		$scope.$watch(function(){
 			return AuthService.authentication;

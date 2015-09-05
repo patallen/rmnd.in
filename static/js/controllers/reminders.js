@@ -109,10 +109,10 @@
 
 			if (on_hold){
 				reminder.on_hold = false;
-				msg = "Reminder has been reinstated."
+				msg = "Reminder has been reinstated.";
 			} else {
 				reminder.on_hold = true;
-				msg = "Reminder put on hold."
+				msg = "Reminder put on hold.";
 			}
 			ReminderService.updateReminder(reminder)
 				.$promise.then(function(){

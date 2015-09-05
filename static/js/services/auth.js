@@ -1,5 +1,5 @@
 angular.module('app')
-	.factory('AuthService', authService)
+	.factory('AuthService', authService);
 
 authService.$inject = ['$http', 'jwtHelper', 'store', 'ReminderService'];
 
@@ -54,12 +54,12 @@ function authService($http, jwtHelper, store, ReminderService) {
 			data: {'token': token}
 		}).then(function(res){
 			store.set('jwt', res.data.token);
-		})
-	};
+		});
+	}
 	authServiceFactory.login = _login;
 	authServiceFactory.logout = _logout;
 	authServiceFactory.fillAuthData = _fillAuthData;
 	authServiceFactory.authentication= _getAuthentication();
 
 	return authServiceFactory;
-};
+}

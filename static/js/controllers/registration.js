@@ -11,7 +11,7 @@
 		// TODO: Add validation
 		$scope.register = function(regInfo){
 			// Don't send the JWT with this request
-			regInfo['skipAuthorization'] = true;
+			regInfo.skipAuthorization = true;
 
 			$http.post('/auth/register/', regInfo)
 				.success(function(){

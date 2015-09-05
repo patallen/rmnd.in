@@ -1,14 +1,14 @@
 (function(){
 	angular.module('app')
-		.filter('humanize', humanize)
+		.filter('humanize', humanize);
 	humanize.$inject = ['$interval'];
 	function humanize($interval){
 		// Set the interval to once per second
 		// This will ensure that time-ago's are up-to-date
-		$interval(function(){}, 1000)
+		$interval(function(){}, 1000);
 
 		function getHumanReadable(date){
-			date = new Date(date)
+			date = new Date(date);
 			// CONSTANTS
 			var DAY = 60*60*24,
 				HOUR = 60*60,
@@ -59,9 +59,9 @@
 			else {
 				return "Past";
 			}
-		};
+		}
 		// Filter needs to be stateful to keep up to date
 		getHumanReadable.$stateful = true;
 		return getHumanReadable;
-	};
+	}
 })();

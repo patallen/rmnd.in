@@ -2,7 +2,7 @@
 	"use strict";
 
 	angular.module('app')
-		.controller('datepicker', datepicker)
+		.controller('datepicker', datepicker);
 
 	datepicker.$inject = ['$scope'];
 
@@ -51,5 +51,5 @@
 			}
 			return '';
 		};
-	};
+	}
 })();
