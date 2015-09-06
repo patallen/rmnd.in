@@ -69,6 +69,8 @@ input[type=submit]:disabled
   position: relative
 .user-dropdown
   height: $headerHeight
+  &.active > a
+    color: white
 .nav-drop
   transition: .2s linear
   &.active
@@ -84,7 +86,7 @@ input[type=submit]:disabled
   ul
     padding: 0
     margin: 0
-    min-width: 120px
+    min-width: 150px
   li
     height: 40px
     border-top: 1px solid gray
@@ -92,7 +94,7 @@ input[type=submit]:disabled
       i
         margin-right: 6px
       font-size: 1em
-      text-align: right
+      text-align: left
       transition: .1s
       width: 100%
       padding: 10 0
