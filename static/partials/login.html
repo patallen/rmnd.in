@@ -1,22 +1,22 @@
 <div class="container">
-	<form class="login-form">
+	<form name="loginForm" class="login-form" novalidate>
 		<div class="form-group">
 			<label for="username">Username</label>
-			<input type="text" id="username" ng-model="user.username">
+			<input type="text" id="username" ng-model="user.username" required>
 		</div>
 		<div class="form-group">
 			<label for="password">Password</label>
-			<input type="password" id="password" ng-model="user.password">
+			<input type="password" id="password" ng-model="user.password" required>
 		</div>
 		<div class="form-group">
-        <input value="Log In" class="btn btn-dark btn-block" type="submit" ng-click="login()">
+        <input value="Log In" class="btn btn-primary btn-block" type="submit" ng-click="login()" ng-disabled="loginForm.$invalid">
         </div>
         <div class="row margin-twenty-top">
             <div class="half">
             <a class="btn btn-block" href="/password/forgot">Forgot Pass?</a>
             </div>
             <div class="half">
-				<a class="btn btn-block btn-primary" href="/register">Sign Up Here</a>
+				<a class="btn btn-block btn-dark" href="/register">Sign Up Here</a>
             </div>
         </div>
 	</form>
