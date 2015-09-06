@@ -7,11 +7,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>rmnd.in - email reminders</title>
-        <!-- Stylesheets -->
-		<!-- bower:css -->
+		<!-- inject:css -->
 		<link rel="stylesheet" href="/static/components/toastr/toastr.css">
-		<!-- endinject -->
-		<!-- custom:css -->
 		<link rel="stylesheet" href="/static/css/styles.css">
 		<!-- endinject -->
 		<link rel="stylesheet" href="{% static 'components/jquery-ui/themes/ui-darkness/jquery-ui.min.css' %}">
@@ -43,7 +40,9 @@
 		<div class="main-shell" ui-view></div>
 
 			<!-- Angular Scripts -->
-			<!-- bower:js -->
+			<!-- DEV - Inject bower js then app js -->
+			<!-- PROD - Inject minified/conat bowerjs then min/concat app js -->
+			<!-- inject:js -->
 			<script src="/static/components/jquery/dist/jquery.js"></script>
 			<script src="/static/components/jquery-ui/jquery-ui.js"></script>
 			<script src="/static/components/angular/angular.js"></script>
@@ -55,9 +54,6 @@
 			<script src="/static/components/datejs/build/production/date.min.js"></script>
 			<script src="/static/components/lodash/lodash.js"></script>
 			<script src="/static/components/toastr/toastr.js"></script>
-			<!-- endinject -->
-
-			<!-- custom:js -->
 			<script src="/static/js/app.js"></script>
 			<script src="/static/js/controllers/compose.js"></script>
 			<script src="/static/js/controllers/datepicker.js"></script>
@@ -72,6 +68,7 @@
 			<script src="/static/js/filters/status.js"></script>
 			<script src="/static/js/services/auth.js"></script>
 			<script src="/static/js/services/reminder.js"></script>
+			<script src="/static/js/test/authentication.js"></script>
 			<!-- endinject -->
 		</body>
 </html>
