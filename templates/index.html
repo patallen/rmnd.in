@@ -19,11 +19,11 @@
 			<div class="container">
 				<a ng-href="[[ getHomeLink() ]]" class="brand">rmnd.in</a>
 				<nav class="user-dropdown" ng-class="{ 'active': menuActive}" ng-show="auth.isAuthenticated">
-					<a href ng-click="toggleMenu()">[[ auth.username ]]<i class="fa fa-chevron-down"></i></a>
+					<a href ng-click="toggleMenu($event)">[[ auth.username ]]<i class="fa fa-chevron-down"></i></a>
 					<div ng-class="{ 'active': menuActive }" class="nav-drop">
 						<ul>
 							<li>
-								<a ng-click="toggleMenu()" href="/settings"><i class="fa fa-cog"></i> Settings</a>
+								<a href="/settings"><i class="fa fa-cog"></i> Settings</a>
 							</li>
 							<li>
 								<a href ng-click="logout()"><i class="fa fa-sign-out"></i> Log Out</a>

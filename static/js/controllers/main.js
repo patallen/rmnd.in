@@ -29,8 +29,16 @@
 			$scope.auth = AuthService.authentication;
 		});
 
-		function toggleMenu(){
+		function toggleMenu(event){
 			$scope.menuActive = !$scope.menuActive;
+			event.stopPropagation();
 		}
+		window.onclick = function() {
+			if ($scope.menuActive) {
+				console.log("The menu was active- closing");
+				$scope.menuActive = false;
+				$scope.$apply();
+			}
+		};
 	}
 })();
