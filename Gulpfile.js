@@ -12,13 +12,13 @@ var minifyCss = require('gulp-minify-css');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 
-var appStream = gulp.src(['./static/css/*.css', './static/js/**/*.js', '!../static/js/test/*']);
+var appStream = gulp.src(['./static/css/*.css', './static/js/**/*.js', '!./static/js/test/*']);
 var bowerStream = gulp.src(bowerFiles(), {read: false});
 var indexHTML = gulp.src('./templates/index.html');
 
 gulp.task('bower', function(){
   return bower()
-    .pipe(gulp.dest('static/components'))
+    .pipe(gulp.dest('static/components'));
 });
 
 gulp.task('styles', function(){
