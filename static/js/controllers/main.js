@@ -1,42 +1,49 @@
 (function(){
 	"use strict";
 
-	angular.module('app')
-		.controller('main', main);
+	angular
+		.module('app')
+		.controller('Main', Main);
 
-	main.$inject = ['AuthService', '$scope', '$state'];
+	Main.$inject = ['AuthService', '$scope', '$state'];
 
-	function main(AuthService, $scope, $state){
-		$scope.menuActive = false;
-		$scope.toggleMenu = toggleMenu;
-		$scope.auth = AuthService.authentication;
-		$scope.logout = function(){
+	function Main(AuthService, $scope, $state){
+		var vm = this;
+
+		// Controller variables
+		vm.menuActive = false;
+		vm.auth = AuthService.authentication;
+		vm.homeLink = getHomeLink();
+
+		// Hoisted methods
+		vm.toggleMenu = toggleMenu;
+		vm.logout = logout;
+
+		function logout(){
 			AuthService.logout();
 			$state.go('login');
-			toggleMenu();
-		};
-		$scope.getHomeLink = function(){
-			if ($scope.auth.isAuthenticated){
+		}
+		function getHomeLink(){
+			if (vm.auth.isAuthenticated){
 				return '/reminders';
 			} else {
 				return '/';
 			}
-		};
+		}
+		function toggleMenu(event){
+			vm.menuActive = !$scope.menuActive;
+			event.stopPropagation();
+		}
 
 		$scope.$watch(function(){
 			return AuthService.authentication;
 		},function(authentication){
-			$scope.auth = AuthService.authentication;
+			vm.auth = AuthService.authentication;
 		});
 
-		function toggleMenu(event){
-			$scope.menuActive = !$scope.menuActive;
-			event.stopPropagation();
-		}
 		window.onclick = function() {
-			if ($scope.menuActive) {
-				console.log("The menu was active- closing");
-				$scope.menuActive = false;
+			if (vm.menuActive) {
+				vm.menuActive = false;
 				$scope.$apply();
 			}
 		};

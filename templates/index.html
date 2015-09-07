@@ -14,24 +14,24 @@
 		<link rel="stylesheet" href="{% static 'components/jquery-ui/themes/ui-darkness/jquery-ui.min.css' %}">
 		<link rel="stylesheet" href="{% static 'components/jquery-ui/themes/ui-darkness/theme.css' %}">
     </head>
-    <body ng-controller="main" ng-cloak>
+    <body ng-controller="Main as vm" ng-cloak>
 		<header class="header-static header-main">
 			<div class="container">
-				<a ng-href="[[ getHomeLink() ]]" class="brand">rmnd.in</a>
-				<nav class="user-dropdown" ng-class="{ 'active': menuActive}" ng-show="auth.isAuthenticated">
-					<a href ng-click="toggleMenu($event)">[[ auth.username ]]<i class="fa fa-chevron-down"></i></a>
-					<div ng-class="{ 'active': menuActive }" class="nav-drop">
+				<a ng-href="[[ vm.homeLink ]]" class="brand">rmnd.in</a>
+				<nav class="user-dropdown" ng-class="{ 'active': vm.menuActive}" ng-show="vm.auth.isAuthenticated">
+					<a href ng-click="vm.toggleMenu($event)">[[ vm.auth.username ]]<i class="fa fa-chevron-down"></i></a>
+					<div ng-class="{ 'active': vm.menuActive }" class="nav-drop">
 						<ul>
 							<li>
 								<a href="/settings"><i class="fa fa-cog"></i> Settings</a>
 							</li>
 							<li>
-								<a href ng-click="logout()"><i class="fa fa-sign-out"></i> Log Out</a>
+								<a href ng-click="vm.logout()"><i class="fa fa-sign-out"></i> Log Out</a>
 							</li>
 						</ul>
 					</div>
 				</nav>
-				<nav ng-hide="auth.isAuthenticated" class="flex-nav">
+				<nav ng-hide="vm.auth.isAuthenticated" class="flex-nav">
 					<a ui-sref="register" class="item" ui-sref-active="active">Sign Up</a>
 					<a ui-sref="login" class="item" ui-sref-active="active">Log In</a>
 				</nav>

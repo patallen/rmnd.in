@@ -58,7 +58,7 @@ angular
 			controllerAs: 'vm',
 			templateUrl: "/static/partials/login.html"
 		})
-    .state('forgotPassword', {
+		.state('forgotPassword', {
 			url: '/password/forgot',
 			controller: 'password',
 			templateUrl: '/static/partials/forgotpass.html'
