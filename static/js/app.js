@@ -74,6 +74,7 @@ angular
 		.state('settings', {
 			url: '/settings',
 			controller: 'SettingsCtrl',
+			controllerAs: 'vm',
 			templateUrl: '/static/partials/settings.html'
 		});
 

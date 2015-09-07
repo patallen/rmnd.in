@@ -1,20 +1,21 @@
 (function(){
 	"use strict";
 
-	angular.module('app')
-		.controller('reminder', reminder);
+	angular
+		.module('app')
+		.controller('reminder', Reminder);
 
-	reminder.$inject = ['$scope', '$interval', 'ReminderService'];
+	Reminder.$inject = ['$scope', '$interval', 'ReminderService'];
 
-	function reminder($scope, $interval, ReminderService) {
+	function Reminder($scope, $interval, ReminderService) {
 		var _menuActive = null;
 		$scope.setMenuActive = _setMenuActive;
 		$scope.getMenuActive = _getMenuActive;
 
 		$scope.getStatusClass = _getStatusClass;
-    $scope.getPauseButtonClass = _getPauseButtonClass;
+		$scope.getPauseButtonClass = _getPauseButtonClass;
 
-    $scope.toggleHold = _toggleHold;
+		$scope.toggleHold = _toggleHold;
 
 		$scope.sortType = ['-complete', '-created_at'];
 		$scope.sortReverse = true;

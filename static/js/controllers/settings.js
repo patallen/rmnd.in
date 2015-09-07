@@ -7,22 +7,26 @@
 	settings.$inject = ['$scope', '$http'];
 
 	function settings($scope, $http){
+		var vm = this;
+
 		var _activeTab = 'info';
 
-		$scope.tabActive = tabActive;
-		$scope.setTab = setTab;
+		vm.tabActive = tabActive;
+		vm.setTab = setTab;
+		vm.changePass = changePass;
 
-		$scope.user = {
+		vm.user = {
 			firstname: '',
 			lastname: ''
 		};
-		$scope.password = {};
-		$scope.changePass = function(){
+		vm.password = {};
+
+		function changePass(){
 			$http.post('/auth/password/',
 					{
-						new_password: $scope.password.newpass,
-						re_new_pass: $scope.password.confpass,
-						current_password: $scope.password.current
+						new_password: vm.password.newpass,
+						re_new_pass: vm.password.confpass,
+						current_password: vm.password.current
 					}).then(
 					function(){
 						toastr.success('Password changed successfully!');
@@ -32,7 +36,7 @@
 			_clearPassword();
 		};
 		function _clearPassword(){
-			$scope.password = {};
+			vm.password = {};
 		}
 		function setTab (tab) {
 			_activeTab = tab;
