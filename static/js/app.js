@@ -38,11 +38,13 @@ angular
 		.state('addReminder', {
 			url: "/reminders/add",
 			controller: 'compose',
+			controllerAs: 'vm',
 			templateUrl: "/static/partials/compose.html"
 		})
 		.state('editReminder', {
 			url: "/reminders/:reminderId/edit",
 			controller: 'compose',
+			controllerAs: 'vm',
 			templateUrl: "/static/partials/compose.html"
 		})
 		.state('register', {
@@ -80,7 +82,7 @@ angular
 	AuthService.fillAuthData();
 
 	// URLs that can only be accessed by authenticated users
-	var PROTECTED_URLS = new Array('/reminders', '/settings', '/logout')
+	var PROTECTED_URLS = new Array('/reminders', '/settings', '/logout');
 
 	function inArray(value, array){
 		// Function takes a value and an array
@@ -110,4 +112,4 @@ angular
 			'update': {method: 'PUT'}
 		}
 	);
-}])
+}]);

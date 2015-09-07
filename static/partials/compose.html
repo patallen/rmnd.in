@@ -1,31 +1,31 @@
 <div class="container">
 	<div class="grid-container">
-		<form name="reminderForm" ng-submit="saveReminder(reminder, isEditing, reminderForm.$valid)" class="reminder-form validate-form" novalidate>
+		<form name="reminderForm" ng-submit="vm.saveReminder(vm.reminder, vm.isEditing, reminderForm.$valid)" class="reminder-form validate-form" novalidate>
 			<div class="row">
 				<div class="three-quarters">
 					<label for="title">Title</label>
-					<input type="text" id="title" ng-model="reminder.title" class="form-control" ng-required="true">
+					<input type="text" id="title" ng-model="vm.reminder.title" class="form-control" ng-required="true">
 				</div>
 				<div class="quarter">
 					<label for="title">Priority</label>
-					<select id="priority" ng-options="p.val as p.text for p in priorityOptions" ng-model="reminder.priority" class="form-control" ng-required="true">
+					<select id="priority" ng-options="p.val as p.text for p in vm.priorityOptions" ng-model="vm.reminder.priority" class="form-control" ng-required="true">
 					</select>
 				</div>
 			</div>
 			<div class="row">
 				<div class="half">
 					<label>Date</label>
-					<input type="text" ng-model="reminder.remind_date" date-picker>
+					<input type="text" ng-model="vm.reminder.remind_date" date-picker>
 				</div>
 				<div class="half">
 					<div class="row">
 						<div class="half">
 							<label>Time</label>
-							<select ng-model="time.hours" ng-options="t.val as t.text for t in times"></select>
+							<select ng-model="vm.time.hours" ng-options="t.val as t.text for t in vm.times"></select>
 						</div>
 						<div class="half">
 							<label>AM/PM</label>
-							<select ng-model="time.ampm" ng-options="a for a in ['AM', 'PM']"></select>
+							<select ng-model="vm.time.ampm" ng-options="a for a in ['AM', 'PM']"></select>
 						</div>
 					</div>
 				</div>
@@ -33,10 +33,10 @@
 			<div class="row">
 				<div class="full">
 					<label for="notes">Notes</label>
-					<textarea id="notes" ng-model="reminder.notes" class="form-control"></textarea>
+					<textarea id="notes" ng-model="vm.reminder.notes" class="form-control"></textarea>
 				</div>
 				<div class="three-quarters">
-					<input type="submit" class="btn btn-primary btn-block" value="[[ btnValue ]]" ng-disabled="reminderForm.$invalid">
+					<input type="submit" class="btn btn-primary btn-block" value="[[ vm.btnValue ]]" ng-disabled="reminderForm.$invalid">
 				</div>
 				<div class="quarter">
 					<a class="btn btn-default btn-block" ui-sref="reminders">Cancel</a>

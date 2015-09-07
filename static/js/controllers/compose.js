@@ -1,26 +1,38 @@
 (function (){
 	'use strict';
-	angular.module('app')
-		.controller('compose', compose);
 
-	compose.$inject = ['$location','$scope', 'ReminderService',  '$state', '$stateParams'];
+	angular
+		.module('app')
+		.controller('compose', Compose);
 
-	function compose($location, $scope, ReminderService, $state, $stateParams){
-		$scope.reminder = {
+	Compose.$inject = ['$location','$scope', 'ReminderService',  '$state', '$stateParams'];
+
+	function Compose($location, $scope, ReminderService, $state, $stateParams){
+		var vm = this;
+
+		if ($state.includes('editReminder')){
+			_setEditing();
+		}
+
+		// Hoist Functions
+		vm.saveReminder = saveReminder;
+
+		vm.btnValue = 'Create';
+		vm.isEditing = false;
+		vm.priorityOptions = [
+			{val:'L', text: 'Low'},
+			{val:'M', text: 'Medium'},
+			{val:'H', text: 'High'},
+		];
+		vm.reminder = {
 			priority: 'L',
 			remind_date: _zeroTime(new Date())
 		};
-		$scope.time = {
+		vm.time = {
 			hours: 0,
 			ampm: 'AM'
 		};
-		function _zeroTime(date){
-			date.setMinutes(0);
-			date.setSeconds(0);
-			date.setMilliseconds(0);
-			return date;
-		}
-		$scope.times = [
+		vm.times = [
 			{val: 1, text: '1:00'},
 			{val: 2, text: '2:00'},
 			{val: 3, text: '3:00'},
@@ -35,9 +47,9 @@
 			{val: 0, text: '12:00'},
 		];
 
-		$scope.$watchGroup(['time.hours', 'time.ampm'], function(){
-			var hour = $scope.time.hours,
-				ampm = $scope.time.ampm;
+		$scope.$watchGroup(['vm.time.hours', 'vm.time.ampm'], function(){
+			var hour = vm.time.hours,
+				ampm = vm.time.ampm;
 
 			var res;
 			if (ampm == 'PM'){
@@ -49,28 +61,17 @@
 			} else {
 				res = hour;
 			}
-			$scope.reminder.remind_date.setHours(res);
+			vm.reminder.remind_date.setHours(res);
 		});
-		$scope.btnValue = 'Create';
-		$scope.isEditing = false;
-		$scope.priorityOptions = [
-			{val:'L', text: 'Low'},
-			{val:'M', text: 'Medium'},
-			{val:'H', text: 'High'},
-		];
 
 
-		if ($state.includes('editReminder')){
-			_setEditing();
-		}
-
-		$scope.saveReminder = function (reminder, isEditing, formValid){
+		function saveReminder (reminder, isEditing, formValid){
 			if (formValid){
 				if(!isEditing){
 					ReminderService.addReminder(reminder)
                         .$promise.then(function(res){
                             _resetState();
-                            toastr.error("Successfully created reminder!");
+                            toastr.success("Successfully created reminder!");
                             $state.go('reminders');
                         }).catch(function(err){
                             toastr.error("Could not create reminder.");
@@ -79,50 +80,54 @@
 					ReminderService.updateReminder(reminder)
                         .$promise.then(function(res){
                             _resetState();
-                            toastr.error("Successfully saved your reminder!");
+                            toastr.success("Successfully saved your reminder!");
                             $state.go('reminders');
                         }).catch(function(err){
                             toastr.error("Could not save reminder.");
                         });
 				}
 			}
-		};
+		}
 
 		function _setEditing(){
-			$scope.btnValue = 'Update';
-			$scope.isEditing = true;
+			vm.btnValue = 'Update';
+			vm.isEditing = true;
 			ReminderService.getReminder($stateParams.reminderId)
 				.$promise
 				.then(function(data){
-					$scope.reminder = data;
-					$scope.reminder.remind_date = new Date(data.remind_date);
-					var hours = $scope.reminder.remind_date.getHours();
+					vm.reminder = data;
+					vm.reminder.remind_date = new Date(data.remind_date);
+					var hours = vm.reminder.remind_date.getHours();
 					if (hours > 11){
-						$scope.time.ampm = 'PM';
+						vm.time.ampm = 'PM';
 						if (hours < 13){
-							$scope.time.hours = 0;
+							vm.time.hours = 0;
 						} else {
-							$scope.time.hours = hours - 12;
+							vm.time.hours = hours - 12;
 						}
 					} else {
-						$scope.time.ampm = 'AM';
-						$scope.time.hours = hours;
+						vm.time.ampm = 'AM';
+						vm.time.hours = hours;
 					}
-					console.log($scope.time.hours);
 				}).catch(function(err){
-          $location.path('reminders');
-          toastr.error("The reminder you are looking for does not exist.");
-        });
+					$location.path('reminders');
+					toastr.error("The reminder you are looking for does not exist.");
+				});
 		}
-
 		function _resetState(){
-			$scope.btnValue = 'Create';
-			$scope.isEditing = false;
-			$scope.reminder = {
+			vm.btnValue = 'Create';
+			vm.isEditing = false;
+			vm.reminder = {
 				title: '',
 				notes: '',
 				remind_date: ''
 			};
+		}
+		function _zeroTime(date){
+			date.setMinutes(0);
+			date.setSeconds(0);
+			date.setMilliseconds(0);
+			return date;
 		}
 	}
 })();
