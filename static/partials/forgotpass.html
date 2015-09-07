@@ -2,8 +2,8 @@
 	<form class="login-form" name="forgotPass" novalidate>
 		<div class="form-group">
 			<label for="email">Enter Your Email</label>
-			<input type="email" id="email" ng-model="requestChange.email" required>
+			<input type="email" id="email" ng-model="vm.requestChange.email" required>
 		</div>
-		<input class="btn btn-primary btn-block" type="submit" ng-click="requestResetEmail()" ng-disabled="forgotPass.$invalid">
+		<input class="btn btn-primary btn-block" type="submit" ng-click="vm.requestResetEmail()" ng-disabled="forgotPass.$invalid">
 	</form>
 </div>
