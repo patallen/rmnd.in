@@ -1,19 +1,23 @@
 (function(){
 	"use strict";
 
-	angular.module('app')
-		.controller('login', login);
+	angular
+		.module('app')
+		.controller('login', Login);
 
-	login.$inject = ['$scope', '$http', 'AuthService', '$state'];
+	Login.$inject = ['$scope', '$http', 'AuthService', '$state'];
 
-	function login($scope, $http, AuthService, $state) {
-		$scope.user = {};
+	function Login($scope, $http, AuthService, $state) {
+		var vm = this;
+		vm.user = {};
+		vm.login = login;
 
-		$scope.login = function() {
+		// TODO: This should probably go in a service
+		function login() {
 			$http({
 				url: '/api-token-auth/',
 				method: 'POST',
-				data: $scope.user
+				data: vm.user
 			})
 			.then(function(response){
 				AuthService.login(response.data.token);
@@ -21,6 +25,6 @@
 			}, function(error){
 				toastr.error("Invalid username and/or password.");
 			});
-		};
+		}
 	}
 })();

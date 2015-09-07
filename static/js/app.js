@@ -52,11 +52,12 @@ angular
 			controller: 'registration',
 			templateUrl: "/static/partials/register.html"
 		})
-    .state('login', {
-      url: '/login',
-      controller: 'login',
-      templateUrl: "/static/partials/login.html"
-    })
+		.state('login', {
+			url: '/login',
+			controller: 'login',
+			controllerAs: 'vm',
+			templateUrl: "/static/partials/login.html"
+		})
     .state('forgotPassword', {
 			url: '/password/forgot',
 			controller: 'password',
