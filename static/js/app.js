@@ -50,6 +50,7 @@ angular
 		.state('register', {
 			url: "/register",
 			controller: 'registration',
+			controllerAs: 'vm',
 			templateUrl: "/static/partials/register.html"
 		})
 		.state('login', {

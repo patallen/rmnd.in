@@ -1,15 +1,18 @@
 (function(){
 	"use strict";
 
-	angular.module('app')
-		.controller('registration', registration);
+	angular
+		.module('app')
+		.controller('registration', Registration);
 
-	registration.$inject = ['$http', '$scope', '$state'];
+	Registration.$inject = ['$http', '$scope', '$state'];
 
-	function registration($http, $scope, $state){
-		$scope.regInfo = {};
+	function Registration($http, $scope, $state){
+		var vm = this;
+
+		vm.regInfo = {};
 		// TODO: Add validation
-		$scope.register = function(regInfo){
+		vm.register = function(regInfo){
 			// Don't send the JWT with this request
 			regInfo.skipAuthorization = true;
 
