@@ -48,8 +48,9 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 
 ## TODO
 Fundamentals
-- [ ] Email activation
+- [ ] Email activation with new user Model
 - [ ] Change user info (Email? username, first/last name, phone?)
+- [x] Custom user model
 - [x] Change password while logged in
 - [x] Add pause reminder functionality
 - [x] Display message when user doesn't have reminders

@@ -1,7 +1,6 @@
 <div class="container">
 	<h1 class="text-center">Sign up for rmnd.in!</h1>
-	<form name="registerForm" ng-submit="vm.register(regInfo)" class="register-form validate-form" autocomplete="off" novalidate>
-		<input ng-model="vm.regInfo.username"id="username" class="form-control" type="text" placeholder="Username" required>
+	<form name="registerForm" ng-submit="vm.register(vm.regInfo)" class="register-form validate-form" autocomplete="off" novalidate>
 		<input ng-model="vm.regInfo.email" id="email" class="form-control" type="email" placeholder="Email Address" required>
 		<input pattern=".{8,}" ng-model="vm.regInfo.password" id="password1" class="form-control" type="password" placeholder="Password" required>
 		<input pattern=".{8,}" ng-model="vm.regInfo.confim" id="password2" class="form-control" type="password" placeholder="Confirm Password" required>
