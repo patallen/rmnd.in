@@ -71,6 +71,12 @@ angular
 			controllerAs: 'vm',
 			templateUrl: '/static/partials/resetpass.html'
 		})
+    .state('activateEmail', {
+      url: '/activate/:uid/:token',
+      controller: 'Activate',
+      controllerAs: 'vm',
+      template: ' '
+    })
 		.state('settings', {
 			url: '/settings',
 			controller: 'SettingsCtrl',
