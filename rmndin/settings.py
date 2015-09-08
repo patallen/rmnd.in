@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 from datetime import timedelta
 
+AUTH_USER_MODEL = 'reminders.RmndinUser'
 SENDGRID_USER = os.environ.get('DJANGO_SENDGRID_USER', 'username')
 SENDGRID_PASSWORD = os.environ.get('DJANGO_SENDGRID_PASSWORD', 'password')
 DB_NAME = os.environ.get('RMNDIN_DB_NAME', 'tominderdb')
