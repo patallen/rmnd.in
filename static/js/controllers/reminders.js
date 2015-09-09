@@ -3,23 +3,24 @@
 
 	angular
 		.module('app')
-		.controller('reminder', Reminder);
+		.controller('Reminder', Reminder);
 
-	Reminder.$inject = ['$scope', '$interval', 'ReminderService'];
+	Reminder.$inject = ['$interval', 'ReminderService'];
 
-	function Reminder($scope, $interval, ReminderService) {
+	function Reminder($interval, ReminderService) {
+    var vm = this;
 		var _menuActive = null;
-		$scope.setMenuActive = _setMenuActive;
-		$scope.getMenuActive = _getMenuActive;
+		vm.setMenuActive = _setMenuActive;
+		vm.getMenuActive = _getMenuActive;
 
-		$scope.getStatusClass = _getStatusClass;
-		$scope.getPauseButtonClass = _getPauseButtonClass;
+		vm.getStatusClass = _getStatusClass;
+		vm.getPauseButtonClass = _getPauseButtonClass;
 
-		$scope.toggleHold = _toggleHold;
+		vm.toggleHold = _toggleHold;
 
-		$scope.sortType = ['-complete', '-created_at'];
-		$scope.sortReverse = true;
-		$scope.filterStr = 'all';
+		vm.sortType = ['-complete', '-created_at'];
+		vm.sortReverse = true;
+		vm.filterStr = 'all';
 
 		function _setMenuActive(reminder){
 			if (reminder == _menuActive){
@@ -31,7 +32,7 @@
 		function _getMenuActive(){
 			return _menuActive;
 		}
-		$scope.getPriority = function(reminder){
+		vm.getPriority = function(reminder){
 			switch(reminder.priority){
 				case 'L':
 					return 'Low';
@@ -43,17 +44,17 @@
 					return 'Low';
 			}
 		};
-		$scope.setFilter = function (filter){
+		vm.setFilter = function (filter){
 			if (filter =='upcoming'){
-				$scope.filterStr = 'upcoming';
-				$scope.sortType = 'remind_date';
+				vm.filterStr = 'upcoming';
+				vm.sortType = 'remind_date';
 			}
 			else if (filter=='sent'){
-				$scope.filterStr = 'sent';
+				vm.filterStr = 'sent';
 			}
 			else{
-				$scope.filterStr = 'all';
-				$scope.sortType = ['-complete', '-created_at'];
+				vm.filterStr = 'all';
+				vm.sortType = ['-complete', '-created_at'];
 			}
 		};
 
@@ -77,30 +78,30 @@
 			}
 		}
 
-		$scope.isActiveFilter = function (filter){
-			if(filter == $scope.filterStr){
+		vm.isActiveFilter = function (filter){
+			if(filter == vm.filterStr){
 				return true;
 			}
 			return false;
 		};
-		$scope.toggleReverse = function() {
-			$scope.sortReverse = !$scope.sortReverse;
+		vm.toggleReverse = function() {
+			vm.sortReverse = !vm.sortReverse;
 		};
 
-		$scope.setSortType = function(sortType){
-			$scope.sortType = sortType;
+		vm.setSortType = function(sortType){
+			vm.sortType = sortType;
 		};
-		$scope.getDirectionClass = function(){
-			if($scope.sortReverse === true){
+	 vm.getDirectionClass = function(){
+			if(vm.sortReverse === true){
 				return 'glyphicon-arrow-up';
 			}else{
 				return 'glyphicon-arrow-down';
 			}
 		};
 
-		$scope.reminders = ReminderService.reminders;
+		vm.reminders = ReminderService.reminders;
 
-		$scope.delete = function(reminder) {
+		vm.delete = function(reminder) {
 			ReminderService.deleteReminder(reminder);
 		};
 

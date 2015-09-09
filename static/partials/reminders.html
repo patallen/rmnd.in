@@ -1,9 +1,9 @@
 <div class="header-static header-filters">
 	<div class="container">
 		<div class="nav">
-			<a ng-class="{ active: isActiveFilter('all')}" class="btn btn-pill" href="#" ng-click="setFilter('all')">ALL</a>
-			<a ng-class="{ active: isActiveFilter('upcoming')}" class="btn btn-pill" href="#" ng-click="setFilter('upcoming')">UPCOMING</a>
-			<a ng-class="{ active: isActiveFilter('sent')}" class="btn btn-pill" href="#" ng-click="setFilter('sent')">SENT</a>
+			<a ng-class="{ active: vm.isActiveFilter('all')}" class="btn btn-pill" href="#" ng-click="vm.setFilter('all')">ALL</a>
+			<a ng-class="{ active: vm.isActiveFilter('upcoming')}" class="btn btn-pill" href="#" ng-click="vm.setFilter('upcoming')">UPCOMING</a>
+			<a ng-class="{ active: vm.isActiveFilter('sent')}" class="btn btn-pill" href="#" ng-click="vm.setFilter('sent')">SENT</a>
 		</div>
 		<a ui-sref="addReminder" class="btn btn-dark" href="#"><i class="fa fa-plus"></i>ADD<span class="mobile-hide"> REMINDER</span></a>
 	</div>
@@ -13,16 +13,16 @@
 <div class="container">
 	<div class="reminders-shell">
 		<!-- TODO: Add back in search functionality -->
-    <div class="no-reminders" ng-hide="reminders.length">
+    <div class="no-reminders" ng-hide="vm.reminders.length">
       <h2>Woops, no reminders here!</h2>
       <p>Why don't you <a href="/reminders/add">Create One!</a></p>
     </div>
 		<div class="reminder"
-			ng-repeat="reminder in reminders | statusFilter : filterStr | orderBy : sortType"
-			ng-class="{ menuActive: reminder == getMenuActive()}"
-			ng-click="setMenuActive(reminder)" ng-animate>
+			ng-repeat="reminder in vm.reminders | statusFilter : vm.filterStr | orderBy : vm.sortType"
+			ng-class="{ menuActive: reminder == vm.getMenuActive()}"
+			ng-click="vm.setMenuActive(reminder)" ng-animate>
 			<div class="status">
-				<i ng-class="getStatusClass(reminder)"></i>
+				<i ng-class="vm.getStatusClass(reminder)"></i>
 			</div>
 			<div class="info">
 				<div class="info-top">
@@ -31,16 +31,16 @@
 				</div>
 				<div class="info-bottom">
 					<span class="description">[[ reminder.notes ]]</span>
-					<div class="priority priority[[getPriority(reminder)]]">
-						[[ getPriority(reminder)]]
+					<div class="priority priority[[vm.getPriority(reminder)]]">
+						[[ vm.getPriority(reminder)]]
 					</div>
 				</div>
 			</div>
 			<div class="menu">
 				<!-- TODO: Add pause functionality -->
-				<i ng-class="getPauseButtonClass(reminder)" ng-click="toggleHold(reminder)"></i>
+				<i ng-class="vm.getPauseButtonClass(reminder)" ng-click="vm.toggleHold(reminder)"></i>
 				<a ng-href="/reminders/[[ reminder.id ]]/edit"><i class="fa fa-edit"></i></a>
-				<a href ng-click="delete(reminder)"><i class="fa fa-trash-o"></i></a>
+				<a href ng-click="vm.delete(reminder)"><i class="fa fa-trash-o"></i></a>
 			</div>
 		</div>
 	</div>

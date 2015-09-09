@@ -32,7 +32,8 @@ angular
         })
 		.state('reminders', {
 			url: "/reminders",
-			controller: 'reminder',
+			controller: 'Reminder',
+      controllerAs: 'vm',
 			templateUrl: "/static/partials/reminders.html"
 		})
 		.state('addReminder', {
