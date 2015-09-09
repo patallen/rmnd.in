@@ -29,17 +29,22 @@ A small project with the goal of creating a fast and easy way of scheduling emai
 
 ### Environment Variables
 1. `vim ~/.virtualenvs/venvname/bin/postactivate`
-1. Add:
+1. Add env variables to uwsgi ini
+1. List of environment variables:
 
 ```
-export DJANGO_SENDGRID_USER='sendgrid_username'
-export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
+DJANGO_SENDGRID_USER='username'
+DJANGO_SENDGRID_PASSWORD='password'
+RMNDIN_DB_USER='dbusername'
+RMNDIN_DB_PASS='dbpassword'
+RMDNIN_DB_NAME='dbname'
+DOMAIN='rmnd.in'
 ```
 
 ### Dependencies
 1. Install npm then `$ npm install` from project root
 1. Run `$ gulp` to install dependencies, compile styles, and start watching
-1. For development, run `$ gulp bdev`
+1. For development, run `$ gulp build-dev`
 1. For production, run `$ gulp build-release`
 
 ### Testing
@@ -48,8 +53,9 @@ export DJANGO_SENDGRID_PASSWORD='sendgrid_password'
 
 ## TODO
 Fundamentals
-- [ ] Email activation with new user Model
+- [ ] User profile
 - [ ] Change user info (Email? username, first/last name, phone?)
+- [x] Email activation with new user Model
 - [x] Custom user model
 - [x] Change password while logged in
 - [x] Add pause reminder functionality
