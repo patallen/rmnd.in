@@ -40,7 +40,7 @@
 				<!-- TODO: Add pause functionality -->
 				<i ng-class="vm.getPauseButtonClass(reminder)" ng-click="vm.toggleHold(reminder)"></i>
 				<a ng-href="/reminders/[[ reminder.id ]]/edit"><i class="fa fa-edit"></i></a>
-				<a href ng-click="vm.delete(reminder)"><i class="fa fa-trash-o"></i></a>
+				<a href ng-click="vm.deleteReminder(reminder)"><i class="fa fa-trash-o"></i></a>
 			</div>
 		</div>
 	</div>
