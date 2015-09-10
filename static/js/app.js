@@ -32,9 +32,14 @@ angular
         })
 		.state('reminders', {
 			url: "/reminders",
+			resolve: {
+				rtReminders: function(ReminderService){
+					return ReminderService.reminders;
+				}
+			},
 			controller: 'Reminder',
-      controllerAs: 'vm',
-			templateUrl: "/static/partials/reminders.html"
+			controllerAs: 'vm',
+			templateUrl: "/static/partials/reminders.html",
 		})
 		.state('addReminder', {
 			url: "/reminders/add",
