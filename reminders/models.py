@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
-# from django.contrib.auth.models import User
 
 
 class EmailUserManager(BaseUserManager):
@@ -33,6 +32,12 @@ class RmndinUser(AbstractBaseUser, PermissionsMixin):
     objects = EmailUserManager()
 
     USERNAME_FIELD = 'email'
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(RmndinUser)
+    first_name = models.CharField(max_length=64)
+    last_name = models.CharField(max_length=64)
 
 
 class Reminder(models.Model):
