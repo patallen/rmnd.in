@@ -18,7 +18,7 @@
 
 			$http.post('/auth/register/', regInfo)
 				.success(function(){
-					toastr.success('Thanks for signing up for rmnd.in');
+					toastr.info('Check your email for an activation link!');
 					$state.go('login');
 				})
 				.error(function(err){
